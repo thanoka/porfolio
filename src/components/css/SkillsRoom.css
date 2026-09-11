@@ -7,7 +7,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 24px 36px 70px;
+  padding: 14px 86px 82px;
   overflow: hidden;
 }
 
@@ -21,12 +21,13 @@
 .open-journal-container {
   position: relative;
   z-index: 2;
-  width: 95%;
-  max-width: 1680px;
-  height: 88%;
+  width: 100%;
+  max-width: 1560px;
+  height: 100%;
+  max-height: calc(100vh - 155px);
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 14px;
 }
 
 /* ---------------------------------------------------------------

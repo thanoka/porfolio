@@ -60,7 +60,7 @@ export default function RoomNavigator({
         title={`Turn left to ${prevRoom.duty || prevRoom.name} [Left Arrow / A]`}
       >
         <div className="nav-arrow-icon-wrap" aria-hidden="true">
-          <ChevronLeft size={30} strokeWidth={2.4} />
+          <ChevronLeft size={22} strokeWidth={2.5} />
         </div>
         <div className="nav-arrow-info">
           <span className="nav-arrow-hint-dir">Turn Left</span>
@@ -104,12 +104,12 @@ export default function RoomNavigator({
         aria-label={`Turn right to ${nextRoom.duty || nextRoom.name} (${nextRoom.name})`}
         title={`Turn right to ${nextRoom.duty || nextRoom.name} [Right Arrow / D]`}
       >
-        <div className="nav-arrow-info nav-arrow-info--right">
+        <div className="nav-arrow-icon-wrap" aria-hidden="true">
+          <ChevronRight size={22} strokeWidth={2.5} />
+        </div>
+        <div className="nav-arrow-info">
           <span className="nav-arrow-hint-dir">Turn Right</span>
           <span className="nav-arrow-dest-name">{nextRoom.duty || nextRoom.name}</span>
-        </div>
-        <div className="nav-arrow-icon-wrap" aria-hidden="true">
-          <ChevronRight size={30} strokeWidth={2.4} />
         </div>
       </button>
     </nav>

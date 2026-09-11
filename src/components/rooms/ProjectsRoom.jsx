@@ -44,21 +44,45 @@ export default function ProjectsRoom({ onModalStateChange }) {
     const btnRect = btn.getBoundingClientRect();
     const containerRect = container.getBoundingClientRect();
 
-    const rawX = btnRect.left - containerRect.left + btnRect.width / 2;
-    const rawY = btnRect.top - containerRect.top - 14;
+    const tooltipWidth = 340;
+    const spaceRight = containerRect.right - btnRect.right;
+    const spaceLeft = btnRect.left - containerRect.left;
 
-    const tooltipHalfWidth = 175;
-    const minX = tooltipHalfWidth + 12;
-    const maxX = containerRect.width - tooltipHalfWidth - 12;
-    const clampedX = Math.max(minX, Math.min(maxX, rawX));
-    const arrowOffset = rawX - clampedX;
+    // Place on the side with sufficient room (prefer right, fallback to left)
+    const placeOnRight = spaceRight >= tooltipWidth + 24 || spaceRight >= spaceLeft;
+    const side = placeOnRight ? 'right' : 'left';
+
+    let x = placeOnRight
+      ? btnRect.right - containerRect.left + 16
+      : btnRect.left - containerRect.left - 16;
+
+    // Safety boundary clamping horizontally
+    if (placeOnRight) {
+      if (x + tooltipWidth > containerRect.width - 10) {
+        x = Math.max(10, containerRect.width - tooltipWidth - 10);
+      }
+    } else {
+      if (x - tooltipWidth < 10) {
+        x = Math.min(containerRect.width - 10, 10 + tooltipWidth);
+      }
+    }
+
+    const bookCenterY = btnRect.top - containerRect.top + btnRect.height / 2;
+
+    // Clamp Y so tooltip never overlaps top library header or sinks below bottom container edge
+    const estimatedTooltipHalfHeight = 105;
+    const minY = 75 + estimatedTooltipHalfHeight;
+    const maxY = Math.max(minY, containerRect.height - estimatedTooltipHalfHeight - 15);
+    const clampedY = Math.max(minY, Math.min(maxY, bookCenterY));
+    const arrowOffsetY = Math.max(-65, Math.min(65, bookCenterY - clampedY));
 
     setHoveredBookInfo({
       project,
       globalIndex,
-      x: clampedX,
-      y: rawY,
-      arrowOffset,
+      side,
+      x,
+      y: clampedY,
+      arrowOffsetY,
     });
   };
 
@@ -172,13 +196,14 @@ export default function ProjectsRoom({ onModalStateChange }) {
           </div>
         </div>
 
-        {/* Hover Project Summary Tooltip */}
+        {/* Hover Project Summary Tooltip (Side Floating) */}
         {hoveredBookInfo && !selectedProject && (
           <div
-            className="project-shelf-tooltip"
+            className={`project-shelf-tooltip tooltip--${hoveredBookInfo.side || 'right'}`}
             style={{
               left: `${hoveredBookInfo.x}px`,
               top: `${hoveredBookInfo.y}px`,
+              '--arrow-y': `${hoveredBookInfo.arrowOffsetY || 0}px`,
             }}
             role="tooltip"
             aria-live="polite"
@@ -222,9 +247,6 @@ export default function ProjectsRoom({ onModalStateChange }) {
 
             <div
               className="tooltip-pointer-arrow"
-              style={{
-                left: `calc(50% + ${hoveredBookInfo.arrowOffset}px)`,
-              }}
               aria-hidden="true"
             />
           </div>

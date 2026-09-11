@@ -7,59 +7,62 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px 36px 65px;
+  padding: 14px 86px 82px;
   overflow: hidden;
 }
 
 .about-room-grid {
   position: relative;
   z-index: 2;
-  width: 95%;
-  max-width: 1680px;
-  height: 88%;
+  width: 100%;
+  max-width: 1560px;
+  height: 100%;
+  max-height: calc(100vh - 155px);
   display: flex;
   flex-direction: column;
-  gap: 20px;
   justify-content: space-between;
+  gap: 14px;
 }
 
 /* -------------------------------------------------------------
-   UPPER SECTION: Left Card (Compact 320px) vs Right Card (Wide 1fr)
+   UPPER SECTION: Left Card (300px) vs Right Card (Wide 1fr)
    ------------------------------------------------------------- */
 .about-upper-grid {
   flex: 1;
+  min-height: 0;
   display: grid;
-  grid-template-columns: 320px 1fr;
-  gap: 28px;
+  grid-template-columns: 300px 1fr;
+  gap: 20px;
   align-items: stretch;
 }
 
 /* -------------------------------------------------------------
-   LEFT COLUMN: Modern Portrait Profile Card (Inspired by reference)
+   LEFT COLUMN: Modern Portrait Profile Card (Locked Large Photo)
    ------------------------------------------------------------- */
 .about-left-column {
   display: flex;
   flex-direction: column;
-  width: 320px;
+  width: 300px;
   height: 100%;
+  min-height: 0;
 }
 
 .sophie-style-card {
   width: 100%;
   height: 100%;
-  flex: 1;
   background: linear-gradient(145deg, #24160c 0%, #150c06 100%);
-  border: 2px solid var(--amber-brass);
-  border-radius: 24px;
-  padding: 12px 12px 16px;
+  border: 1.5px solid var(--amber-brass);
+  border-radius: 20px;
+  padding: 12px 12px 14px;
   box-shadow: 
     0 16px 40px rgba(0, 0, 0, 0.75),
     inset 0 1px 1px rgba(255, 235, 205, 0.12),
     0 0 20px rgba(212, 167, 84, 0.1);
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
   min-height: 0;
+  overflow: hidden;
   transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
 }
 
@@ -70,17 +73,19 @@
     0 0 24px rgba(212, 167, 84, 0.22);
 }
 
-/* Top Rounded Image Viewport - Fills all space down to the name */
+/* Top Rounded Image Viewport - Locked Large Portrait Size */
 .card-photo-viewport {
   position: relative;
-  flex: 1 1 0;
   width: 100%;
+  height: 240px;
   min-height: 240px;
-  border-radius: 18px;
+  max-height: 240px;
+  flex: 0 0 240px;
+  border-radius: 16px;
   overflow: hidden;
   background: #18110b;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
-  border: 1px solid rgba(212, 167, 84, 0.25);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.55);
+  border: 1.5px solid rgba(212, 167, 84, 0.3);
 }
 
 .card-photo-img {
@@ -98,25 +103,26 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 6px;
+  gap: 8px;
   background: radial-gradient(circle, #2d4633 0%, #16261b 100%);
   color: var(--amber-bright);
 }
 
 .fallback-initials {
   font-family: var(--font-serif);
-  font-size: 2.8rem;
+  font-size: 3.2rem;
   font-weight: 800;
   letter-spacing: 0.08em;
   color: var(--amber-bright);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 
 .fallback-sub {
   font-family: var(--font-sans);
-  font-size: 0.76rem;
-  font-weight: 600;
+  font-size: 0.78rem;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   color: var(--amber-brass);
 }
 
@@ -124,9 +130,11 @@
 .card-details-section {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  padding: 0 4px;
-  flex-shrink: 0;
+  gap: 8px;
+  padding: 2px 2px 0;
+  flex: 1;
+  min-height: 0;
+  justify-content: space-between;
 }
 
 .card-name-row {
@@ -137,7 +145,7 @@
 
 .card-person-name {
   font-family: var(--font-sans);
-  font-size: 1.38rem;
+  font-size: 1.22rem;
   font-weight: 700;
   color: #fff;
   letter-spacing: 0.01em;
@@ -150,27 +158,28 @@
 
 .card-role-desc {
   font-family: var(--font-sans);
-  font-size: 0.84rem;
-  line-height: 1.45;
+  font-size: 0.78rem;
+  line-height: 1.35;
   color: #c8b6a3;
+  margin: 0;
 }
 
 .card-meta-bar {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
 }
 
 .card-location-tag {
   display: inline-flex;
   align-items: center;
-  gap: 5px;
-  font-size: 0.78rem;
+  gap: 4px;
+  font-size: 0.74rem;
   color: #d6c5b4;
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 3px 10px;
-  border-radius: 14px;
+  padding: 2px 8px;
+  border-radius: 12px;
 }
 
 .loc-pin {
@@ -181,9 +190,9 @@
 .card-actions-group {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  margin-top: 4px;
-  padding-top: 10px;
+  gap: 6px;
+  margin-top: auto;
+  padding-top: 6px;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
@@ -198,12 +207,12 @@
   flex: 1;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 9px 14px;
-  border-radius: 8px;
+  gap: 6px;
+  padding: 7px 10px;
+  border-radius: 7px;
   text-decoration: none;
   font-family: var(--font-sans);
-  font-size: 0.82rem;
+  font-size: 0.76rem;
   font-weight: 500;
   transition: all var(--transition-smooth);
   background: rgba(255, 255, 255, 0.05);
@@ -238,8 +247,8 @@
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(212, 167, 84, 0.28);
   color: var(--amber-brass);
-  padding: 9px 10px;
-  border-radius: 8px;
+  padding: 7px 8px;
+  border-radius: 7px;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -258,7 +267,7 @@
 }
 
 /* -------------------------------------------------------------
-   RIGHT COLUMN: Grand About Me Plaque (Much wider, starts top left)
+   RIGHT COLUMN: Grand About Me Plaque
    ------------------------------------------------------------- */
 .about-right-column {
   display: flex;
@@ -268,25 +277,30 @@
 
 .about-me-plaque {
   flex: 1;
+  height: 100%;
+  min-height: 0;
   background: linear-gradient(145deg, rgba(36, 24, 16, 0.92) 0%, rgba(20, 13, 8, 0.96) 100%);
-  border: 2px solid var(--wood-border);
+  border: 1.5px solid var(--wood-border);
   border-radius: 20px;
-  padding: 34px 40px;
+  padding: 20px 28px 18px;
   box-shadow: 
     0 16px 40px rgba(0, 0, 0, 0.65),
     inset 0 1px 1px rgba(255, 235, 205, 0.1);
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  gap: 20px;
+  justify-content: space-between;
+  min-height: 0;
+  overflow: hidden;
 }
 
 .about-me-header {
   display: flex;
   align-items: center;
-  gap: 14px;
-  padding-bottom: 16px;
+  gap: 12px;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  flex-shrink: 0;
 }
 
 .about-spark-icon {
@@ -297,52 +311,77 @@
 .about-eyebrow {
   display: block;
   font-family: var(--font-sans);
-  font-size: 0.74rem;
+  font-size: 0.68rem;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.14em;
   color: var(--green-accent);
 }
 
 .about-me-title {
   font-family: var(--font-serif);
-  font-size: 1.85rem;
+  font-size: 1.45rem;
   font-weight: 700;
   color: #fff;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.02em;
+  line-height: 1.15;
 }
 
+/* Bio text area - Fills middle space with smooth scroll */
 .about-me-body {
-  display: flex;
-  flex-direction: column;
-  gap: 22px;
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding-right: 8px;
+  margin-bottom: 14px;
+}
+
+.about-me-body::-webkit-scrollbar {
+  width: 5px;
+}
+.about-me-body::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+.about-me-body::-webkit-scrollbar-thumb {
+  background: rgba(212, 167, 84, 0.35);
+  border-radius: 3px;
+}
+.about-me-body::-webkit-scrollbar-thumb:hover {
+  background: var(--amber-brass);
 }
 
 .about-bio-text {
   font-family: var(--font-journal);
-  font-size: 1.16rem;
-  line-height: 1.8;
+  font-size: 0.95rem;
+  line-height: 1.62;
   color: #e2d3c2;
+  margin: 0;
 }
 
+/* Quote Block - Pinned to absolute bottom of About Me card */
 .about-quote {
   position: relative;
   font-family: var(--font-journal);
   font-style: italic;
-  font-size: 1.08rem;
+  font-size: 0.94rem;
   color: var(--amber-bright);
   background: rgba(255, 140, 26, 0.08);
-  border-left: 4px solid var(--amber-flame);
-  padding: 16px 22px 16px 30px;
+  border-left: 3.5px solid var(--amber-flame);
+  padding: 10px 18px 10px 28px;
   border-radius: 6px;
+  margin: 0;
+  margin-top: auto;
+  flex-shrink: 0;
+  box-shadow: inset 0 1px 0 rgba(255, 235, 205, 0.06);
 }
 
 .quote-mark {
   position: absolute;
-  top: 4px;
+  top: 3px;
   left: 8px;
   font-family: var(--font-serif);
-  font-size: 2rem;
+  font-size: 1.7rem;
   color: var(--amber-flame);
   opacity: 0.6;
 }
@@ -353,35 +392,36 @@
 }
 
 /* -------------------------------------------------------------
-   BOTTOM SECTION: Education & Milestones Timeline
+   BOTTOM SECTION: Education & Milestones Timeline (Guaranteed Visible)
    ------------------------------------------------------------- */
 .about-bottom-education {
   width: 100%;
+  flex-shrink: 0;
 }
 
 .education-horizontal-plaque {
-  background: linear-gradient(145deg, rgba(30, 20, 13, 0.92) 0%, rgba(18, 11, 7, 0.96) 100%);
-  border: 2px solid var(--wood-border);
-  border-radius: 16px;
-  padding: 20px 28px;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+  background: linear-gradient(145deg, rgba(30, 20, 13, 0.94) 0%, rgba(18, 11, 7, 0.98) 100%);
+  border: 1.5px solid var(--amber-brass);
+  border-radius: 14px;
+  padding: 10px 20px 10px;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.6);
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 8px;
 }
 
 .education-bottom-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-bottom: 10px;
+  padding-bottom: 5px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .edu-title-group {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
 }
 
 .edu-icon {
@@ -391,27 +431,28 @@
 .edu-eyebrow {
   display: block;
   font-family: var(--font-sans);
-  font-size: 0.7rem;
+  font-size: 0.65rem;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.12em;
   color: var(--amber-brass);
 }
 
 .education-title {
   font-family: var(--font-serif);
-  font-size: 1.25rem;
+  font-size: 1.02rem;
   font-weight: 700;
   color: #fff;
+  line-height: 1.2;
 }
 
 .education-footer-note {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   font-family: var(--font-journal);
   font-style: italic;
-  font-size: 0.82rem;
+  font-size: 0.76rem;
   color: #a89481;
 }
 
@@ -423,34 +464,34 @@
   list-style: none;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 20px;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
 }
 
 .education-grid-item {
   display: flex;
-  align-items: flex-start;
-  gap: 14px;
+  align-items: center;
+  gap: 10px;
   background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(212, 167, 84, 0.2);
   border-radius: 8px;
-  padding: 14px 18px;
+  padding: 7px 12px;
   transition: all var(--transition-smooth);
 }
 
 .education-grid-item:hover {
-  background: rgba(255, 255, 255, 0.07);
-  border-color: rgba(212, 167, 84, 0.35);
-  transform: translateY(-2px);
+  background: rgba(212, 167, 84, 0.08);
+  border-color: rgba(212, 167, 84, 0.45);
 }
 
 .timeline-marker-dot {
-  width: 12px;
-  height: 12px;
+  width: 9px;
+  height: 9px;
   border-radius: 50%;
   background: var(--amber-flame);
-  border: 2px solid var(--amber-bright);
-  box-shadow: 0 0 8px var(--amber-flame);
-  margin-top: 5px;
+  border: 1.5px solid var(--amber-bright);
+  box-shadow: 0 0 6px var(--amber-flame);
   flex-shrink: 0;
 }
 
@@ -458,7 +499,8 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 1px;
+  min-width: 0;
 }
 
 .education-item-header {
@@ -469,33 +511,36 @@
 
 .timeline-year {
   font-family: var(--font-serif);
-  font-size: 0.88rem;
+  font-size: 0.78rem;
   font-weight: 700;
   color: var(--amber-brass);
   letter-spacing: 0.05em;
 }
 
 .timeline-gpa-badge {
-  font-size: 0.76rem;
+  font-size: 0.68rem;
   background: rgba(212, 167, 84, 0.18);
   color: var(--amber-bright);
-  padding: 2px 8px;
-  border-radius: 12px;
-  border: 1px solid rgba(212, 167, 84, 0.35);
+  padding: 1px 6px;
+  border-radius: 10px;
+  font-weight: 600;
 }
 
 .timeline-institution {
-  font-family: var(--font-sans);
-  font-size: 1rem;
-  font-weight: 600;
+  font-family: var(--font-serif);
+  font-size: 0.88rem;
+  font-weight: 700;
   color: #fff;
+  line-height: 1.2;
+  margin: 0;
 }
 
 .timeline-detail {
-  font-family: var(--font-journal);
-  font-size: 0.86rem;
-  color: #bfaea0;
-  line-height: 1.45;
+  font-family: var(--font-sans);
+  font-size: 0.74rem;
+  line-height: 1.3;
+  color: #c4b5a4;
+  margin: 0;
 }
 
 @media (max-width: 1024px) {

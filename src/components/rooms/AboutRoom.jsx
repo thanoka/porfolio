@@ -134,12 +134,12 @@ export default function AboutRoom() {
 
               <div className="about-me-body">
                 <p className="about-bio-text">{profile.bio}</p>
-
-                <blockquote className="about-quote">
-                  <span className="quote-mark" aria-hidden="true">“</span>
-                  <span className="quote-content">{profile.tagline}</span>
-                </blockquote>
               </div>
+
+              <blockquote className="about-quote">
+                <span className="quote-mark" aria-hidden="true">“</span>
+                <span className="quote-content">{profile.tagline}</span>
+              </blockquote>
             </article>
           </section>
         </div>

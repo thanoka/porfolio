@@ -7,19 +7,20 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px 36px 65px;
+  padding: 14px 86px 82px;
   overflow: hidden;
 }
 
 .full-library-container {
   position: relative;
   z-index: 2;
-  width: 95%;
-  max-width: 1680px;
-  height: 88%;
+  width: 100%;
+  max-width: 1560px;
+  height: 100%;
+  max-height: calc(100vh - 155px);
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 14px;
 }
 
 /* Wall Header */
@@ -319,20 +320,19 @@
 }
 
 /* ---------------------------------------------------------------
-   PROJECT SUMMARY HOVER TOOLTIP (Rich Overview Card)
+   PROJECT SUMMARY HOVER TOOLTIP (Side-Floating Rich Overview Card)
    --------------------------------------------------------------- */
 .project-shelf-tooltip {
   position: absolute;
-  transform: translate(-50%, -100%);
-  width: 350px;
+  width: 340px;
   max-width: calc(100% - 24px);
   background: rgba(18, 12, 8, 0.96);
-  border: 1px solid var(--amber-brass);
+  border: 1.5px solid var(--amber-brass);
   border-radius: 10px;
   padding: 14px 16px 12px;
   box-shadow: 
     0 20px 45px rgba(0, 0, 0, 0.9),
-    0 0 20px rgba(212, 167, 84, 0.25),
+    0 0 24px rgba(212, 167, 84, 0.28),
     inset 0 1px 0 rgba(255, 235, 205, 0.15);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
@@ -341,17 +341,37 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
-  animation: tooltipFloatIn 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-@keyframes tooltipFloatIn {
+.project-shelf-tooltip.tooltip--right {
+  transform: translateY(-50%);
+  animation: tooltipFloatInRight 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.project-shelf-tooltip.tooltip--left {
+  transform: translate(-100%, -50%);
+  animation: tooltipFloatInLeft 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes tooltipFloatInRight {
   from {
     opacity: 0;
-    transform: translate(-50%, calc(-100% + 8px)) scale(0.97);
+    transform: translate(-8px, -50%) scale(0.97);
   }
   to {
     opacity: 1;
-    transform: translate(-50%, -100%) scale(1);
+    transform: translate(0, -50%) scale(1);
+  }
+}
+
+@keyframes tooltipFloatInLeft {
+  from {
+    opacity: 0;
+    transform: translate(calc(-100% + 8px), -50%) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-100%, -50%) scale(1);
   }
 }
 
@@ -450,28 +470,57 @@
   opacity: 0.8;
 }
 
-/* Downward Pointer Triangle */
-.tooltip-pointer-arrow {
+/* Side Pointer Arrows */
+.tooltip--right .tooltip-pointer-arrow {
   position: absolute;
-  bottom: -8px;
+  left: -9px;
+  top: calc(50% + var(--arrow-y, 0px));
   width: 0;
   height: 0;
-  border-left: 8px solid transparent;
-  border-right: 8px solid transparent;
-  border-top: 8px solid var(--amber-brass);
-  transform: translateX(-50%);
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-right: 9px solid var(--amber-brass);
+  border-left: none;
+  transform: translateY(-50%);
 }
 
-.tooltip-pointer-arrow::after {
+.tooltip--right .tooltip-pointer-arrow::after {
   content: '';
   position: absolute;
-  top: -9px;
-  left: -7px;
+  top: -7px;
+  left: 1px;
   width: 0;
   height: 0;
-  border-left: 7px solid transparent;
-  border-right: 7px solid transparent;
-  border-top: 7px solid #120c08;
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+  border-right: 8px solid #120c08;
+  border-left: none;
+}
+
+.tooltip--left .tooltip-pointer-arrow {
+  position: absolute;
+  right: -9px;
+  top: calc(50% + var(--arrow-y, 0px));
+  width: 0;
+  height: 0;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-left: 9px solid var(--amber-brass);
+  border-right: none;
+  transform: translateY(-50%);
+}
+
+.tooltip--left .tooltip-pointer-arrow::after {
+  content: '';
+  position: absolute;
+  top: -7px;
+  right: 1px;
+  width: 0;
+  height: 0;
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+  border-left: 8px solid #120c08;
+  border-right: none;
 }
 
 /* ---------------------------------------------------------------

@@ -20,18 +20,25 @@
   top: 50%;
   transform: translateY(-50%);
   pointer-events: auto;
-  background: rgba(20, 13, 8, 0.88);
-  border: 1.5px solid var(--wood-border);
+  background: rgba(18, 11, 7, 0.93);
+  border: 1.5px solid var(--amber-brass);
   color: var(--amber-brass);
   cursor: pointer;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 14px;
-  padding: 13px 20px;
+  justify-content: center;
+  gap: 4px;
+  width: 66px;
+  padding: 12px 4px 10px;
   border-radius: 12px;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), inset 0 1px 1px rgba(255, 235, 205, 0.12);
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease, background var(--transition-smooth), border-color var(--transition-smooth);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 
+    0 10px 26px rgba(0, 0, 0, 0.8), 
+    inset 0 1px 1px rgba(255, 235, 205, 0.15),
+    0 0 12px rgba(212, 167, 84, 0.15);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease, background var(--transition-smooth), border-color var(--transition-smooth), box-shadow var(--transition-smooth);
 }
 
 .nav-arrow-btn:disabled {
@@ -40,11 +47,11 @@
 }
 
 .nav-arrow-btn--left {
-  left: 22px;
+  left: 8px;
 }
 
 .nav-arrow-btn--right {
-  right: 22px;
+  right: 8px;
 }
 
 .modal-active .nav-arrow-btn--left,
@@ -65,59 +72,68 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
-  transition: transform 0.2s ease;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: rgba(212, 167, 84, 0.12);
+  color: var(--amber-bright);
+  transition: transform 0.2s ease, background 0.2s ease;
 }
 
 .nav-arrow-btn--left:hover .nav-arrow-icon-wrap {
-  transform: translateX(-4px);
+  transform: translateX(-2px);
+  background: rgba(212, 167, 84, 0.25);
 }
 
 .nav-arrow-btn--right:hover .nav-arrow-icon-wrap {
-  transform: translateX(4px);
+  transform: translateX(2px);
+  background: rgba(212, 167, 84, 0.25);
 }
 
 .nav-arrow-btn:hover:not(:disabled) {
-  background: rgba(36, 22, 14, 0.96);
-  border-color: var(--amber-brass);
+  background: rgba(34, 20, 12, 0.98);
+  border-color: var(--amber-bright);
   color: #fff;
-  transform: translateY(-50%) scale(1.02);
-  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.8), 0 0 20px rgba(212, 167, 84, 0.35);
+  transform: translateY(-50%) scale(1.05);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.85), 0 0 18px rgba(212, 167, 84, 0.35);
 }
 
-/* Destination Name & Turn Direction Info (Always visible on arrow) */
+/* Destination Name & Turn Direction Info */
 .nav-arrow-info {
   display: flex;
   flex-direction: column;
-  gap: 3px;
-  white-space: nowrap;
-}
-
-.nav-arrow-info--right {
-  text-align: right;
+  align-items: center;
+  text-align: center;
+  gap: 2px;
+  width: 100%;
 }
 
 .nav-arrow-hint-dir {
-  font-size: 0.72rem;
+  font-family: var(--font-sans);
+  font-size: 0.6rem;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.08em;
   color: var(--amber-brass);
   font-weight: 700;
-  transition: color 0.2s ease;
+  line-height: 1;
 }
 
 .nav-arrow-dest-name {
   font-family: var(--font-serif);
-  font-size: 1.02rem;
+  font-size: 0.78rem;
   font-weight: 700;
   color: #f7ede2;
-  letter-spacing: 0.03em;
-  transition: color 0.2s ease, text-shadow 0.2s ease;
+  letter-spacing: 0.02em;
+  line-height: 1.15;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 58px;
 }
 
 .nav-arrow-btn:hover:not(:disabled) .nav-arrow-dest-name {
   color: #fff;
-  text-shadow: 0 0 10px rgba(255, 235, 205, 0.45);
+  text-shadow: 0 0 8px rgba(255, 235, 205, 0.5);
 }
 
 .nav-arrow-btn:hover:not(:disabled) .nav-arrow-hint-dir {

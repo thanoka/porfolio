@@ -1,0 +1,387 @@
+/* App.css - Cabin Atmosphere & Main Viewport */
+
+.cabin-app-viewport {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--wood-deepest);
+  background-image: 
+    radial-gradient(circle at 50% 50%, rgba(26, 18, 11, 0.95) 0%, #0d0805 100%),
+    linear-gradient(to right, rgba(0, 0, 0, 0.35) 1px, transparent 1px);
+  background-size: 100% 100%, 80px 100%;
+  overflow: hidden;
+}
+
+/* -------------------------------------------------------------
+   COZY AMBIENT BACKGROUND — Floating dust, warm glow, soft rain
+   ------------------------------------------------------------- */
+.cabin-minimal-rain-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+/* Layer 1: Slow floating dust / firefly particles */
+.ambient-rain-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.ambient-rain--layer1 {
+  background-image: 
+    radial-gradient(3px 3px at 12% 20%, rgba(255, 200, 120, 0.7) 50%, transparent 100%),
+    radial-gradient(2px 2px at 35% 60%, rgba(255, 215, 140, 0.6) 50%, transparent 100%),
+    radial-gradient(3.5px 3.5px at 65% 12%, rgba(255, 190, 100, 0.55) 50%, transparent 100%),
+    radial-gradient(2px 2px at 82% 75%, rgba(255, 210, 130, 0.5) 50%, transparent 100%),
+    radial-gradient(2.5px 2.5px at 20% 85%, rgba(255, 225, 160, 0.45) 50%, transparent 100%),
+    radial-gradient(2px 2px at 50% 35%, rgba(255, 200, 120, 0.5) 50%, transparent 100%),
+    radial-gradient(3px 3px at 90% 45%, rgba(255, 220, 150, 0.4) 50%, transparent 100%),
+    radial-gradient(2px 2px at 5% 50%, rgba(255, 210, 140, 0.5) 50%, transparent 100%),
+    radial-gradient(2.5px 2.5px at 75% 90%, rgba(255, 200, 120, 0.45) 50%, transparent 100%);
+  background-size: 100% 100%;
+  animation: dustFloat 18s ease-in-out infinite alternate;
+  opacity: 1;
+}
+
+/* Layer 2: Soft slow rain streaks */
+.ambient-rain--layer2 {
+  background-image: repeating-linear-gradient(
+    78deg,
+    rgba(200, 220, 240, 0.22) 0px,
+    rgba(200, 220, 240, 0.22) 1px,
+    transparent 1px,
+    transparent 55px
+  );
+  animation: softRainDrift 3.5s linear infinite;
+  opacity: 0.35;
+}
+
+/* Warm breathing ambient glow */
+.cabin-minimal-rain-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(ellipse at 25% 75%, rgba(255, 140, 26, 0.14) 0%, transparent 55%),
+    radial-gradient(ellipse at 75% 25%, rgba(212, 167, 84, 0.1) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, rgba(255, 180, 60, 0.05) 0%, transparent 60%);
+  animation: warmGlow 8s ease-in-out infinite alternate;
+}
+
+/* Soft vignette around edges */
+.cabin-minimal-rain-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 50%, transparent 40%, rgba(10, 6, 3, 0.4) 100%);
+}
+
+@keyframes dustFloat {
+  0% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(8px, -12px) scale(1.02); }
+  66% { transform: translate(-5px, 6px) scale(0.98); }
+  100% { transform: translate(3px, -8px) scale(1.01); }
+}
+
+@keyframes softRainDrift {
+  0% { transform: translateY(-40px); }
+  100% { transform: translateY(80px); }
+}
+
+@keyframes warmGlow {
+  0% { opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { opacity: 0.7; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cabin-minimal-rain-bg {
+    display: none;
+  }
+}
+
+/* -------------------------------------------------------------
+   CABIN HUD HEADER
+   ------------------------------------------------------------- */
+.cabin-hud-header {
+  position: relative;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 36px;
+  background: linear-gradient(to bottom, rgba(18, 11, 7, 0.95), rgba(12, 7, 4, 0.9));
+  border-bottom: 2px solid var(--wood-border);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(8px);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
+}
+
+.cabin-hud-header.modal-hidden,
+.modal-active .cabin-hud-header {
+  transform: translateY(-160%);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+.modal-active .library-wall-header {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.modal-active .cabin-minimal-rain-bg {
+  opacity: 0.15;
+  transition: opacity 0.35s ease;
+}
+
+.hud-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.hud-cabin-seal {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #2d4231 0%, #152419 100%);
+  border: 1.5px solid var(--amber-brass);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 12px rgba(212, 167, 84, 0.35);
+  flex-shrink: 0;
+}
+
+.seal-flame {
+  width: 14px;
+  height: 14px;
+  border-radius: 50% 50% 20% 20%;
+  background: var(--amber-flame);
+  box-shadow: 0 0 10px var(--amber-bright);
+}
+
+.hud-identity {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.hud-title {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.05em;
+  line-height: 1.2;
+}
+
+.hud-subtitle {
+  font-family: var(--font-sans);
+  font-size: 0.86rem;
+  color: #c4b09e;
+  letter-spacing: 0.02em;
+}
+
+.hud-center {
+  display: flex;
+  align-items: center;
+}
+
+.hud-wall-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(0, 0, 0, 0.55);
+  border: 1.5px solid rgba(212, 167, 84, 0.35);
+  padding: 8px 24px;
+  border-radius: 24px;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+}
+
+.hud-wall-prefix {
+  color: var(--amber-brass);
+  font-weight: 600;
+  font-size: 0.92rem;
+}
+
+.hud-wall-sep {
+  color: rgba(255, 255, 255, 0.25);
+}
+
+.hud-wall-name {
+  color: #f7ede2;
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: 0.03em;
+}
+
+.hud-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* -------------------------------------------------------------
+   CABIN ROOM STAGE & WALL SLOTS (95% Screen Space)
+   ------------------------------------------------------------- */
+.cabin-room-stage {
+  position: relative;
+  flex: 1;
+  width: 100%;
+  height: calc(100vh - 78px);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+}
+
+.room-wall-slot {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  transition: opacity 0.35s ease, transform 0.35s var(--transition-wall), visibility 0.35s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.room-wall-slot.active {
+  opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
+}
+
+/* Wall Turning Animations */
+.room-wall-slot.active.turn-right {
+  animation: wallTurnRight 0.36s cubic-bezier(0.2, 0.8, 0.25, 1) forwards;
+}
+
+.room-wall-slot.active.turn-left {
+  animation: wallTurnLeft 0.36s cubic-bezier(0.2, 0.8, 0.25, 1) forwards;
+}
+
+@keyframes wallTurnRight {
+  0% {
+    opacity: 0;
+    transform: scale(0.98) translateX(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateX(0);
+  }
+}
+
+@keyframes wallTurnLeft {
+  0% {
+    opacity: 0;
+    transform: scale(0.98) translateX(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateX(0);
+  }
+}
+
+/* -------------------------------------------------------------
+   BOTTOM-LEFT NAVIGATION TIP
+   ------------------------------------------------------------- */
+.hud-nav-tip {
+  position: absolute;
+  bottom: 22px;
+  left: 28px;
+  z-index: 45;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(18, 12, 7, 0.92);
+  border: 1.5px solid var(--wood-border);
+  padding: 8px 18px;
+  border-radius: 24px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.6);
+  pointer-events: auto;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
+}
+
+.hud-nav-tip.modal-hidden,
+.modal-active .hud-nav-tip {
+  transform: translateY(100px);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.tip-keys {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.tip-kbd {
+  display: inline-block;
+  padding: 4px 10px;
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--amber-brass);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(212, 167, 84, 0.4);
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+.tip-divider {
+  font-size: 0.8rem;
+  color: #9c8a7c;
+  font-style: italic;
+}
+
+.tip-label {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  color: #dfcebd;
+  letter-spacing: 0.03em;
+  font-weight: 600;
+}
+
+@media (max-width: 900px) {
+  .hud-nav-tip {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .cabin-hud-header {
+    padding: 12px 18px;
+  }
+  .hud-title {
+    font-size: 1.05rem;
+  }
+  .hud-subtitle {
+    display: none;
+  }
+  .hud-wall-indicator {
+    padding: 6px 14px;
+    font-size: 0.82rem;
+  }
+}

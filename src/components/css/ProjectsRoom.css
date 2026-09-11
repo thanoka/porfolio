@@ -1,0 +1,554 @@
+/* Wall 3: The Library Bookshelf (Projects Room) - Full-Width 95% View */
+
+.projects-room {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 36px 65px;
+  overflow: hidden;
+}
+
+.full-library-container {
+  position: relative;
+  z-index: 2;
+  width: 95%;
+  max-width: 1680px;
+  height: 88%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Wall Header */
+.library-wall-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(22, 14, 9, 0.88);
+  border: 1px solid var(--wood-border);
+  padding: 10px 24px;
+  border-radius: 8px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+  flex-shrink: 0;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.library-crest-numeral {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--amber-brass);
+}
+
+.library-titles {
+  display: flex;
+  flex-direction: column;
+}
+
+.library-eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.74rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--green-accent);
+}
+
+.library-main-title {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.2;
+}
+
+.shelf-info-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(212, 167, 84, 0.12);
+  border: 1px solid rgba(212, 167, 84, 0.3);
+  color: #f7e6c4;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 0.82rem;
+  font-family: var(--font-sans);
+  font-weight: 500;
+}
+
+.info-icon {
+  color: var(--amber-bright);
+}
+
+/* Grand Full-Width Bookshelf Structure */
+.grand-bookshelf-structure {
+  flex: 1;
+  background: linear-gradient(145deg, #2a190f 0%, #150d07 100%);
+  border: 6px solid #4a2c17;
+  border-radius: 12px;
+  padding: 20px 28px;
+  box-shadow: 
+    0 24px 60px rgba(0, 0, 0, 0.85),
+    inset 0 0 40px rgba(0, 0, 0, 0.7),
+    inset 0 1px 0 rgba(255, 235, 205, 0.06);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 8px;
+  min-height: 0;
+}
+
+.bookshelf-tier {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  flex: 1;
+  min-height: 0;
+}
+
+.tier-header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  padding: 0 8px;
+  flex-shrink: 0;
+}
+
+.tier-label {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--amber-brass);
+}
+
+.tier-count {
+  font-family: var(--font-journal);
+  font-size: 0.82rem;
+  font-style: italic;
+  color: #ab9582;
+}
+
+.tier-books-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  flex: 1;
+  min-height: 0;
+  padding: 0 12px 6px;
+  overflow-x: auto;
+}
+
+/* ---------------------------------------------------------------
+   BRASS BOOKENDS
+   --------------------------------------------------------------- */
+.brass-bookend {
+  width: 22px;
+  min-height: 120px;
+  height: 70%;
+  background: linear-gradient(135deg, #d4a754 0%, #876220 40%, #a4812e 60%, #6b4f18 100%);
+  border: 2px solid #5a4114;
+  border-radius: 3px;
+  box-shadow: 
+    2px 2px 8px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 235, 205, 0.35);
+  flex-shrink: 0;
+  position: relative;
+}
+
+.brass-bookend::after {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border: 1px solid rgba(255, 235, 205, 0.12);
+  border-radius: 2px;
+}
+
+/* ---------------------------------------------------------------
+   INTERACTIVE PROJECT BOOK - 3D Hardcover Style
+   --------------------------------------------------------------- */
+.grand-book-spine-btn {
+  position: relative;
+  width: 82px;
+  min-height: 0;
+  height: 90%;
+  max-height: 260px;
+  min-width: 82px;
+
+  /* 3D book effect using layered gradients */
+  background: 
+    linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0.12) 0%,
+      rgba(255, 255, 255, 0) 6%,
+      rgba(0, 0, 0, 0) 50%,
+      rgba(0, 0, 0, 0.25) 100%
+    ),
+    linear-gradient(to bottom, var(--book-color), color-mix(in srgb, var(--book-color) 70%, #000));
+  border: none;
+  border-radius: 4px 6px 6px 4px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 8px 12px;
+  box-shadow: 
+    6px 4px 12px rgba(0, 0, 0, 0.7),
+    inset 2px 0 6px rgba(255, 255, 255, 0.15),
+    inset -1px 0 3px rgba(0, 0, 0, 0.3),
+    -2px 0 0 color-mix(in srgb, var(--book-color) 50%, #000);
+  transition: 
+    transform 0.32s cubic-bezier(0.2, 0.8, 0.2, 1), 
+    box-shadow 0.32s ease;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+/* Embossed gold leaf texture overlay */
+.grand-book-spine-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: 
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0px,
+      transparent 22px,
+      rgba(212, 167, 84, 0.08) 22px,
+      rgba(212, 167, 84, 0.08) 23px
+    );
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+/* Left-edge page stack illusion */
+.grand-book-spine-btn::after {
+  content: '';
+  position: absolute;
+  left: -3px;
+  top: 4px;
+  bottom: 4px;
+  width: 4px;
+  background: 
+    repeating-linear-gradient(
+      to bottom,
+      #e8dcc8 0px,
+      #d4c8b0 1px,
+      #c5b89c 2px
+    );
+  border-radius: 2px 0 0 2px;
+  opacity: 0.6;
+}
+
+.grand-book-spine-btn:hover {
+  transform: translateY(-18px) rotate(-2deg) scale(1.05);
+  border-color: var(--amber-bright);
+  box-shadow: 
+    0 24px 40px rgba(0, 0, 0, 0.85),
+    0 0 24px rgba(212, 167, 84, 0.45),
+    inset 2px 0 6px rgba(255, 255, 255, 0.2);
+  z-index: 10;
+}
+
+/* Spine Ribs — Gold embossed lines at top and bottom of spine */
+.book-spine-ribs {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 80%;
+  flex-shrink: 0;
+}
+
+.spine-rib {
+  height: 2px;
+  background: linear-gradient(to right, transparent, var(--book-accent), transparent);
+  opacity: 0.7;
+  border-radius: 1px;
+}
+
+/* Spine Text — Vertically written, clipped properly to avoid overlap */
+.book-spine-text-wrap {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  padding: 2px 0;
+}
+
+.book-spine-roman {
+  font-family: var(--font-serif);
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--book-accent);
+  letter-spacing: 0.14em;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  flex-shrink: 0;
+}
+
+.book-spine-title {
+  font-family: var(--font-serif);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #fff;
+  white-space: nowrap;
+  letter-spacing: 0.04em;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+  text-overflow: clip;
+}
+
+.book-spine-bottom {
+  color: var(--book-accent);
+  flex-shrink: 0;
+  opacity: 0.8;
+}
+
+/* ---------------------------------------------------------------
+   PROJECT SUMMARY HOVER TOOLTIP (Rich Overview Card)
+   --------------------------------------------------------------- */
+.project-shelf-tooltip {
+  position: absolute;
+  transform: translate(-50%, -100%);
+  width: 350px;
+  max-width: calc(100% - 24px);
+  background: rgba(18, 12, 8, 0.96);
+  border: 1px solid var(--amber-brass);
+  border-radius: 10px;
+  padding: 14px 16px 12px;
+  box-shadow: 
+    0 20px 45px rgba(0, 0, 0, 0.9),
+    0 0 20px rgba(212, 167, 84, 0.25),
+    inset 0 1px 0 rgba(255, 235, 205, 0.15);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  z-index: 60;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  animation: tooltipFloatIn 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes tooltipFloatIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, calc(-100% + 8px)) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -100%) scale(1);
+  }
+}
+
+.tooltip-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.tooltip-vol-tag {
+  font-family: var(--font-serif);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--amber-brass);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.tooltip-featured-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(74, 180, 110, 0.18);
+  border: 1px solid rgba(74, 180, 110, 0.45);
+  color: #7eed9b;
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.tooltip-project-title {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.25;
+  margin: 0;
+  letter-spacing: 0.01em;
+}
+
+.tooltip-project-desc {
+  font-family: var(--font-sans);
+  font-size: 0.81rem;
+  color: #d8c8b4;
+  line-height: 1.45;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.tooltip-tech-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 2px;
+}
+
+.tooltip-tech-tag {
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(212, 167, 84, 0.22);
+  color: #e0d0bc;
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 500;
+  padding: 2px 7px;
+  border-radius: 4px;
+}
+
+.tooltip-tech-more {
+  background: rgba(212, 167, 84, 0.15);
+  color: var(--amber-bright);
+  font-weight: 700;
+}
+
+.tooltip-click-hint {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding-top: 6px;
+  border-top: 1px solid rgba(212, 167, 84, 0.18);
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--amber-bright);
+}
+
+.hint-arrow {
+  margin-left: auto;
+  opacity: 0.8;
+}
+
+/* Downward Pointer Triangle */
+.tooltip-pointer-arrow {
+  position: absolute;
+  bottom: -8px;
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 8px solid var(--amber-brass);
+  transform: translateX(-50%);
+}
+
+.tooltip-pointer-arrow::after {
+  content: '';
+  position: absolute;
+  top: -9px;
+  left: -7px;
+  width: 0;
+  height: 0;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 7px solid #120c08;
+}
+
+/* ---------------------------------------------------------------
+   EMPTY SHELF PLACEHOLDER — shown when a tier has no projects
+   --------------------------------------------------------------- */
+.empty-shelf-placeholder {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 24px 20px;
+  border: 2px dashed rgba(212, 167, 84, 0.25);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.02);
+  min-height: 120px;
+}
+
+.empty-shelf-icon {
+  color: rgba(212, 167, 84, 0.35);
+}
+
+.empty-shelf-text {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  font-weight: 600;
+  color: rgba(212, 167, 84, 0.5);
+  letter-spacing: 0.04em;
+}
+
+.empty-shelf-hint {
+  font-family: var(--font-journal);
+  font-size: 0.78rem;
+  font-style: italic;
+  color: rgba(171, 149, 130, 0.5);
+}
+
+/* ---------------------------------------------------------------
+   THICK WOOD SHELF PLANK
+   --------------------------------------------------------------- */
+.shelf-thick-plank {
+  width: 100%;
+  height: 22px;
+  background: 
+    linear-gradient(to bottom, #6b4528 0%, #4a2e18 40%, #2b180d 100%);
+  border: 2px solid #7a5332;
+  border-radius: 3px;
+  box-shadow: 
+    0 8px 18px rgba(0, 0, 0, 0.8), 
+    inset 0 1px 2px rgba(255, 235, 205, 0.2),
+    inset 0 -1px 1px rgba(0, 0, 0, 0.4);
+  flex-shrink: 0;
+  position: relative;
+}
+
+/* Subtle wood grain texture */
+.shelf-thick-plank::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent 0px,
+    transparent 40px,
+    rgba(255, 235, 205, 0.03) 40px,
+    rgba(255, 235, 205, 0.03) 42px
+  );
+  border-radius: inherit;
+}
+
+@media (max-width: 1024px) {
+  .tier-books-row {
+    gap: 8px;
+  }
+  .grand-book-spine-btn {
+    width: 60px;
+    min-width: 60px;
+  }
+}

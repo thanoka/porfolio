@@ -1,0 +1,264 @@
+/* Room Navigator - Point & Click Adventure Wall Turn Controls */
+
+.room-navigator {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 40;
+}
+
+.room-navigator.modal-hidden,
+.modal-active .room-navigator {
+  pointer-events: none;
+}
+
+/* -------------------------------------------------------------
+   EDGE TURN BUTTONS — With Always-Visible Destination Wall Name
+   ------------------------------------------------------------- */
+.nav-arrow-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: auto;
+  background: rgba(20, 13, 8, 0.88);
+  border: 1.5px solid var(--wood-border);
+  color: var(--amber-brass);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 13px 20px;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), inset 0 1px 1px rgba(255, 235, 205, 0.12);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease, background var(--transition-smooth), border-color var(--transition-smooth);
+}
+
+.nav-arrow-btn:disabled {
+  opacity: 0.2;
+  cursor: not-allowed;
+}
+
+.nav-arrow-btn--left {
+  left: 22px;
+}
+
+.nav-arrow-btn--right {
+  right: 22px;
+}
+
+.modal-active .nav-arrow-btn--left,
+.room-navigator.modal-hidden .nav-arrow-btn--left {
+  transform: translateY(-50%) translateX(-140%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.modal-active .nav-arrow-btn--right,
+.room-navigator.modal-hidden .nav-arrow-btn--right {
+  transform: translateY(-50%) translateX(140%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.nav-arrow-icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.nav-arrow-btn--left:hover .nav-arrow-icon-wrap {
+  transform: translateX(-4px);
+}
+
+.nav-arrow-btn--right:hover .nav-arrow-icon-wrap {
+  transform: translateX(4px);
+}
+
+.nav-arrow-btn:hover:not(:disabled) {
+  background: rgba(36, 22, 14, 0.96);
+  border-color: var(--amber-brass);
+  color: #fff;
+  transform: translateY(-50%) scale(1.02);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.8), 0 0 20px rgba(212, 167, 84, 0.35);
+}
+
+/* Destination Name & Turn Direction Info (Always visible on arrow) */
+.nav-arrow-info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  white-space: nowrap;
+}
+
+.nav-arrow-info--right {
+  text-align: right;
+}
+
+.nav-arrow-hint-dir {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--amber-brass);
+  font-weight: 700;
+  transition: color 0.2s ease;
+}
+
+.nav-arrow-dest-name {
+  font-family: var(--font-serif);
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: #f7ede2;
+  letter-spacing: 0.03em;
+  transition: color 0.2s ease, text-shadow 0.2s ease;
+}
+
+.nav-arrow-btn:hover:not(:disabled) .nav-arrow-dest-name {
+  color: #fff;
+  text-shadow: 0 0 10px rgba(255, 235, 205, 0.45);
+}
+
+.nav-arrow-btn:hover:not(:disabled) .nav-arrow-hint-dir {
+  color: var(--amber-bright);
+}
+
+/* -------------------------------------------------------------
+   CENTER BOTTOM COMPASS DOCK (FOOTER BAR) — Enlarged
+   ------------------------------------------------------------- */
+.compass-dock {
+  position: absolute;
+  bottom: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  pointer-events: auto;
+  z-index: 45;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
+}
+
+.modal-active .compass-dock,
+.room-navigator.modal-hidden .compass-dock {
+  transform: translateX(-50%) translateY(120px);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.compass-inner {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: rgba(18, 12, 7, 0.92);
+  border: 1.5px solid var(--wood-border);
+  padding: 9px 20px;
+  border-radius: 36px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.65), inset 0 1px 1px rgba(255, 235, 205, 0.1);
+}
+
+.compass-needle-ring {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--amber-brass);
+  font-size: 0.85rem;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding-right: 12px;
+  border-right: 1.5px solid rgba(255, 255, 255, 0.12);
+}
+
+.compass-rose-icon {
+  color: var(--amber-flame);
+  animation: compassSway 6s ease-in-out infinite;
+}
+
+@keyframes compassSway {
+  0%, 100% { transform: rotate(-8deg); }
+  50% { transform: rotate(8deg); }
+}
+
+.compass-bearing {
+  color: #f3e6d8;
+}
+
+.room-dots {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.room-dot-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid transparent;
+  color: #bfaea0;
+  padding: 7px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  font-weight: 600;
+  transition: all var(--transition-smooth);
+}
+
+.room-dot-pill .dot-index {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 0.82rem;
+  color: var(--amber-brass);
+}
+
+.room-dot-pill:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border-color: rgba(212, 167, 84, 0.35);
+  transform: translateY(-1px);
+}
+
+.room-dot-pill.active {
+  background: var(--green-muted);
+  border-color: var(--green-accent);
+  color: #e8f5e9;
+  box-shadow: 0 0 16px rgba(41, 64, 47, 0.6);
+}
+
+.room-dot-pill.active .dot-index {
+  color: var(--amber-bright);
+}
+
+/* -------------------------------------------------------------
+   RESPONSIVE ADJUSTMENTS
+   ------------------------------------------------------------- */
+@media (max-width: 1100px) {
+  .nav-arrow-btn {
+    padding: 10px 14px;
+    gap: 10px;
+  }
+  .nav-arrow-dest-name {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 840px) {
+  .nav-arrow-info {
+    display: none;
+  }
+  .nav-arrow-btn {
+    padding: 12px;
+  }
+  .room-dot-pill .dot-name {
+    display: none;
+  }
+  .compass-bearing {
+    display: none;
+  }
+  .compass-needle-ring {
+    border-right: none;
+    padding-right: 0;
+  }
+}

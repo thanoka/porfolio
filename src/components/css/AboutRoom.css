@@ -1,0 +1,526 @@
+/* Wall 1: The Hearth (About Room) */
+
+.about-room {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 36px 65px;
+  overflow: hidden;
+}
+
+.about-room-grid {
+  position: relative;
+  z-index: 2;
+  width: 95%;
+  max-width: 1680px;
+  height: 88%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+/* -------------------------------------------------------------
+   UPPER SECTION: Left Card (Compact 320px) vs Right Card (Wide 1fr)
+   ------------------------------------------------------------- */
+.about-upper-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 28px;
+  align-items: stretch;
+}
+
+/* -------------------------------------------------------------
+   LEFT COLUMN: Modern Portrait Profile Card (Inspired by reference)
+   ------------------------------------------------------------- */
+.about-left-column {
+  display: flex;
+  flex-direction: column;
+  width: 320px;
+  height: 100%;
+}
+
+.sophie-style-card {
+  width: 100%;
+  height: 100%;
+  flex: 1;
+  background: linear-gradient(145deg, #24160c 0%, #150c06 100%);
+  border: 2px solid var(--amber-brass);
+  border-radius: 24px;
+  padding: 12px 12px 16px;
+  box-shadow: 
+    0 16px 40px rgba(0, 0, 0, 0.75),
+    inset 0 1px 1px rgba(255, 235, 205, 0.12),
+    0 0 20px rgba(212, 167, 84, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 0;
+  transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
+}
+
+.sophie-style-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 20px 48px rgba(0, 0, 0, 0.85),
+    0 0 24px rgba(212, 167, 84, 0.22);
+}
+
+/* Top Rounded Image Viewport - Fills all space down to the name */
+.card-photo-viewport {
+  position: relative;
+  flex: 1 1 0;
+  width: 100%;
+  min-height: 240px;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #18110b;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(212, 167, 84, 0.25);
+}
+
+.card-photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 15%;
+  display: block;
+}
+
+.card-photo-fallback {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: radial-gradient(circle, #2d4633 0%, #16261b 100%);
+  color: var(--amber-bright);
+}
+
+.fallback-initials {
+  font-family: var(--font-serif);
+  font-size: 2.8rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--amber-bright);
+}
+
+.fallback-sub {
+  font-family: var(--font-sans);
+  font-size: 0.76rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--amber-brass);
+}
+
+/* Profile Details */
+.card-details-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0 4px;
+  flex-shrink: 0;
+}
+
+.card-name-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.card-person-name {
+  font-family: var(--font-sans);
+  font-size: 1.38rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+}
+
+.verified-check-icon {
+  flex-shrink: 0;
+}
+
+.card-role-desc {
+  font-family: var(--font-sans);
+  font-size: 0.84rem;
+  line-height: 1.45;
+  color: #c8b6a3;
+}
+
+.card-meta-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.card-location-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.78rem;
+  color: #d6c5b4;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 3px 10px;
+  border-radius: 14px;
+}
+
+.loc-pin {
+  color: var(--amber-flame);
+}
+
+/* Contact Action Buttons inside Left Card */
+.card-actions-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 4px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.card-action-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+}
+
+.card-action-btn {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 14px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 500;
+  transition: all var(--transition-smooth);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(212, 167, 84, 0.28);
+  color: #f5edd6;
+}
+
+.card-action-btn:hover {
+  background: rgba(212, 167, 84, 0.16);
+  border-color: var(--amber-brass);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.card-action-btn svg {
+  color: var(--amber-bright);
+  flex-shrink: 0;
+}
+
+.btn-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.external-arr {
+  margin-left: auto;
+  opacity: 0.65;
+}
+
+.card-copy-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(212, 167, 84, 0.28);
+  color: var(--amber-brass);
+  padding: 9px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-smooth);
+}
+
+.card-copy-btn:hover {
+  background: rgba(212, 167, 84, 0.22);
+  color: #fff;
+  border-color: var(--amber-brass);
+}
+
+.copied-check {
+  color: #55efc4;
+}
+
+/* -------------------------------------------------------------
+   RIGHT COLUMN: Grand About Me Plaque (Much wider, starts top left)
+   ------------------------------------------------------------- */
+.about-right-column {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.about-me-plaque {
+  flex: 1;
+  background: linear-gradient(145deg, rgba(36, 24, 16, 0.92) 0%, rgba(20, 13, 8, 0.96) 100%);
+  border: 2px solid var(--wood-border);
+  border-radius: 20px;
+  padding: 34px 40px;
+  box-shadow: 
+    0 16px 40px rgba(0, 0, 0, 0.65),
+    inset 0 1px 1px rgba(255, 235, 205, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 20px;
+}
+
+.about-me-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.about-spark-icon {
+  color: var(--amber-flame);
+  flex-shrink: 0;
+}
+
+.about-eyebrow {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 0.74rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--green-accent);
+}
+
+.about-me-title {
+  font-family: var(--font-serif);
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.03em;
+}
+
+.about-me-body {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.about-bio-text {
+  font-family: var(--font-journal);
+  font-size: 1.16rem;
+  line-height: 1.8;
+  color: #e2d3c2;
+}
+
+.about-quote {
+  position: relative;
+  font-family: var(--font-journal);
+  font-style: italic;
+  font-size: 1.08rem;
+  color: var(--amber-bright);
+  background: rgba(255, 140, 26, 0.08);
+  border-left: 4px solid var(--amber-flame);
+  padding: 16px 22px 16px 30px;
+  border-radius: 6px;
+}
+
+.quote-mark {
+  position: absolute;
+  top: 4px;
+  left: 8px;
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  color: var(--amber-flame);
+  opacity: 0.6;
+}
+
+.quote-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* -------------------------------------------------------------
+   BOTTOM SECTION: Education & Milestones Timeline
+   ------------------------------------------------------------- */
+.about-bottom-education {
+  width: 100%;
+}
+
+.education-horizontal-plaque {
+  background: linear-gradient(145deg, rgba(30, 20, 13, 0.92) 0%, rgba(18, 11, 7, 0.96) 100%);
+  border: 2px solid var(--wood-border);
+  border-radius: 16px;
+  padding: 20px 28px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.education-bottom-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.edu-title-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.edu-icon {
+  color: var(--amber-brass);
+}
+
+.edu-eyebrow {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--amber-brass);
+}
+
+.education-title {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.education-footer-note {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-journal);
+  font-style: italic;
+  font-size: 0.82rem;
+  color: #a89481;
+}
+
+.compass-mini {
+  color: var(--amber-brass);
+}
+
+.education-horizontal-grid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.education-grid-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 14px 18px;
+  transition: all var(--transition-smooth);
+}
+
+.education-grid-item:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(212, 167, 84, 0.35);
+  transform: translateY(-2px);
+}
+
+.timeline-marker-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--amber-flame);
+  border: 2px solid var(--amber-bright);
+  box-shadow: 0 0 8px var(--amber-flame);
+  margin-top: 5px;
+  flex-shrink: 0;
+}
+
+.education-item-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.education-item-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.timeline-year {
+  font-family: var(--font-serif);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--amber-brass);
+  letter-spacing: 0.05em;
+}
+
+.timeline-gpa-badge {
+  font-size: 0.76rem;
+  background: rgba(212, 167, 84, 0.18);
+  color: var(--amber-bright);
+  padding: 2px 8px;
+  border-radius: 12px;
+  border: 1px solid rgba(212, 167, 84, 0.35);
+}
+
+.timeline-institution {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.timeline-detail {
+  font-family: var(--font-journal);
+  font-size: 0.86rem;
+  color: #bfaea0;
+  line-height: 1.45;
+}
+
+@media (max-width: 1024px) {
+  .about-upper-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .about-left-column {
+    width: 100%;
+  }
+  .education-horizontal-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-room {
+    padding: 16px 14px 70px;
+  }
+  .about-me-title {
+    font-size: 1.4rem;
+  }
+  .education-bottom-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}

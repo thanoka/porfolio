@@ -1,0 +1,173 @@
+/* Rotate Overlay - Appears only on mobile portrait orientations */
+.rotate-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: radial-gradient(circle at center, #1b261e 0%, #0d0805 100%);
+  color: var(--paper-bg);
+  box-sizing: border-box;
+}
+
+/* Activate only when portrait and screen width is smaller than typical desktop */
+@media screen and (orientation: portrait) and (max-width: 900px) {
+  .rotate-overlay {
+    display: flex;
+  }
+}
+
+.rotate-overlay-backdrop {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(rgba(245, 158, 11, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(14, 23, 34, 0.8), rgba(15, 10, 6, 0.95));
+  background-size: 24px 24px, 100% 100%;
+  pointer-events: none;
+}
+
+.rotate-modal-card {
+  position: relative;
+  z-index: 2;
+  max-width: 380px;
+  width: 100%;
+  background: var(--paper-bg);
+  color: var(--paper-text);
+  border: 4px solid var(--wood-panel);
+  border-radius: 12px;
+  box-shadow: 
+    0 16px 48px rgba(0, 0, 0, 0.7),
+    0 0 0 1px var(--amber-brass),
+    inset 0 0 20px rgba(139, 74, 34, 0.12);
+  padding: 32px 24px 24px;
+  text-align: center;
+}
+
+.rotate-icon-cluster {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rotate-phone-anim {
+  width: 58px;
+  height: 58px;
+  background: var(--wood-panel);
+  color: var(--amber-bright);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--wood-border);
+  animation: phoneRotate 3s ease-in-out infinite;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes phoneRotate {
+  0%, 15% {
+    transform: rotate(0deg);
+  }
+  45%, 70% {
+    transform: rotate(90deg);
+  }
+  85%, 100% {
+    transform: rotate(0deg);
+  }
+}
+
+.rotate-compass {
+  position: absolute;
+  bottom: -4px;
+  right: -4px;
+  background: var(--green-deep);
+  color: var(--amber-brass);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--amber-brass);
+}
+
+.rotate-eyebrow {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--green-accent);
+  margin-bottom: 8px;
+}
+
+.rotate-title {
+  font-family: var(--font-serif);
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--paper-ink);
+  line-height: 1.25;
+  margin-bottom: 12px;
+}
+
+.rotate-description {
+  font-family: var(--font-journal);
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--paper-text-muted);
+  margin-bottom: 22px;
+}
+
+.rotate-actions-hint {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.hint-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(41, 64, 47, 0.12);
+  border: 1px dashed var(--green-accent);
+  color: var(--green-deep);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.hint-divider {
+  font-size: 0.75rem;
+  color: var(--paper-text-muted);
+  font-style: italic;
+}
+
+.rotate-wood-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  color: var(--paper-text-muted);
+  border-top: 1px solid var(--paper-border);
+  padding-top: 14px;
+}
+
+.candle-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--amber-flame);
+  box-shadow: 0 0 6px var(--amber-flame);
+}

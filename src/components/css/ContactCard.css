@@ -194,3 +194,47 @@
   padding-top: 8px;
   margin-top: 2px;
 }
+
+@media (max-width: 768px) {
+  .contact-card {
+    max-width: 100%;
+    padding: 12px 14px;
+  }
+  .contact-builder-name {
+    font-size: 0.95rem;
+  }
+  .contact-btn {
+    font-size: 0.76rem;
+    padding: 6px 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-card {
+    padding: 10px 12px;
+    border-radius: 6px;
+    border-width: 1.5px;
+  }
+  .contact-avatar-seal {
+    width: 32px;
+    height: 32px;
+    font-size: 0.82rem;
+  }
+  .contact-builder-name {
+    font-size: 0.88rem;
+  }
+  .contact-builder-role {
+    font-size: 0.7rem;
+  }
+  .contact-btn {
+    font-size: 0.72rem;
+    padding: 6px 8px;
+    gap: 6px;
+  }
+  .contact-card-inner {
+    gap: 8px;
+  }
+  .contact-footer-quote {
+    font-size: 0.62rem;
+  }
+}

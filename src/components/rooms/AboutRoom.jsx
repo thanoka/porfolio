@@ -1,14 +1,10 @@
 import React, { useState } from 'react';
 import {
-  GraduationCap,
-  Sparkles,
-  MapPin,
-  Compass,
+  ArrowRight,
   Mail,
   Copy,
   Check,
-  ExternalLink,
-  CheckCircle2,
+  MapPin,
 } from 'lucide-react';
 import GithubIcon from '../icons/GithubIcon';
 import portfolioData from '../../data/portfolioData';
@@ -28,160 +24,192 @@ export default function AboutRoom() {
     }
   };
 
+  const scrollToProjects = () => {
+    const el = document.getElementById('projects');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+      window.history.replaceState(null, '', '#projects');
+    }
+  };
+
   return (
-    <div id="room-about" className="room-scene about-room" role="region" aria-label="Wall 1: About & Profile">
+    <div
+      id="room-about"
+      className="room-scene about-room"
+      role="region"
+      aria-label="Hero & Profile Introduction"
+    >
       <div className="about-room-grid">
-        {/* Upper Split: Left Compact Profile Card and Right Grand About Me Plaque */}
-        <div className="about-upper-grid">
-          {/* Left Column: Modern Portrait Profile Card (Smaller width) */}
-          <aside className="about-left-column">
-            <article className="sophie-style-card" aria-label="Personal Profile Card">
-              {/* Top Rounded Image Viewport */}
-              <div className="card-photo-viewport">
-                <img
-                  src={profile.avatarUrl || '/avatar.jpg'}
-                  alt={profile.name}
-                  className="card-photo-img"
-                  onError={(e) => {
-                    // Fallback to stylized monogram if file is missing
-                    e.currentTarget.style.display = 'none';
-                    if (e.currentTarget.nextElementSibling) {
-                      e.currentTarget.nextElementSibling.style.display = 'flex';
-                    }
-                  }}
-                />
-                <div className="card-photo-fallback" style={{ display: 'none' }}>
-                  <span className="fallback-initials">{profile.avatarBadge || 'ES'}</span>
-                  <span className="fallback-sub">Software Builder</span>
+        {/* =========================================================
+            1. HERO SECTION — Spacious 2-Column Editorial Presentation
+            Left: Headline, Role, Tagline, System Highlights & Actions
+            Right: About Story, Education Journey Timeline, My Work, Social
+            ========================================================= */}
+        <section className="hero-landing-section" aria-label="Hero Presentation">
+          <div className="hero-two-column-grid">
+            {/* Left Column: Heading, Role, Tagline, Focus Badge, Systems Metrics & CTAs */}
+            <div className="hero-left-column" data-scroll-animate="fade-left">
+              <div className="hero-status-pill" aria-label="Engineering Focus">
+                <span className="hero-status-dot" />
+                <span>{profile.focus || 'AI Systems & Software Engineering'}</span>
+              </div>
+
+              <div className="hero-accent-bar" aria-hidden="true" />
+
+              <h1 className="hero-headline">
+                I'm {profile.name ? profile.name.split(' ')[0] : 'Developer'}, an <br />
+                <span className="hero-role-text">{profile.role}</span>
+              </h1>
+
+              <p className="hero-headline-sub">
+                {profile.tagline || 'My dream is create something that change the world'}
+              </p>
+
+              {/* Engineering Highlights Strip — Dynamic from portfolioData */}
+              <div className="hero-metrics-strip">
+                {(profile.metrics || [
+                  { val: '4', lbl: 'Shipped Systems' },
+                  { val: 'Dual YOLO + OCR', lbl: 'Spatial Vision AI' },
+                  { val: 'Full-Stack', lbl: 'Architecture' },
+                ]).map((metric, idx, arr) => (
+                  <React.Fragment key={idx}>
+                    <div className="hero-metric-item">
+                      <span className="hero-metric-val">{metric.val}</span>
+                      <span className="hero-metric-lbl">{metric.lbl}</span>
+                    </div>
+                    {idx < arr.length - 1 && <div className="hero-metric-separator" aria-hidden="true" />}
+                  </React.Fragment>
+                ))}
+              </div>
+
+              {/* Direct Actions */}
+              <div className="hero-cta-group">
+                <button
+                  type="button"
+                  className="hero-primary-btn"
+                  onClick={scrollToProjects}
+                  aria-label="Explore portfolio projects"
+                >
+                  <span>{profile.primaryCta || 'Explore Projects'}</span>
+                  <ArrowRight size={18} />
+                </button>
+
+                <a
+                  href={`mailto:${social.email}`}
+                  className="hero-secondary-btn"
+                  aria-label="Contact directly via email"
+                >
+                  <Mail size={18} />
+                  <span>{profile.secondaryCta || 'Get in Touch'}</span>
+                </a>
+              </div>
+            </div>
+
+            {/* Center Hairline Divider to gracefully anchor the page center */}
+            <div className="hero-center-divider" aria-hidden="true" />
+
+            {/* Right Column: Stacked text blocks with dividers */}
+            <div className="hero-right-column" data-scroll-animate="fade-right" data-scroll-delay="1">
+              {/* Block 1: About Me */}
+              <div className="hero-side-block">
+                <span className="hero-side-eyebrow">{profile.aboutEyebrow || 'ABOUT ME'}</span>
+                <p className="hero-side-text">
+                  {profile.summary || profile.bio}
+                </p>
+              </div>
+
+              <div className="hero-side-divider" aria-hidden="true" />
+
+              {/* Block 2: Education Journey (Minimal Timeline) */}
+              <div className="hero-side-block hero-edu-block">
+                <span className="hero-side-eyebrow">{profile.educationEyebrow || 'EDUCATION JOURNEY'}</span>
+                <div className="hero-edu-timeline">
+                  {education.map((item, index) => (
+                    <div key={index} className="hero-edu-item">
+                      <div className="hero-edu-track">
+                        <span className="hero-edu-dot" aria-hidden="true" />
+                        {index < education.length - 1 && <span className="hero-edu-line" aria-hidden="true" />}
+                      </div>
+                      <div className="hero-edu-content">
+                        <div className="hero-edu-header">
+                          <span className="hero-edu-year">{item.year}</span>
+                          {item.gpa && (
+                            <span className="hero-edu-badge">
+                              {item.gpa === 'In Progress' ? 'In Progress' : `GPA ${item.gpa}`}
+                            </span>
+                          )}
+                        </div>
+                        <h4 className="hero-edu-title">{item.title}</h4>
+                        <p className="hero-edu-detail">{item.detail}</p>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
 
-              {/* Profile Details Underneath Photo */}
-              <div className="card-details-section">
-                {/* Name & Verified Badge */}
-                <div className="card-name-row">
-                  <h1 className="card-person-name">{profile.name}</h1>
-                  <CheckCircle2
-                    size={20}
-                    className="verified-check-icon"
-                    fill="#2ed573"
-                    stroke="#121a14"
-                  />
-                </div>
+              <div className="hero-side-divider" aria-hidden="true" />
 
-                {/* Subtitle / Focus */}
-                <p className="card-role-desc">
-                  {profile.role} who focuses on clean systems, simplicity & usability.
+              {/* Block 3: My Work */}
+              <div className="hero-side-block">
+                <span className="hero-side-eyebrow">{profile.workEyebrow || 'MY WORK'}</span>
+                <p className="hero-side-text">
+                  {profile.workSummary || `Handcrafted ${portfolioData.projects?.length || 4} software volumes spanning modern AI systems, full-stack web platforms, and interactive software.`}
                 </p>
+                <button
+                  type="button"
+                  className="hero-side-link-btn"
+                  onClick={scrollToProjects}
+                  aria-label="Browse portfolio projects"
+                >
+                  <span>{profile.browsePortfolioLabel || 'BROWSE PORTFOLIO'}</span>
+                  <ArrowRight size={15} className="side-link-arr" />
+                </button>
+              </div>
 
-                {/* Location Tag */}
-                <div className="card-meta-bar">
-                  <span className="card-location-tag">
-                    <MapPin size={13} className="loc-pin" />
-                    {profile.location}
-                  </span>
-                </div>
+              <div className="hero-side-divider" aria-hidden="true" />
 
-                {/* Contact Action Buttons */}
-                <div className="card-actions-group">
-                  <div className="card-action-row">
-                    <a
-                      href={`mailto:${social.email}`}
-                      className="card-action-btn card-action-btn--mail"
-                      aria-label={`Send email to ${social.email}`}
-                      title={social.email}
-                    >
-                      <Mail size={15} />
-                      <span className="btn-text">{social.email}</span>
-                    </a>
-                    <button
-                      type="button"
-                      className="card-copy-btn"
-                      onClick={handleCopyEmail}
-                      aria-label={copied ? 'Email copied' : 'Copy email address'}
-                      title={copied ? 'Copied!' : 'Copy email'}
-                    >
-                      {copied ? <Check size={14} className="copied-check" /> : <Copy size={14} />}
-                    </button>
-                  </div>
-
+              {/* Block 4: Follow Me / Connect */}
+              <div className="hero-side-block">
+                <span className="hero-side-eyebrow">{profile.followEyebrow || 'FOLLOW ME'}</span>
+                <div className="hero-social-row">
                   <a
                     href={social.github}
                     target="_blank"
                     rel="noreferrer"
-                    className="card-action-btn card-action-btn--github"
-                    aria-label="Visit GitHub profile (opens in new tab)"
+                    className="hero-social-btn"
+                    aria-label="Visit GitHub Profile"
+                    title="GitHub"
                   >
-                    <GithubIcon size={15} />
-                    <span>{social.github ? social.github.replace(/^https?:\/\//, '') : 'github.com/thanoka'}</span>
-                    <ExternalLink size={13} className="external-arr" />
+                    <GithubIcon size={20} />
                   </a>
+
+                  <a
+                    href={`mailto:${social.email}`}
+                    className="hero-social-btn"
+                    aria-label={`Send email to ${social.email}`}
+                    title={social.email}
+                  >
+                    <Mail size={20} />
+                  </a>
+
+                  <button
+                    type="button"
+                    className="hero-social-btn hero-copy-btn"
+                    onClick={handleCopyEmail}
+                    aria-label={copied ? 'Email copied' : 'Copy email address'}
+                    title={copied ? 'Copied!' : 'Copy email address'}
+                  >
+                    {copied ? <Check size={18} className="copied-icon" /> : <Copy size={18} />}
+                  </button>
+
+                  <span className="hero-location-chip">
+                    <MapPin size={14} className="loc-pin" />
+                    <span>{profile.location}</span>
+                  </span>
                 </div>
-              </div>
-            </article>
-          </aside>
-
-          {/* Right Column: Grand About Me Plaque (Much wider, starts at top-left) */}
-          <section className="about-right-column" aria-label={`About ${profile.name}`}>
-            <article className="about-me-plaque">
-              <header className="about-me-header">
-                <Sparkles size={22} className="about-spark-icon" />
-                <div>
-                  <span className="about-eyebrow">Personal Introduction & Craft</span>
-                  <h2 className="about-me-title">About Me</h2>
-                </div>
-              </header>
-
-              <div className="about-me-body">
-                <p className="about-bio-text">{profile.bio}</p>
-              </div>
-
-              <blockquote className="about-quote">
-                <span className="quote-mark" aria-hidden="true">“</span>
-                <span className="quote-content">{profile.tagline}</span>
-              </blockquote>
-            </article>
-          </section>
-        </div>
-
-        {/* Bottom Section: Education Timeline */}
-        <section className="about-bottom-education" aria-label="Education Timeline">
-          <article className="education-horizontal-plaque">
-            <div className="education-bottom-header">
-              <div className="edu-title-group">
-                <GraduationCap size={22} className="edu-icon" />
-                <div>
-                  <span className="edu-eyebrow">Academic Journey</span>
-                  <h2 className="education-title">Education & Milestones</h2>
-                </div>
-              </div>
-
-              <div className="education-footer-note">
-                <Compass size={14} className="compass-mini" />
-                <span>DCE University • Information Technology & Full Stack Engineering</span>
               </div>
             </div>
-
-            <ol className="education-horizontal-grid">
-              {education.map((item, index) => (
-                <li key={index} className="education-grid-item">
-                  <div className="timeline-marker-dot" aria-hidden="true" />
-                  <div className="education-item-content">
-                    <div className="education-item-header">
-                      <span className="timeline-year">{item.year}</span>
-                      {item.gpa && (
-                        <span className="timeline-gpa-badge">
-                          GPA: <strong>{item.gpa}</strong>
-                        </span>
-                      )}
-                    </div>
-                    <h3 className="timeline-institution">{item.title}</h3>
-                    <p className="timeline-detail">{item.detail}</p>
-                  </div>
-                </li>
-              ))}
-            </ol>
-          </article>
+          </div>
         </section>
       </div>
     </div>

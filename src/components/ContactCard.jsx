@@ -35,7 +35,7 @@ export default function ContactCard({ variant = 'desktop-plaque' }) {
       <div className="contact-card-inner">
         <div className="contact-header">
           <div className="contact-avatar-seal" aria-hidden="true">
-            <span>{profile.avatarBadge || 'ES'}</span>
+            <span>{profile.avatarBadge || (profile.name ? profile.name.slice(0, 2).toUpperCase() : 'TA')}</span>
           </div>
           <div className="contact-titles">
             <span className="contact-builder-name">{profile.name}</span>
@@ -81,7 +81,7 @@ export default function ContactCard({ variant = 'desktop-plaque' }) {
             >
               <GithubIcon size={15} className="contact-icon" />
               <span className="contact-link-text">
-                {social.github ? social.github.replace(/^https?:\/\//, '') : 'github.com/thanoka'}
+                {social.github ? social.github.replace(/^https?:\/\//, '') : 'github.com'}
               </span>
               <ExternalLink size={13} className="external-mark" />
             </a>
@@ -89,7 +89,7 @@ export default function ContactCard({ variant = 'desktop-plaque' }) {
         </div>
 
         <div className="contact-footer-quote">
-          <span>Rainforest Cabin Study • Bangkok</span>
+          <span>Rainforest Cabin Study • {profile.location || 'Bangkok'}</span>
         </div>
       </div>
     </div>

@@ -1,0 +1,129 @@
+/* ==========================================================================
+   SCROLL-TRIGGERED REVEAL ANIMATIONS
+   Elements start hidden; `.is-visible` is added by IntersectionObserver.
+   ========================================================================== */
+
+/* --- Base: all animated elements start hidden --- */
+[data-scroll-animate] {
+  opacity: 0;
+  will-change: opacity, transform;
+  transition:
+    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-scroll-animate].is-visible {
+  opacity: 1;
+}
+
+/* --- Fade Up (default) --- */
+[data-scroll-animate="fade-up"] {
+  transform: translate3d(0, 50px, 0);
+}
+[data-scroll-animate="fade-up"].is-visible {
+  transform: translate3d(0, 0, 0);
+}
+
+/* --- Fade Down --- */
+[data-scroll-animate="fade-down"] {
+  transform: translate3d(0, -40px, 0);
+}
+[data-scroll-animate="fade-down"].is-visible {
+  transform: translate3d(0, 0, 0);
+}
+
+/* --- Slide from Left --- */
+[data-scroll-animate="fade-left"] {
+  transform: translate3d(-60px, 0, 0);
+}
+[data-scroll-animate="fade-left"].is-visible {
+  transform: translate3d(0, 0, 0);
+}
+
+/* --- Slide from Right --- */
+[data-scroll-animate="fade-right"] {
+  transform: translate3d(60px, 0, 0);
+}
+[data-scroll-animate="fade-right"].is-visible {
+  transform: translate3d(0, 0, 0);
+}
+
+/* --- Scale In --- */
+[data-scroll-animate="scale-in"] {
+  transform: scale(0.88);
+}
+[data-scroll-animate="scale-in"].is-visible {
+  transform: scale(1);
+}
+
+/* --- Reveal (opacity only, no transform) --- */
+[data-scroll-animate="reveal"] {
+  transform: none;
+}
+[data-scroll-animate="reveal"].is-visible {
+  opacity: 1;
+}
+
+/* ==========================================================================
+   STAGGER ANIMATION
+   Parent with [data-scroll-stagger] + is-visible — children animate one by one.
+   Each child's --stagger-index is set by the JS hook.
+   ========================================================================== */
+[data-scroll-stagger] > * {
+  opacity: 0;
+  transform: translate3d(0, 30px, 0);
+  transition:
+    opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: calc(var(--stagger-index, 0) * 0.08s);
+}
+
+[data-scroll-stagger].is-visible > * {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+/* ==========================================================================
+   PARALLAX-STYLE SECTION DIVIDERS (decorative between scroll sections)
+   ========================================================================== */
+.scroll-section-divider {
+  width: 100%;
+  height: 2px;
+  margin: 0 auto;
+  max-width: 900px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--amber-brass) 20%,
+    var(--amber-flame) 50%,
+    var(--amber-brass) 80%,
+    transparent 100%
+  );
+  opacity: 0.35;
+  border-radius: 2px;
+  box-shadow: 0 0 12px rgba(255, 140, 26, 0.15);
+}
+
+/* ==========================================================================
+   SLOW ANIMATION VARIANTS (for hero/header elements)
+   ========================================================================== */
+[data-scroll-animate][data-scroll-delay="1"] {
+  transition-delay: 0.1s;
+}
+[data-scroll-animate][data-scroll-delay="2"] {
+  transition-delay: 0.2s;
+}
+[data-scroll-animate][data-scroll-delay="3"] {
+  transition-delay: 0.3s;
+}
+[data-scroll-animate][data-scroll-delay="4"] {
+  transition-delay: 0.4s;
+}
+[data-scroll-animate][data-scroll-delay="5"] {
+  transition-delay: 0.5s;
+}
+
+/* Slower, more dramatic variant */
+[data-scroll-animate][data-scroll-speed="slow"] {
+  transition-duration: 1s;
+}

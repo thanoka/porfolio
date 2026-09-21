@@ -1,5 +1,5 @@
 import React from 'react';
-import { Smartphone, Monitor, Compass } from 'lucide-react';
+import { Monitor, Maximize2, ShieldAlert } from 'lucide-react';
 import portfolioData from '../data/portfolioData';
 import './css/RotateOverlay.css';
 
@@ -8,38 +8,39 @@ export default function RotateOverlay() {
 
   return (
     <aside
-      id="rotate-device-overlay"
+      id="pc-only-overlay"
       className="rotate-overlay"
       role="region"
-      aria-label="Device Orientation Notice"
+      aria-label="Desktop Required Notice"
     >
       <div className="rotate-overlay-backdrop" aria-hidden="true" />
       <div className="rotate-modal-card">
         <div className="rotate-icon-cluster" aria-hidden="true">
           <div className="rotate-phone-anim">
-            <Smartphone size={38} className="phone-icon" />
+            <Monitor size={38} className="phone-icon" />
           </div>
           <div className="rotate-compass">
-            <Compass size={24} className="compass-icon" />
+            <ShieldAlert size={20} className="compass-icon" />
           </div>
         </div>
 
-        <span className="rotate-eyebrow">Rainforest Cabin • Desktop View</span>
-        <h2 className="rotate-title">Please Rotate Your Device</h2>
+        <span className="rotate-eyebrow">Rainforest Cabin • Desktop Experience</span>
+        <h2 className="rotate-title">Desktop Viewing Required</h2>
 
         <p className="rotate-description">
-          This portfolio is crafted as a 4-wall point-and-click room experience optimized for desktop screens and landscape view.
+          This portfolio is crafted as an immersive scrollable experience
+          optimized exclusively for desktop screens with a width of 1024px or wider.
         </p>
 
         <div className="rotate-actions-hint">
           <div className="hint-pill">
-            <Smartphone size={16} className="hint-icon" />
-            <span>Turn to Landscape</span>
+            <Monitor size={16} className="hint-icon" />
+            <span>Open on a PC or Laptop</span>
           </div>
           <span className="hint-divider">or</span>
           <div className="hint-pill">
-            <Monitor size={16} className="hint-icon" />
-            <span>Open on PC / Laptop</span>
+            <Maximize2 size={16} className="hint-icon" />
+            <span>Widen your browser window</span>
           </div>
         </div>
 

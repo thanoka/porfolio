@@ -1,47 +1,58 @@
-/* Wall 2: The Study & Open Field Journal (Skills Room) - 95% Screen Scale */
+/* ==========================================================================
+   Wall 2: The Study & Field Journal 2.0 (Modern Dark Grimoire)
+   Rich Dark Slate Obsidian Manuscript, Gold Foil Accents & Ribbon Tabs
+   Locked 570px Height Spread for Flawless Desktop Display
+   ========================================================================== */
 
 .skills-room {
   position: relative;
   width: 100%;
-  height: 100%;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 14px 86px 82px;
-  overflow: hidden;
+  padding: 24px 3vw;
+  box-sizing: border-box;
 }
 
 .study-ambient-glow {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: radial-gradient(circle at 50% 50%, rgba(41, 64, 47, 0.18) 0%, transparent 65%);
+  background: radial-gradient(
+    circle at 50% 48%,
+    rgba(212, 167, 84, 0.12) 0%,
+    rgba(41, 64, 47, 0.09) 45%,
+    transparent 72%
+  );
+  z-index: 1;
 }
 
 .open-journal-container {
   position: relative;
   z-index: 2;
   width: 100%;
-  max-width: 1560px;
-  height: 100%;
-  max-height: calc(100vh - 155px);
+  max-width: min(94vw, 1560px);
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: 14px;
 }
 
 /* ---------------------------------------------------------------
-   WALL BANNER
+   1. WALL BANNER (Study Header)
    --------------------------------------------------------------- */
 .study-wall-banner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: rgba(22, 14, 9, 0.88);
-  border: 1px solid var(--wood-border);
+  background: rgba(22, 14, 9, 0.92);
+  border: 1.5px solid var(--wood-border);
   padding: 10px 24px;
-  border-radius: 8px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   flex-shrink: 0;
 }
 
@@ -53,448 +64,619 @@
 
 .study-crest-numeral {
   font-family: var(--font-serif);
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   font-weight: 800;
   color: var(--amber-brass);
+  text-shadow: 0 0 14px rgba(212, 167, 84, 0.4);
 }
 
 .banner-text {
   display: flex;
   flex-direction: column;
+  gap: 2px;
 }
 
 .study-eyebrow {
   font-family: var(--font-sans);
   font-size: 0.74rem;
-  font-weight: 600;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.16em;
   color: var(--green-accent);
 }
 
 .study-main-title {
   font-family: var(--font-serif);
-  font-size: 1.6rem;
+  font-size: clamp(1.25rem, 1.6vw, 1.55rem);
   font-weight: 700;
-  color: #fff;
+  color: #ffffff;
   line-height: 1.2;
+  margin: 0;
 }
 
-.journal-status-pill {
+.folio-counter-pill {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(41, 64, 47, 0.25);
-  border: 1px solid var(--green-accent);
-  color: #ccebd5;
+  background: rgba(212, 167, 84, 0.1);
+  border: 1px solid rgba(212, 167, 84, 0.32);
+  color: #f0e6d6;
   padding: 6px 14px;
   border-radius: 20px;
-  font-size: 0.8rem;
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
   font-weight: 600;
 }
 
-.bookmark-icon {
+.counter-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--amber-bright);
+  box-shadow: 0 0 8px var(--amber-bright);
+}
+
+.counter-name {
+  color: var(--amber-brass);
+  font-weight: 700;
+}
+
+/* ---------------------------------------------------------------
+   2. GRIMOIRE WRAPPER & SILK RIBBON BOOKMARK TABS
+   --------------------------------------------------------------- */
+.grimoire-wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Hanging Ribbon Bookmarks Shelf along top edge */
+.grimoire-ribbons-shelf {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  padding-left: 48px;
+  margin-bottom: -3px;
+  z-index: 10;
+  position: relative;
+}
+
+.grimoire-ribbon {
+  position: relative;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  outline: none;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.grimoire-ribbon:hover {
+  transform: translateY(-3px);
+}
+
+.ribbon-hanging-strip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 16px 8px 16px;
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  border-radius: 6px 6px 0 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  transition: all 0.25s ease;
+  position: relative;
+}
+
+/* Color themes for the 3 ribbons */
+.ribbon-gold .ribbon-hanging-strip {
+  background: linear-gradient(135deg, #3d2c14 0%, #26190a 100%);
+  border: 1px solid rgba(212, 167, 84, 0.4);
+  border-bottom: none;
+  color: #ffd88a;
+}
+.ribbon-gold.ribbon--active .ribbon-hanging-strip {
+  background: linear-gradient(135deg, #d4a754 0%, #b38226 100%);
+  color: #140c06;
+  box-shadow: 0 -2px 14px rgba(212, 167, 84, 0.4);
+}
+
+.ribbon-emerald .ribbon-hanging-strip {
+  background: linear-gradient(135deg, #1b3322 0%, #102116 100%);
+  border: 1px solid rgba(76, 175, 80, 0.4);
+  border-bottom: none;
+  color: #a5d6a7;
+}
+.ribbon-emerald.ribbon--active .ribbon-hanging-strip {
+  background: linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%);
+  color: #ffffff;
+  box-shadow: 0 -2px 14px rgba(46, 125, 50, 0.4);
+}
+
+.ribbon-crimson .ribbon-hanging-strip {
+  background: linear-gradient(135deg, #3d1616 0%, #240a0a 100%);
+  border: 1px solid rgba(239, 83, 80, 0.4);
+  border-bottom: none;
+  color: #ef9a9a;
+}
+.ribbon-crimson.ribbon--active .ribbon-hanging-strip {
+  background: linear-gradient(135deg, #c62828 0%, #880e4f 100%);
+  color: #ffffff;
+  box-shadow: 0 -2px 14px rgba(198, 40, 40, 0.4);
+}
+
+/* ---------------------------------------------------------------
+   3. THE GRAND OPEN DARK GRIMOIRE
+   Locked 570px Height Spread in Obsidian Leather (Zero Height Shifts)
+   --------------------------------------------------------------- */
+.grand-open-grimoire {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  height: clamp(660px, 72vh, 760px); /* Locked responsive height spread for majestic desk presence without page shifts */
+  border-radius: 12px;
+  overflow: hidden;
+  background: linear-gradient(
+    145deg,
+    #1b130c 0%,
+    #130c08 50%,
+    #19100a 100%
+  );
+  border: 8px solid #2e180d;
+  box-shadow:
+    0 24px 75px rgba(0, 0, 0, 0.9),
+    0 0 0 1.5px rgba(212, 167, 84, 0.35),
+    inset 0 0 45px rgba(0, 0, 0, 0.82);
+}
+
+/* Gilded Corner Clasps */
+.grimoire-corner {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  z-index: 15;
+  pointer-events: none;
+  border: 2px solid var(--amber-brass);
+}
+
+.corner--top-left {
+  top: 6px;
+  left: 6px;
+  border-right: none;
+  border-bottom: none;
+  border-radius: 4px 0 0 0;
+}
+
+.corner--top-right {
+  top: 6px;
+  right: 6px;
+  border-left: none;
+  border-bottom: none;
+  border-radius: 0 4px 0 0;
+}
+
+.corner--bottom-left {
+  bottom: 6px;
+  left: 6px;
+  border-right: none;
+  border-top: none;
+  border-radius: 0 0 0 4px;
+}
+
+.corner--bottom-right {
+  bottom: 6px;
+  right: 6px;
+  border-left: none;
+  border-top: none;
+  border-radius: 0 0 4px 0;
+}
+
+/* Leather outer margins */
+.book-leather-margin {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 14px;
+  z-index: 8;
+  pointer-events: none;
+}
+
+.margin--left {
+  left: 0;
+  background: linear-gradient(to right, rgba(20, 10, 5, 0.6) 0%, transparent 100%);
+}
+
+.margin--right {
+  right: 0;
+  background: linear-gradient(to left, rgba(20, 10, 5, 0.6) 0%, transparent 100%);
+}
+
+/* ---------------------------------------------------------------
+   4. CENTRAL CREASE SPINE & STITCHING
+   --------------------------------------------------------------- */
+.grimoire-center-spine {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 32px;
+  transform: translateX(-50%);
+  z-index: 10;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.spine-center-crease {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.05) 0%,
+    rgba(0, 0, 0, 0.35) 25%,
+    rgba(0, 0, 0, 0.6) 50%,
+    rgba(0, 0, 0, 0.35) 75%,
+    rgba(0, 0, 0, 0.05) 100%
+  );
+}
+
+.spine-stitch-line {
+  position: absolute;
+  top: 10px;
+  bottom: 10px;
+  width: 1.5px;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 5px,
+    rgba(212, 167, 84, 0.3) 5px,
+    rgba(212, 167, 84, 0.3) 10px
+  );
+}
+
+.spine-stitch-line--left {
+  left: 4px;
+}
+
+.spine-stitch-line--right {
+  right: 4px;
+}
+
+/* ---------------------------------------------------------------
+   5. DEEP CHARCOAL SLATE MANUSCRIPT PAGES
+   --------------------------------------------------------------- */
+.grimoire-page {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  min-height: 0;
+  padding: 22px 36px 16px 36px;
+  box-sizing: border-box;
+  background: 
+    radial-gradient(ellipse at 30% 20%, rgba(38, 26, 17, 0.7) 0%, transparent 60%),
+    linear-gradient(180deg, rgba(22, 15, 10, 0.98) 0%, rgba(16, 11, 7, 0.99) 100%);
+  overflow: hidden;
+}
+
+.page--left {
+  border-right: 1px solid rgba(212, 167, 84, 0.15);
+  padding-right: 40px;
+}
+
+.page--right {
+  padding-left: 40px;
+}
+
+/* Faint astrological & technical coordinate grid watermark */
+.grimoire-page::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(rgba(212, 167, 84, 0.04) 1px, transparent 1px);
+  background-size: 28px 28px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ---------------------------------------------------------------
+   PAGE HEADER
+   --------------------------------------------------------------- */
+.page-header-mark {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(212, 167, 84, 0.2);
+  margin-bottom: 12px;
+  flex-shrink: 0;
+}
+
+.header-meta-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.page-chapter-badge {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  color: var(--amber-brass);
+  background: rgba(212, 167, 84, 0.12);
+  border: 1px solid rgba(212, 167, 84, 0.28);
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+.page-chapter-label {
+  font-family: var(--font-serif);
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.02em;
+}
+
+.page-folio-num {
+  font-family: var(--font-serif);
+  font-size: 0.86rem;
+  font-weight: 600;
+  font-style: italic;
   color: var(--amber-brass);
 }
 
 /* ---------------------------------------------------------------
-   THE GRAND 2-PAGE OPEN BOOK SPREAD
-   Realistic leather-bound book with cover edges, spine, stitching
+   PAGE EDITORIAL BODY & SECTION HEADERS
    --------------------------------------------------------------- */
-.grand-open-book {
+.page-editorial-body {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 12px;
   flex: 1;
-  position: relative;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  min-height: 0;
-
-  /* Aged parchment base */
-  background: 
-    radial-gradient(ellipse at 25% 15%, rgba(255, 245, 220, 0.5) 0%, transparent 50%),
-    radial-gradient(ellipse at 75% 85%, rgba(200, 180, 140, 0.3) 0%, transparent 50%),
-    var(--paper-bg);
-
-  /* Thick leather cover border */
-  border: 10px solid #3c1c0a;
-  border-image: linear-gradient(
-    135deg,
-    #4a2812 0%,
-    #3c1c0a 30%,
-    #2e150a 60%,
-    #4a2812 100%
-  ) 1;
-  border-radius: 6px;
-  
-  box-shadow: 
-    0 28px 70px rgba(0, 0, 0, 0.85),
-    0 0 0 2px #5a3a20,
-    0 0 0 4px rgba(212, 167, 84, 0.3),
-    inset 0 0 50px rgba(139, 74, 34, 0.08);
-  overflow: hidden;
-}
-
-/* ---------------------------------------------------------------
-   LEATHER COVER EDGES (visible strips on left and right)
-   --------------------------------------------------------------- */
-.book-cover-edge {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 18px;
-  z-index: 5;
-  pointer-events: none;
-}
-
-.book-cover-edge--left {
-  left: 0;
-  background: linear-gradient(to right, 
-    rgba(60, 28, 10, 0.35) 0%, 
-    rgba(60, 28, 10, 0.12) 40%, 
-    transparent 100%
-  );
-}
-
-.book-cover-edge--right {
-  right: 0;
-  background: linear-gradient(to left, 
-    rgba(60, 28, 10, 0.35) 0%, 
-    rgba(60, 28, 10, 0.12) 40%, 
-    transparent 100%
-  );
-}
-
-/* ---------------------------------------------------------------
-   CENTER BINDING SPINE — Leather crease with stitching
-   --------------------------------------------------------------- */
-.book-center-spine {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 50%;
-  width: 36px;
-  transform: translateX(-50%);
-  z-index: 10;
-  pointer-events: none;
-
-  /* Multi-layered crease shadow */
-  background: 
-    linear-gradient(to right,
-      rgba(0, 0, 0, 0.08) 0%,
-      rgba(0, 0, 0, 0.22) 20%,
-      rgba(0, 0, 0, 0.42) 45%,
-      rgba(0, 0, 0, 0.45) 50%,
-      rgba(0, 0, 0, 0.42) 55%,
-      rgba(0, 0, 0, 0.22) 80%,
-      rgba(0, 0, 0, 0.08) 100%
-    );
-  box-shadow: 
-    inset 0 0 12px rgba(0, 0, 0, 0.3);
-}
-
-/* Stitch lines running along the spine */
-.spine-stitch {
-  position: absolute;
-  top: 8px;
-  bottom: 8px;
-  width: 2px;
-  background: repeating-linear-gradient(
-    to bottom,
-    transparent 0px,
-    transparent 6px,
-    rgba(139, 74, 34, 0.35) 6px,
-    rgba(139, 74, 34, 0.35) 12px
-  );
-}
-
-.spine-stitch--left {
-  left: 6px;
-}
-
-.spine-stitch--right {
-  right: 6px;
-}
-
-/* Ribbon bookmark */
-.spine-ribbon-tail {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 10px;
-  height: 55%;
-  background: linear-gradient(to bottom, #962222, #7a1818);
-  box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
-  border-radius: 0 0 2px 2px;
-}
-
-/* Ribbon tapered end */
-.spine-ribbon-tail::after {
-  content: '';
-  position: absolute;
-  bottom: -8px;
-  left: 0;
-  width: 0;
-  height: 0;
-  border-left: 5px solid #7a1818;
-  border-right: 5px solid #7a1818;
-  border-bottom: 8px solid transparent;
-}
-
-/* ---------------------------------------------------------------
-   INDIVIDUAL BOOK PAGES
-   Each page is its own scroll container for many skills
-   --------------------------------------------------------------- */
-.grand-book-page {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  min-height: 0;
-  overflow: hidden;
-}
-
-/* Lined paper effect */
-.grand-book-page::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: repeating-linear-gradient(
-    to bottom,
-    transparent 0px,
-    transparent 28px,
-    rgba(180, 160, 130, 0.12) 28px,
-    rgba(180, 160, 130, 0.12) 29px
-  );
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* Aged corner stains */
-.grand-book-page::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-}
-
-.page--left::after {
-  background: 
-    radial-gradient(circle at 0% 100%, rgba(160, 130, 90, 0.12) 0%, transparent 30%),
-    radial-gradient(circle at 100% 0%, rgba(160, 130, 90, 0.06) 0%, transparent 25%);
-}
-
-.page--right::after {
-  background: 
-    radial-gradient(circle at 100% 100%, rgba(160, 130, 90, 0.12) 0%, transparent 30%),
-    radial-gradient(circle at 0% 0%, rgba(160, 130, 90, 0.06) 0%, transparent 25%);
-}
-
-.page--left {
-  border-right: 1px solid rgba(180, 160, 130, 0.35);
-}
-
-/* Inner scroll wrapper — this is where skills scroll within each page */
-.page-inner-scroll {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  padding: 28px 44px 24px 36px;
   overflow-y: auto;
-  flex: 1;
-  min-height: 0;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(212, 167, 84, 0.25) transparent;
+  padding-right: 4px;
 }
 
-.page--left .page-inner-scroll {
-  padding-right: 48px;
+.page-editorial-body::-webkit-scrollbar {
+  width: 4px;
 }
 
-.page--right .page-inner-scroll {
-  padding-left: 48px;
+.page-editorial-body::-webkit-scrollbar-thumb {
+  background: rgba(212, 167, 84, 0.25);
+  border-radius: 4px;
 }
 
-/* Custom scrollbar — thin, book-like */
-.page-inner-scroll::-webkit-scrollbar {
-  width: 5px;
-}
-
-.page-inner-scroll::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.page-inner-scroll::-webkit-scrollbar-thumb {
-  background: rgba(139, 74, 34, 0.25);
-  border-radius: 3px;
-}
-
-.page-inner-scroll::-webkit-scrollbar-thumb:hover {
-  background: rgba(139, 74, 34, 0.45);
-}
-
-/* ---------------------------------------------------------------
-   PAGE HEADER — Chapter marker
-   --------------------------------------------------------------- */
-.page-header-mark {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  color: var(--paper-text-muted);
-  font-family: var(--font-serif);
-  font-size: 0.78rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  border-bottom: 1px solid rgba(207, 189, 152, 0.5);
-  padding-bottom: 10px;
-  flex-shrink: 0;
-}
-
-.page-chapter-label {
-  white-space: nowrap;
-}
-
-.page-decor-line {
-  flex: 1;
-  height: 1px;
-  background: linear-gradient(to right, var(--paper-border), transparent);
-}
-
-.page-folio-num {
-  font-weight: 700;
-  color: var(--paper-accent);
-  white-space: nowrap;
-}
-
-/* ---------------------------------------------------------------
-   SKILL SECTIONS
-   --------------------------------------------------------------- */
-.diary-skill-section {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.skill-section-header {
-  display: flex;
-  align-items: baseline;
-  gap: 10px;
-  padding-bottom: 4px;
-  border-bottom: 1px dashed rgba(180, 160, 130, 0.3);
-}
-
-.section-index-num {
-  font-family: var(--font-serif);
-  font-size: 0.88rem;
-  font-weight: 700;
-  color: var(--paper-accent);
-}
-
-.skill-section-title {
-  font-family: var(--font-serif);
-  font-size: 1.22rem;
-  font-weight: 700;
-  color: var(--paper-ink);
-  letter-spacing: 0.02em;
-}
-
-/* ---------------------------------------------------------------
-   SKILL ENTRIES — Compact for handling 10+ items
-   --------------------------------------------------------------- */
-.skill-items-list {
+.codex-skill-section {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
-.diary-skill-entry {
-  background: rgba(255, 255, 255, 0.35);
-  border: 1px solid rgba(207, 189, 152, 0.4);
-  border-left: 3px solid var(--paper-accent);
-  border-radius: 4px;
-  padding: 10px 14px;
-  transition: all var(--transition-smooth);
+.codex-section-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-.diary-skill-entry:hover {
-  background: rgba(255, 255, 255, 0.65);
-  border-left-color: var(--amber-flame);
-  box-shadow: 0 2px 8px rgba(139, 74, 34, 0.08);
-  transform: translateX(2px);
+.codex-section-num {
+  font-family: var(--font-serif);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--amber-bright);
 }
 
-.entry-title-row {
+.codex-section-title {
+  font-family: var(--font-sans);
+  font-size: 0.84rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #e2d7c8;
+  margin: 0;
+}
+
+.codex-header-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    rgba(212, 167, 84, 0.3) 0%,
+    transparent 100%
+  );
+}
+
+/* ---------------------------------------------------------------
+   ILLUMINATED SKILL ENTRIES & SEALS
+   --------------------------------------------------------------- */
+.codex-items-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Compact 2-column grid for short list items like spoken languages */
+.codex-items-grid--compact {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.codex-skill-card {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 10px 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(212, 167, 84, 0.16);
+  border-radius: 9px;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+}
+
+.codex-skill-card:hover {
+  background: rgba(212, 167, 84, 0.08);
+  border-color: rgba(212, 167, 84, 0.45);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(212, 167, 84, 0.18);
+}
+
+.codex-card-top {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 8px;
-  margin-bottom: 4px;
+  gap: 10px;
 }
 
-.entry-name {
+.codex-skill-name {
   font-family: var(--font-sans);
-  font-size: 0.95rem;
+  font-size: 0.94rem;
   font-weight: 700;
-  color: var(--paper-ink);
-  min-width: 0;
+  color: #ffffff;
+  margin: 0;
+  letter-spacing: -0.01em;
 }
 
-.entry-tag {
+.codex-skill-desc {
   font-family: var(--font-sans);
-  font-size: 0.68rem;
+  font-size: 0.82rem;
+  color: #c4b5a3;
+  line-height: 1.48;
+  margin: 0;
+}
+
+/* Technical Wax Seals / Foil Badges */
+.grimoire-seal {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
   font-weight: 700;
-  text-transform: uppercase;
   letter-spacing: 0.06em;
-  background: rgba(139, 74, 34, 0.1);
-  color: var(--paper-accent);
+  text-transform: uppercase;
   padding: 2px 8px;
-  border-radius: 3px;
-  border: 1px solid rgba(139, 74, 34, 0.2);
+  border-radius: 12px;
   flex-shrink: 0;
-  white-space: nowrap;
 }
 
-.entry-desc {
-  font-family: var(--font-journal);
-  font-size: 0.86rem;
-  line-height: 1.5;
-  color: var(--paper-text);
+.seal-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+}
+
+.seal-mastery {
+  background: rgba(212, 167, 84, 0.18);
+  border: 1px solid rgba(212, 167, 84, 0.45);
+  color: #ffd88a;
+  box-shadow: 0 0 10px rgba(212, 167, 84, 0.2);
+}
+
+.seal-mastery .seal-dot {
+  background: #ffd88a;
+  box-shadow: 0 0 6px #ffd88a;
+}
+
+.seal-advanced {
+  background: rgba(46, 125, 50, 0.22);
+  border: 1px solid rgba(76, 175, 80, 0.4);
+  color: #a5d6a7;
+  box-shadow: 0 0 10px rgba(46, 125, 50, 0.2);
+}
+
+.seal-advanced .seal-dot {
+  background: #2ed573;
+  box-shadow: 0 0 6px #2ed573;
+}
+
+.seal-proven {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(212, 167, 84, 0.24);
+  color: #d8cbbe;
+}
+
+.seal-proven .seal-dot {
+  background: var(--amber-brass);
 }
 
 /* ---------------------------------------------------------------
-   PAGE FOOTER
+   PAGE FOOTER BAR & TURN CONTROLS
    --------------------------------------------------------------- */
-.page-bottom-notes {
-  margin-top: auto;
-  padding-top: 12px;
-  border-top: 1px solid rgba(207, 189, 152, 0.4);
+.page-footer-bar {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 10px;
+  border-top: 1px solid rgba(212, 167, 84, 0.18);
+  margin-top: 8px;
+  flex-shrink: 0;
+}
+
+.page-footer-signature {
   font-family: var(--font-journal);
   font-style: italic;
   font-size: 0.78rem;
-  color: var(--paper-text-muted);
-  display: flex;
-  justify-content: space-between;
-  flex-shrink: 0;
+  color: #9d8c7a;
+}
+
+.page-flip-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(212, 167, 84, 0.3);
+  color: #e2d7c8;
+  font-family: var(--font-sans);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 5px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.page-flip-btn:hover {
+  background: rgba(212, 167, 84, 0.18);
+  border-color: var(--amber-brass);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(212, 167, 84, 0.3);
+}
+
+.page-flip-btn.btn-prev:hover {
+  transform: translateX(-3px);
+}
+
+.page-flip-btn.btn-next:hover {
+  transform: translateX(3px);
 }
 
 /* ---------------------------------------------------------------
-   RESPONSIVE
+   RESPONSIVE DESIGN (PC Focused >= 1024px)
    --------------------------------------------------------------- */
-@media (max-width: 900px) {
-  .grand-open-book {
-    grid-template-columns: 1fr;
-    border-width: 6px;
+@media (max-width: 1200px) {
+  .skills-room {
+    padding: 16px 20px;
   }
-  .book-center-spine {
-    display: none;
-  }
-  .book-cover-edge {
-    display: none;
-  }
-  .page--left {
-    border-right: none;
-    border-bottom: 2px dashed var(--paper-border);
-  }
-  .page-inner-scroll {
-    padding: 20px 24px !important;
+  .grimoire-page {
+    padding: 14px 22px 10px 22px;
   }
 }

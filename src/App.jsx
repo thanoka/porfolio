@@ -1,132 +1,233 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback, useEffect, useRef } from 'react';
 import portfolioData from './data/portfolioData';
 import RoomNavigator from './components/RoomNavigator';
-import FullscreenButton from './components/FullscreenButton';
 import RotateOverlay from './components/RotateOverlay';
 import AboutRoom from './components/rooms/AboutRoom';
 import SkillsRoom from './components/rooms/SkillsRoom';
 import ProjectsRoom from './components/rooms/ProjectsRoom';
 import ExperienceRoom from './components/rooms/ExperienceRoom';
+import useScrollReveal from './hooks/useScrollReveal';
+import GithubIcon from './components/icons/GithubIcon';
 import './components/css/App.css';
+import './components/css/ScrollAnimations.css';
+
+const SECTION_IDS = ['about', 'skills', 'projects', 'experience'];
 
 export default function App() {
-  const [currentRoomIndex, setCurrentRoomIndex] = useState(0);
-  const [turnDirection, setTurnDirection] = useState('none');
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState(0);
+  const scrollContainerRef = useRef(null);
 
-  const { roomMetadata, profile } = portfolioData;
-  const currentRoom = roomMetadata[currentRoomIndex];
+  const { roomMetadata, profile, navbarConfig, social } = portfolioData;
 
   // Dynamically sync web title
   useEffect(() => {
     document.title = `${profile.name} — ${profile.role} | Portfolio`;
   }, [profile.name, profile.role]);
 
-  const handleNavigate = useCallback((newIndex, direction = 'right') => {
-    setTurnDirection(direction);
-    setCurrentRoomIndex(newIndex);
-  }, []);
-
   const handleModalStateChange = useCallback((isOpen) => {
     setIsModalOpen(isOpen);
+    // Prevent scroll when modal is open
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  }, []);
+
+  // Track which section is in view via scroll position & update URL hash in address bar
+  useEffect(() => {
+    let lastSectionId = '';
+
+    const handleScroll = () => {
+      let currentIdx = 0;
+
+      for (let i = SECTION_IDS.length - 1; i >= 0; i--) {
+        const el = document.getElementById(SECTION_IDS[i]);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          // Section is active if its top has scrolled above 45% of viewport
+          if (rect.top <= window.innerHeight * 0.45) {
+            currentIdx = i;
+            break;
+          }
+        }
+      }
+
+      setActiveSection(currentIdx);
+
+      const newSectionId = SECTION_IDS[currentIdx];
+      if (newSectionId && newSectionId !== lastSectionId) {
+        lastSectionId = newSectionId;
+        // Update browser URL (Https src) without jumping or cluttering history
+        if (window.location.hash !== `#${newSectionId}`) {
+          window.history.replaceState(null, '', `#${newSectionId}`);
+        }
+      }
+    };
+
+    // If user loaded with a hash in URL (e.g. #projects), scroll to that section
+    const initialHash = window.location.hash.replace('#', '');
+    if (initialHash && SECTION_IDS.includes(initialHash)) {
+      setTimeout(() => {
+        const targetEl = document.getElementById(initialHash);
+        if (targetEl) {
+          targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 120);
+    } else {
+      handleScroll();
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Initialize scroll-reveal animations
+  useScrollReveal(scrollContainerRef);
+
+  const handleNavigateToSection = useCallback((index) => {
+    const id = SECTION_IDS[index];
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      // Update browser URL hash immediately on click
+      window.history.replaceState(null, '', `#${id}`);
+    }
   }, []);
 
   return (
-    <div className={`cabin-app-viewport ${isModalOpen ? 'modal-active' : ''}`}>
+    <div
+      ref={scrollContainerRef}
+      className={`cabin-app-viewport ${isModalOpen ? 'modal-active' : ''}`}
+    >
       {/* Minimal Ambient Rain Background Animation */}
       <div className="cabin-minimal-rain-bg" aria-hidden="true">
         <div className="ambient-rain-layer ambient-rain--layer1" />
         <div className="ambient-rain-layer ambient-rain--layer2" />
       </div>
 
-      {/* Top Cabin HUD Header */}
+      {/* Sticky Cabin HUD Header */}
       <header className={`cabin-hud-header ${isModalOpen ? 'modal-hidden' : ''}`} role="banner">
         <div className="hud-left">
-          <div className="hud-cabin-seal" aria-hidden="true">
-            <span className="seal-flame" />
-          </div>
-          <div className="hud-identity">
-            <span className="hud-title">{profile.name}</span>
-            <span className="hud-subtitle">Rainforest Cabin Portfolio • {profile.role}</span>
-          </div>
+          <button
+            type="button"
+            className="hud-brand-btn"
+            onClick={() => handleNavigateToSection(0)}
+            aria-label="Navigate to top (About)"
+          >
+            <div className="hud-cabin-seal" aria-hidden="true">
+              <span className="seal-monogram">{navbarConfig?.brandInitials || profile.avatarBadge || 'TA'}</span>
+            </div>
+            <div className="hud-identity">
+              <span className="hud-title">{navbarConfig?.brandTitle || profile.name}</span>
+              <span className="hud-subtitle">{navbarConfig?.brandRole || profile.role}</span>
+            </div>
+          </button>
         </div>
 
         <div className="hud-center">
-          <div className="hud-wall-indicator" role="status" aria-label={`Current Wall: ${currentRoom.duty || currentRoom.name}`}>
-            <span className="hud-wall-prefix">Wall {currentRoomIndex + 1} of {roomMetadata.length}</span>
-            <span className="hud-wall-sep">•</span>
-            <span className="hud-wall-name">{currentRoom.duty || currentRoom.name}</span>
-          </div>
+          <nav className="hud-section-nav" aria-label="Section navigation">
+            {roomMetadata.map((room, idx) => (
+              <button
+                key={room.id}
+                type="button"
+                className={`hud-section-link ${idx === activeSection ? 'active' : ''}`}
+                onClick={() => handleNavigateToSection(idx)}
+              >
+                <span className="hud-link-numeral">{room.crest || ['I', 'II', 'III', 'IV'][idx]}</span>
+                <span className="hud-link-text">{room.duty || room.name}</span>
+                {idx === activeSection && <span className="hud-active-glow-dot" aria-hidden="true" />}
+              </button>
+            ))}
+          </nav>
         </div>
 
         <div className="hud-right">
-          <FullscreenButton />
+          {navbarConfig?.statusBeacon && (
+            <div className="hud-status-pill">
+              <span
+                className="hud-status-beacon"
+                style={{
+                  backgroundColor: navbarConfig.statusBeacon.color || '#55efc4',
+                  boxShadow: `0 0 8px ${navbarConfig.statusBeacon.color || '#55efc4'}`,
+                }}
+                aria-hidden="true"
+              />
+              <span className="hud-status-text">{navbarConfig.statusBeacon.header}</span>
+            </div>
+          )}
+
+          {navbarConfig?.quickAction && (
+            <button
+              type="button"
+              className="hud-quick-action-btn"
+              onClick={() => handleNavigateToSection(3)}
+              style={{ '--action-color': navbarConfig.quickAction.color || '#d4a754' }}
+            >
+              <span>{navbarConfig.quickAction.detail || navbarConfig.quickAction.header}</span>
+            </button>
+          )}
+
+          {social?.github && (
+            <a
+              href={social.github}
+              target="_blank"
+              rel="noreferrer"
+              className="hud-icon-btn"
+              aria-label="GitHub Profile"
+              title="GitHub Profile"
+            >
+              <GithubIcon size={16} />
+            </a>
+          )}
         </div>
       </header>
 
-      {/* Main 4-Wall Interactive Room Chamber (Expanded to 95% Screen Space) */}
-      <main className="cabin-room-stage" role="main">
-        {/* Wall 0: The Hearth (About & Education) */}
-        <div
-          className={`room-wall-slot ${currentRoomIndex === 0 ? 'active' : ''} turn-${turnDirection}`}
-          aria-hidden={currentRoomIndex !== 0}
-          tabIndex={currentRoomIndex === 0 ? 0 : -1}
-        >
-          {currentRoomIndex === 0 && <AboutRoom />}
-        </div>
+      {/* Scrollable Content Sections */}
+      <main className="cabin-scroll-content" role="main">
+        {/* Section 1: About */}
+        <section id="about" className="cabin-scroll-section">
+          <AboutRoom />
+        </section>
 
-        {/* Wall 1: The Study (Open Field Journal & Skills) */}
-        <div
-          className={`room-wall-slot ${currentRoomIndex === 1 ? 'active' : ''} turn-${turnDirection}`}
-          aria-hidden={currentRoomIndex !== 1}
-          tabIndex={currentRoomIndex === 1 ? 0 : -1}
-        >
-          {currentRoomIndex === 1 && <SkillsRoom />}
-        </div>
+        <div className="scroll-section-divider" aria-hidden="true" />
 
-        {/* Wall 2: The Library (Full-Width Bookshelf & Projects) */}
-        <div
-          className={`room-wall-slot ${currentRoomIndex === 2 ? 'active' : ''} turn-${turnDirection}`}
-          aria-hidden={currentRoomIndex !== 2}
-          tabIndex={currentRoomIndex === 2 ? 0 : -1}
-        >
-          {currentRoomIndex === 2 && (
-            <ProjectsRoom onModalStateChange={handleModalStateChange} />
-          )}
-        </div>
+        {/* Section 2: Skills */}
+        <section id="skills" className="cabin-scroll-section">
+          <SkillsRoom />
+        </section>
 
-        {/* Wall 3: The Field Board (Pinned Corkboard & Experience) */}
-        <div
-          className={`room-wall-slot ${currentRoomIndex === 3 ? 'active' : ''} turn-${turnDirection}`}
-          aria-hidden={currentRoomIndex !== 3}
-          tabIndex={currentRoomIndex === 3 ? 0 : -1}
-        >
-          {currentRoomIndex === 3 && <ExperienceRoom />}
-        </div>
+        <div className="scroll-section-divider" aria-hidden="true" />
 
-        {/* Point & Click Wall Navigator (Left & Right Edge Arrows + Center Compass) */}
-        <RoomNavigator
-          currentRoomIndex={currentRoomIndex}
-          onNavigate={handleNavigate}
-          isModalOpen={isModalOpen}
-        />
+        {/* Section 3: Projects */}
+        <section id="projects" className="cabin-scroll-section">
+          <ProjectsRoom onModalStateChange={handleModalStateChange} />
+        </section>
 
-        {/* Navigation Tip at Bottom Left */}
-        <aside className={`hud-nav-tip ${isModalOpen ? 'modal-hidden' : ''}`} aria-label="Navigation Guide">
-          <div className="tip-keys">
-            <kbd className="tip-kbd">←</kbd>
-            <kbd className="tip-kbd">→</kbd>
+        <div className="scroll-section-divider" aria-hidden="true" />
+
+        {/* Section 4: Experience */}
+        <section id="experience" className="cabin-scroll-section">
+          <ExperienceRoom />
+        </section>
+
+        {/* Footer */}
+        <footer className="cabin-scroll-footer" role="contentinfo">
+          <div className="footer-inner">
+            <span className="footer-flame" aria-hidden="true" />
+            <span className="footer-text">{profile.name} • {profile.role}</span>
+            <span className="footer-note">{profile.footerNote || 'Built with care in the Rainforest Cabin'}</span>
+            <span className="footer-flame" aria-hidden="true" />
           </div>
-          <span className="tip-divider" aria-hidden="true">or</span>
-          <div className="tip-keys">
-            <kbd className="tip-kbd">A</kbd>
-            <kbd className="tip-kbd">D</kbd>
-          </div>
-          <span className="tip-label">Turn Walls</span>
-        </aside>
+        </footer>
       </main>
 
-      {/* Mobile Portrait Orientation Overlay */}
+      {/* Floating Section Dot Navigator (Right Edge) */}
+      <RoomNavigator
+        activeSection={activeSection}
+        onNavigate={handleNavigateToSection}
+        isModalOpen={isModalOpen}
+        sectionNames={roomMetadata.map((r) => r.duty || r.name)}
+      />
+
+      {/* PC-Only Overlay (blocks screens < 1024px) */}
       <RotateOverlay />
     </div>
   );

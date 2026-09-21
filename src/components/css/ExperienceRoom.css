@@ -1,21 +1,22 @@
-/* Wall 4: The Field Board & Experience (Experience Room) - 95% Scale */
+/* ==========================================================================
+   Wall 4: The Field Board & Experience (Overhauled Expedition Command Center)
+   Aesthetic: Dark Obsidian Timber, Warm Brass Inlays, Glowing Telemetry & Cards
+   ========================================================================== */
 
 .experience-room {
   position: relative;
   width: 100%;
-  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 14px 86px 82px;
-  overflow: hidden;
+  padding: 40px 86px;
 }
 
 .board-ambient-light {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: radial-gradient(circle at 60% 40%, rgba(255, 186, 59, 0.08) 0%, transparent 60%);
+  background: radial-gradient(circle at 65% 35%, rgba(212, 167, 84, 0.08) 0%, transparent 65%);
 }
 
 .experience-room-layout {
@@ -23,337 +24,655 @@
   z-index: 2;
   width: 100%;
   max-width: 1560px;
-  height: 100%;
-  max-height: calc(100vh - 155px);
   display: flex;
   justify-content: center;
 }
 
-/* Heavy Timber Framed Corkboard */
-.field-corkboard-frame {
+/* Heavy Polished Obsidian-Timber Cabinet Frame */
+.field-command-cabinet {
+  position: relative;
   width: 100%;
-  background: #3b2314;
-  border: 8px solid #5a3821;
+  background: linear-gradient(165deg, rgba(24, 15, 10, 0.96) 0%, rgba(13, 8, 5, 0.98) 100%);
+  border: 2px solid rgba(212, 167, 84, 0.35);
   border-radius: 12px;
-  box-shadow: 
-    0 24px 70px rgba(0, 0, 0, 0.85),
-    inset 0 0 12px rgba(0, 0, 0, 0.8);
-  padding: 24px 28px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-/* Corkboard Header Plaque */
-.corkboard-header {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  background: rgba(18, 11, 7, 0.88);
-  border: 1px solid var(--wood-border);
-  padding: 8px 24px;
-  border-radius: 6px;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
-  width: fit-content;
-}
-
-.field-crest-numeral {
-  font-family: var(--font-serif);
-  font-size: 1.6rem;
-  font-weight: 800;
-  color: var(--amber-brass);
-}
-
-.field-titles {
-  display: flex;
-  flex-direction: column;
-}
-
-.field-eyebrow {
-  font-family: var(--font-sans);
-  font-size: 0.74rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: var(--amber-brass);
-}
-
-.field-main-title {
-  font-family: var(--font-serif);
-  font-size: 1.6rem;
-  font-weight: 700;
-  color: #fff;
-  line-height: 1.2;
-}
-
-/* Corkboard Surface Pattern */
-.cork-surface {
-  flex: 1;
-  background: 
-    radial-gradient(circle at 50% 50%, rgba(200, 130, 70, 0.16) 0%, transparent 60%),
-    repeating-linear-gradient(45deg, rgba(60, 35, 20, 0.16) 0px, rgba(60, 35, 20, 0.16) 2px, transparent 2px, transparent 6px),
-    #956439;
-  border: 3px solid #2e1a0e;
-  border-radius: 8px;
-  box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.65);
-  padding: 32px 36px;
-  display: grid;
-  grid-template-columns: 1.25fr 0.75fr;
-  gap: 36px;
-  overflow-y: auto;
-}
-
-/* Left: Pinned Experience Cards */
-.pinned-notes-column {
+  box-shadow:
+    0 24px 70px rgba(0, 0, 0, 0.92),
+    0 0 40px rgba(212, 167, 84, 0.06),
+    inset 0 1px 1px rgba(255, 235, 205, 0.15);
+  padding: 26px 30px;
   display: flex;
   flex-direction: column;
   gap: 18px;
 }
 
-.cork-section-tag {
+/* Corner Brass Bracket Accents */
+.cabinet-corner-brackets {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.corner-bracket {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border-color: rgba(212, 167, 84, 0.7);
+  border-style: solid;
+}
+
+.corner-bracket--tl {
+  top: 8px;
+  left: 8px;
+  border-width: 2px 0 0 2px;
+  border-top-left-radius: 6px;
+}
+
+.corner-bracket--tr {
+  top: 8px;
+  right: 8px;
+  border-width: 2px 2px 0 0;
+  border-top-right-radius: 6px;
+}
+
+.corner-bracket--bl {
+  bottom: 8px;
+  left: 8px;
+  border-width: 0 0 2px 2px;
+  border-bottom-left-radius: 6px;
+}
+
+.corner-bracket--br {
+  bottom: 8px;
+  right: 8px;
+  border-width: 0 2px 2px 0;
+  border-bottom-right-radius: 6px;
+}
+
+/* Cabinet Header Plaque */
+.cabinet-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  background: rgba(16, 10, 7, 0.9);
+  border: 1px solid rgba(212, 167, 84, 0.3);
+  padding: 10px 24px;
+  border-radius: 8px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
+}
+
+.cabinet-header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.cabinet-crest-seal {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #3d2415 0%, #150c07 100%);
+  border: 2px solid var(--amber-brass);
+  box-shadow:
+    inset 0 2px 4px rgba(0, 0, 0, 0.8),
+    0 0 14px rgba(212, 167, 84, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.crest-numeral {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--amber-brass);
+  letter-spacing: 0.05em;
+  text-shadow: 0 0 8px rgba(212, 167, 84, 0.5);
+}
+
+.cabinet-header-titles {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.cabinet-eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.74rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--amber-brass);
+  margin-bottom: 2px;
+}
+
+.cabinet-main-title {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+}
+
+.cabinet-header-badge {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(22, 13, 8, 0.8);
+  background: rgba(46, 125, 50, 0.16);
+  border: 1px solid rgba(85, 239, 196, 0.35);
+  color: #a8e6cf;
+  font-family: var(--font-sans);
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.badge-pulse-beacon {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #55efc4;
+  box-shadow: 0 0 8px #55efc4;
+  animation: beaconPulse 2s infinite ease-in-out;
+}
+
+@keyframes beaconPulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.4); opacity: 0.6; }
+}
+
+/* Inner Expedition Surface Grid */
+.cabinet-surface-grid {
+  flex: 1;
+  background:
+    radial-gradient(ellipse at 50% 10%, rgba(212, 167, 84, 0.06) 0%, transparent 60%),
+    linear-gradient(rgba(212, 167, 84, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(212, 167, 84, 0.025) 1px, transparent 1px),
+    #110b07;
+  background-size: 100% 100%, 32px 32px, 32px 32px;
+  border: 2px solid rgba(212, 167, 84, 0.2);
+  border-radius: 8px;
+  box-shadow: inset 0 0 35px rgba(0, 0, 0, 0.85);
+  padding: 26px 30px;
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr;
+  gap: 32px;
+  overflow-y: auto;
+}
+
+/* Left Column: Milestones Stream */
+.cabinet-stream-column {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-align: left;
+}
+
+.column-section-header {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(22, 14, 9, 0.85);
   border: 1px solid rgba(212, 167, 84, 0.35);
   color: var(--amber-brass);
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   font-family: var(--font-sans);
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
   padding: 6px 14px;
   border-radius: 4px;
   width: fit-content;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
 }
 
-.pin-tag-icon {
+.column-tag-icon {
   color: var(--amber-flame);
 }
 
-.pinned-cards-stack {
+.milestones-stack {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-.pinned-note-card {
+/* Frosted Obsidian Milestone Card */
+.milestone-card {
   position: relative;
-  background: var(--paper-bg);
-  color: var(--paper-text);
-  border-radius: 4px;
-  padding: 28px 26px;
-  box-shadow: 
-    0 12px 28px rgba(0, 0, 0, 0.45),
-    0 1px 3px rgba(0, 0, 0, 0.3);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.pinned-note-card--experience {
-  transform: rotate(-0.6deg);
-  border-left: 5px solid var(--green-accent);
-}
-
-.pinned-note-card--experience:hover {
-  transform: rotate(0deg) translateY(-4px);
-  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.55);
-}
-
-.brass-pushpin {
-  position: absolute;
-  top: -9px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 16px;
-  height: 16px;
-  z-index: 10;
-}
-
-.pushpin-head {
-  display: block;
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 35% 35%, #ffd480, #c89532, #6b4d13);
-  border: 1px solid #4a340b;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
-}
-
-.pushpin-shadow {
-  position: absolute;
-  bottom: -4px;
-  left: 3px;
-  width: 12px;
-  height: 5px;
-  border-radius: 50%;
-  background: rgba(0, 0, 0, 0.45);
-  filter: blur(1px);
-}
-
-.brass-pushpin--amber .pushpin-head {
-  background: radial-gradient(circle at 35% 35%, #ffb347, #d96d1e, #7a3507);
-}
-
-.note-meta-row {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 10px;
+  background: linear-gradient(145deg, rgba(25, 17, 12, 0.85) 0%, rgba(16, 11, 8, 0.95) 100%);
+  border: 1px solid rgba(212, 167, 84, 0.22);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow:
+    0 12px 28px rgba(0, 0, 0, 0.6),
+    inset 0 1px 1px rgba(255, 235, 205, 0.08);
+  transition: transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
 }
 
-.note-period-badge {
-  font-family: var(--font-serif);
-  font-size: 0.88rem;
-  font-weight: 700;
-  color: var(--paper-accent);
-  letter-spacing: 0.05em;
+.milestone-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(212, 167, 84, 0.45);
+  box-shadow:
+    0 18px 40px rgba(0, 0, 0, 0.75),
+    0 0 24px rgba(212, 167, 84, 0.15);
 }
 
-.note-location-stamp {
-  font-family: var(--font-sans);
-  font-size: 0.78rem;
-  color: var(--paper-text-muted);
-  font-style: italic;
-}
-
-.note-role-title {
-  font-family: var(--font-serif);
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: var(--paper-ink);
-  line-height: 1.25;
-}
-
-.note-org-title {
-  font-family: var(--font-sans);
-  font-size: 0.96rem;
-  font-weight: 600;
-  color: var(--green-deep);
-  margin-bottom: 14px;
-}
-
-.note-highlights-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.note-highlight-bullet {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  font-family: var(--font-journal);
-  font-size: 1rem;
-  line-height: 1.55;
-  color: var(--paper-text);
-}
-
-.bullet-check {
-  color: var(--green-accent);
+.milestone-accent-strip {
+  width: 4px;
   flex-shrink: 0;
-  margin-top: 4px;
+  border-radius: 4px 0 0 4px;
+  box-shadow: 0 0 10px var(--milestone-color);
 }
 
-/* Right: Currently Learning Note & Natural Contact Desk */
-.pinned-sidebar-column {
+.milestone-card-inner {
+  flex: 1;
+  padding: 22px 24px;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 12px;
+  text-align: left;
 }
 
-.pinned-note-card--learning {
-  transform: rotate(0.8deg);
-  background: #fdf8eb;
-  border: 1px dashed var(--paper-border);
-}
-
-.pinned-note-card--learning:hover {
-  transform: rotate(0deg) translateY(-4px);
-}
-
-.masking-tape-strip {
-  position: absolute;
-  top: -10px;
-  right: 28px;
-  width: 70px;
-  height: 22px;
-  background: rgba(255, 248, 220, 0.7);
-  border: 1px solid rgba(210, 195, 160, 0.5);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
-  transform: rotate(-3deg);
-  pointer-events: none;
-}
-
-.learning-header {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 12px;
-}
-
-.learning-icon {
-  color: var(--amber-flame);
-}
-
-.learning-title {
-  font-family: var(--font-serif);
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: var(--paper-ink);
-}
-
-.learning-body-text {
-  font-family: var(--font-journal);
-  font-size: 1.04rem;
-  line-height: 1.65;
-  color: var(--paper-text);
-  margin-bottom: 16px;
-}
-
-.learning-footer {
+.milestone-meta-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-top: 1px dashed var(--paper-border);
-  padding-top: 10px;
+  gap: 12px;
 }
 
-.learning-timestamp {
-  font-family: var(--font-sans);
-  font-size: 0.76rem;
-  color: var(--paper-text-muted);
-  font-weight: 600;
+.milestone-period-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(212, 167, 84, 0.25);
+  padding: 4px 11px;
+  border-radius: 14px;
+  font-family: var(--font-serif);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #eeddbb;
   letter-spacing: 0.04em;
 }
 
-.sparkle-active {
-  color: var(--amber-flame);
+.period-beacon {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  display: inline-block;
 }
 
-.field-contact-container {
+.period-icon {
+  color: var(--amber-bright);
+}
+
+.milestone-role-badge {
+  font-family: var(--font-sans);
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 3px 10px;
+  border-radius: 4px;
+  border: 1px solid;
+}
+
+.milestone-role-title {
+  font-family: var(--font-serif);
+  font-size: 1.28rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.3;
+  margin: 0;
+  letter-spacing: 0.015em;
+}
+
+.milestone-org-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.milestone-org-name {
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--amber-brass);
+}
+
+.org-divider {
+  color: rgba(212, 167, 84, 0.4);
+  font-size: 0.8rem;
+}
+
+.milestone-location-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  color: #a89a87;
+  font-style: italic;
+}
+
+.location-pin-icon {
+  color: var(--amber-bright);
+}
+
+/* Tech Stack Chips */
+.milestone-tech-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 2px 0;
+}
+
+.milestone-chip {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(212, 167, 84, 0.2);
+  color: #dfd2be;
+  font-family: var(--font-sans);
+  font-size: 0.74rem;
+  font-weight: 500;
+  padding: 3px 9px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.milestone-chip:hover {
+  background: rgba(212, 167, 84, 0.12);
+  border-color: var(--amber-brass);
+  color: #fff;
+}
+
+/* Highlights List */
+.milestone-highlights-list {
+  list-style: none;
   display: flex;
   flex-direction: column;
+  gap: 9px;
+  margin: 4px 0 0 0;
+  padding: 0;
+}
+
+.milestone-highlight-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  line-height: 1.58;
+  color: #d6c8b4;
+  text-align: left;
+}
+
+.highlight-check-icon {
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+/* Cross-Link Action */
+.milestone-footer-action {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 4px;
+  padding-top: 10px;
+  border-top: 1px dashed rgba(212, 167, 84, 0.16);
+}
+
+.milestone-project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid;
+  color: #f5edd6;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  padding: 6px 14px;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: all 0.22s ease;
+}
+
+.milestone-project-link:hover {
+  background: rgba(212, 167, 84, 0.18);
+  border-color: var(--amber-brass) !important;
+  color: #fff;
+  transform: translateX(2px);
+}
+
+.link-arrow-icon {
+  transition: transform 0.2s ease;
+}
+
+.milestone-project-link:hover .link-arrow-icon {
+  transform: translate(2px, -2px);
+}
+
+/* Right Column: Research Telemetry & Cabin Dispatch */
+.cabinet-telemetry-column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  text-align: left;
+}
+
+/* Research Telemetry Card */
+.telemetry-card {
+  position: relative;
+  background: linear-gradient(155deg, rgba(28, 18, 12, 0.9) 0%, rgba(16, 10, 7, 0.95) 100%);
+  border: 1px solid rgba(255, 216, 138, 0.28);
+  border-radius: 8px;
+  padding: 22px 22px;
+  box-shadow:
+    0 12px 30px rgba(0, 0, 0, 0.65),
+    0 0 20px rgba(212, 167, 84, 0.08);
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.telemetry-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 216, 138, 0.45);
+}
+
+.telemetry-card-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-align: left;
+}
+
+.telemetry-header {
+  display: flex;
+  align-items: center;
   gap: 10px;
 }
 
-.field-contact-container .contact-card {
-  max-width: 100%;
+.telemetry-radar-beacon {
+  position: relative;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.contact-shelf-label {
+.telemetry-icon {
+  position: relative;
+  z-index: 2;
+}
+
+.telemetry-pulse {
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  border: 1px solid;
+  opacity: 0.5;
+  animation: radarPing 2.4s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+
+@keyframes radarPing {
+  0% { transform: scale(0.7); opacity: 0.8; }
+  100% { transform: scale(1.8); opacity: 0; }
+}
+
+.telemetry-title {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: 0.02em;
+}
+
+.telemetry-detail {
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  line-height: 1.62;
+  color: #ddd1be;
+  margin: 0;
+}
+
+.telemetry-tags-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 2px;
+}
+
+.telemetry-tag-pill {
+  background: rgba(255, 216, 138, 0.08);
+  border: 1px solid rgba(255, 216, 138, 0.24);
+  color: #ffe6ba;
+  font-family: var(--font-sans);
+  font-size: 0.74rem;
+  font-weight: 600;
+  padding: 3px 9px;
+  border-radius: 12px;
+  letter-spacing: 0.02em;
+}
+
+.telemetry-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px dashed rgba(255, 216, 138, 0.2);
+  padding-top: 10px;
+  margin-top: 4px;
+}
+
+.telemetry-status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #55efc4;
+  box-shadow: 0 0 6px #55efc4;
+}
+
+.telemetry-footer-text {
+  font-family: var(--font-sans);
+  font-size: 0.76rem;
+  color: #ad9a86;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-left: 8px;
+  margin-right: auto;
+}
+
+/* Cabin Dispatch Container */
+.cabinet-dispatch-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: left;
+}
+
+.dispatch-header-bar {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.dispatch-flame-icon {
+  flex-shrink: 0;
+}
+
+.dispatch-label-text {
   font-family: var(--font-sans);
   font-size: 0.76rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  color: #ebd7c1;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+.dispatch-detail-snippet {
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  line-height: 1.48;
+  color: #ab9a87;
+  margin: 0 0 4px 0;
+}
+
+.cabinet-dispatch-container .contact-card {
+  max-width: 100%;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 1200px) {
+  .cabinet-surface-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
 }
 
 @media (max-width: 1024px) {
-  .cork-surface {
-    grid-template-columns: 1fr;
-    gap: 24px;
+  .experience-room {
+    padding: 20px 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .experience-room {
+    padding: 10px 12px 60px;
+  }
+
+  .field-command-cabinet {
+    padding: 14px 14px;
+    gap: 12px;
+  }
+
+  .cabinet-header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 14px;
+    gap: 10px;
+  }
+
+  .cabinet-main-title {
+    font-size: 1.2rem;
+  }
+
+  .cabinet-surface-grid {
+    padding: 16px 14px;
+    gap: 16px;
+  }
+
+  .milestone-role-title {
+    font-size: 1.12rem;
+  }
+
+  .milestone-highlight-item {
+    font-size: 0.86rem;
   }
 }

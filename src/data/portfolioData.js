@@ -1,28 +1,35 @@
+// Portfolio content revision: 22 September 2026.
+// Standalone replacement for the uploaded portfolioData.js.
+// Evidence: https://www.thannava.site and https://github.com/thanoka
+// Project claims are based on repository inspection, not runtime certification.
+// Education institution names, dates and GPA need owner confirmation.
+// rating: null means "not rated". See portfolio-review.md for UI fallbacks
+// that must be removed to prevent the current components from showing 5 stars.
+
 export const portfolioData = {
-  // Profile Information
   profile: {
     name: "Thannava Auamyam",
     role: "Aspiring AI & Systems Engineer",
-    focus: "AI Systems & Software Engineering",
+    focus: "AI Applications • Systems • Automation",
     location: "Bangkok, Thailand",
-    tagline: "My dream is create something that change the world",
-    bio: "Hello, and welcome. I'm Thannava Auamyam — a Software Developer with end-to-end capabilities across the full development lifecycle. From designing intuitive front-end interfaces and building robust back-end systems to managing DevOps pipelines and deployments, I operate comfortably at every layer of the stack. I don't just write code — I understand how a product is architected, built, shipped, and maintained. If you ask what my greatest strength is, the answer is simple: I learn fast, and I dream big. It may sound cliché, but that combination has defined every step of my career so far. New frameworks, unfamiliar infrastructure, emerging technologies — I thrive on the challenge of mastering them quickly and turning that knowledge into working solutions. A highlight of my journey so far: I single-handedly designed and built AI VISION, a complete AI-powered system, from concept to deployment. Leading an entire project independently taught me not only the technical craft, but also the discipline of making architectural decisions, owning outcomes, and thinking like a systems designer rather than just a coder. My long-term ambition goes beyond writing good software. I want to create something that genuinely improves people's lives — the way the inventor of the World Wide Web or the pioneers of computing changed the world. I believe technology should serve humanity, and I intend to be part of the generation that makes it happen. Currently, I'm deepening my expertise in Artificial Intelligence and software architecture — a demanding field where engineering rigor meets real-world responsibility. It's not the easy path, but I believe those who architect the systems of tomorrow carry a duty to build them thoughtfully. That's exactly where I want to be: at the frontier, solving hard problems that matter.",
+    tagline: "Turning complex logic into useful AI-powered tools.",
+    bio: "I'm a fourth-year Information Technology student in Bangkok with a full-stack development background. I enjoy designing how systems work, connecting their components, and building tools that solve practical problems. My main project, Lumi, combines computer vision, OCR, voice interaction, and graph-based navigation in a mobile prototype. JavaScript is my strongest language, and I use TypeScript and Python in my projects while continuing to strengthen my fluency. I'm seeking an internship in AI engineering, DevOps, or platform engineering where I can contribute to real systems and learn how to test, deploy, and operate them responsibly.",
     avatarBadge: "TA",
     avatarUrl: "",
-    summary: "Software developer with end-to-end capabilities across full-stack systems, multimodal AI architectures, and high-concurrency microservices. Driven by rapid learning velocity and systems rigor.",
-    workSummary: "Handcrafted four software volumes spanning autonomous indoor navigation AI, production SaaS dashboards, interactive narrative engines, and vanilla browser games.",
+    summary: "Fourth-year IT student building AI applications and multi-service prototypes with TypeScript, Python, and Docker. Interested in AI engineering, DevOps, and platform engineering internships.",
+    workSummary: "Selected projects in assistive AI, web application integration, game systems, and JavaScript fundamentals.",
     metrics: [
-      { val: "4", lbl: "Shipped Systems" },
-      { val: "Dual YOLO + OCR", lbl: "Spatial Vision AI" },
-      { val: "Full-Stack", lbl: "Architecture" },
+      { val: "4", lbl: "Selected Projects" },
+      { val: "Vision + Voice", lbl: "AI Integration" },
+      { val: "Docker", lbl: "Local Deployment" },
     ],
     primaryCta: "Explore Projects",
-    secondaryCta: "Get in Touch",
+    secondaryCta: "Discuss an Internship",
     aboutEyebrow: "ABOUT ME",
-    educationEyebrow: "EDUCATION JOURNEY",
-    workEyebrow: "MY WORK",
-    followEyebrow: "FOLLOW ME",
-    browsePortfolioLabel: "BROWSE PORTFOLIO",
+    educationEyebrow: "EDUCATION",
+    workEyebrow: "SELECTED WORK",
+    followEyebrow: "CONTACT & CODE",
+    browsePortfolioLabel: "EXPLORE THE PROJECTS",
     headerSubtitle: "Rainforest Cabin Portfolio",
     footerNote: "Built with care in the Rainforest Cabin",
   },
@@ -32,149 +39,139 @@ export const portfolioData = {
     github: "https://github.com/thanoka",
   },
 
-  // Navigation Bar Configuration (Overhauled HUD Header)
   navbarConfig: {
     brandInitials: "TA",
     brandTitle: "Thannava",
     brandRole: "Aspiring AI & Systems Engineer",
     brandSubtitle: "Rainforest Cabin Portfolio",
     statusBeacon: {
-      header: "Available for Hire & R&D",
-      detail: "Software & AI Systems",
-      color: "#55efc4", // Emerald Mint glow
+      header: "Seeking an Internship",
+      detail: "AI • DevOps • Platform",
+      color: "#55efc4",
     },
     quickAction: {
-      header: "Dispatch Slip",
-      detail: "Contact Slip ↗",
+      header: "Let's Talk",
+      detail: "Contact ↗",
       targetId: "experience",
-      color: "#d4a754", // Amber Gold
+      color: "#d4a754",
     },
   },
 
-  // Project Detail Modal Configuration (Overhauled Archive Folio)
   modalConfig: {
-    badgeText: "Cabin Archive • Project Volume",
-    statusBadge: "Verified Masterwork",
-    highlightsHeader: "Architectural Breakthroughs & Innovations",
-    meshHeader: "Decoupled Subsystems & Services Mesh",
-    techStackHeader: "Technologies & Infrastructure Stack",
-    fieldNotesHeader: "Engineering Field Notes & Architecture Deep-Dive",
-    githubButtonText: "Explore GitHub Repository",
-    docsButtonText: "Read Documentation & Specs",
-    closeTooltip: "Close Folio (Esc)",
-    imagePlaceholderLabel: "Project Visual Artwork",
+    badgeText: "Cabin Archive • Project Notes",
+    statusBadge: "Personal / Academic Project",
+    highlightsHeader: "Implementation Highlights",
+    meshHeader: "Components & Responsibilities",
+    techStackHeader: "Tools Used",
+    fieldNotesHeader: "Problem, Implementation & Limitations",
+    githubButtonText: "View Source Code",
+    docsButtonText: "Read Project Documentation",
+    closeTooltip: "Close Project (Esc)",
+    imagePlaceholderLabel: "Project Preview",
     color: "#d4a754",
     tabs: [
-      { id: "overview", label: "Architecture & Mesh", icon: "Layers" },
-      { id: "tech", label: "Technologies & Stack", icon: "Cpu" },
-      { id: "notes", label: "Engineering Field Notes", icon: "BookOpen" },
+      { id: "overview", label: "Overview & Components", icon: "Layers" },
+      { id: "tech", label: "Tools & Technologies", icon: "Cpu" },
+      { id: "notes", label: "Engineering Notes", icon: "BookOpen" },
     ],
   },
 
-  // The Library • Bookshelf & Showcase Deck Configuration
   bookshelfConfig: {
     crestNumeral: "III",
-    eyebrow: "The Library • Project Archives",
-    mainTitle: "Full Stack Works & Software Volumes",
-    infoBadgeText: "Click any volume or Pin to feature above • Inspect architecture & stack",
-    featuredBadge: "Featured Masterwork",
-    headline: "Curated Software Masterworks",
-    subline: "Select any tome on the shelf below to inspect its architecture, engineering decisions, and live stack.",
-    quickSelectLabel: "Quick Select:",
-    showcasedLabel: "Currently Showcased:",
-    openDossierButtonText: "Inspect Project Dossier",
-    sourceButtonText: "Source",
-    pedestalCueText: "Click Cover to Open Dossier",
-    engineeringFeatsEyebrow: "Engineering Feats",
-    systemArchitectureEyebrow: "System Architecture",
-    documentationButtonText: "Read Volume Documentation",
-    guidanceText: "Click any book or Pin to showcase its volume above and inspect live telemetry.",
-    verticalSpineText: "PROJECT VOLUMES",
-    pinButtonText: "Pin",
-    pinnedButtonText: "Pinned",
-    pinnedBadgeText: "PINNED",
-    clickToPinText: "CLICK TO PIN ↗",
-    coverOverlayText: "PIN",
-    coverOverlayHeroText: "OPEN DOSSIER",
+    eyebrow: "The Library • Selected Projects",
+    mainTitle: "AI Applications & Software Systems",
+    infoBadgeText: "Choose a project to explore its implementation",
+    featuredBadge: "Featured Project",
+    headline: "Selected Engineering Projects",
+    subline: "What I built, how the components fit together, and what still needs improvement.",
+    quickSelectLabel: "Choose a Project:",
+    showcasedLabel: "Currently Selected:",
+    openDossierButtonText: "Read Project Details",
+    sourceButtonText: "Source Code",
+    pedestalCueText: "Open Project Details",
+    engineeringFeatsEyebrow: "Implementation Highlights",
+    systemArchitectureEyebrow: "Components & Data Flow",
+    documentationButtonText: "Read Engineering Notes",
+    guidanceText: "Select a book to explore the project, its source code, and engineering notes.",
+    verticalSpineText: "SELECTED PROJECTS",
+    pinButtonText: "Select",
+    pinnedButtonText: "Selected",
+    pinnedBadgeText: "SELECTED",
+    clickToPinText: "SELECT PROJECT ↗",
+    coverOverlayText: "SELECT",
+    coverOverlayHeroText: "VIEW DETAILS",
   },
 
-  // Education Timeline
+  // Institution names and GPA omitted rather than publishing unconfirmed placeholders.
   education: [
     {
-      year: "2022",
-      title: "Graduated from ABC High School (Gifted Class)",
-      detail: "Gifted Class program with emphasis on advanced mathematics & science",
-      gpa: "3.38",
-    },
-    {
-      year: "2023 – Present",
-      title: "Studying Information Technology at DCE University",
-      detail: "Field of Study: Full Stack Development",
-      gpa: "In Progress",
+      year: "In progress",
+      title: "Information Technology Student",
+      detail: "Fourth-year student in Bangkok with a focus on full-stack development.",
+      gpa: "",
     },
   ],
 
-  // The Study • Field Journal 2.0 (Option 2 - Modern Dark Grimoire)
   skillsGrimoire: {
-    sectionEyebrow: "The Study • Field Journal 2.0",
-    sectionTitle: "Technical Compendium & Codex",
+    sectionEyebrow: "The Study • Skills & Development",
+    sectionTitle: "AI, Systems & Engineering Foundations",
     crestNumeral: "II",
-    ariaLabel: "The Study & Field Journal 2.0",
-    turnBackLabel: "Turn Back",
-    nextFolioLabel: "Next Folio",
+    ariaLabel: "Project Skills and Planned Learning",
+    turnBackLabel: "Previous",
+    nextFolioLabel: "Next",
     signatureSuffix: "Field Desk Bangkok",
     folios: [
       {
         id: "ai-vision",
         numeral: "FOLIO I",
-        header: "Folio I · AI & Vision",
-        detail: "Spatial Vision AI, Multi-Frame YOLO Inference & Neural Pipeline Architecture",
-        color: "#d4a754", // Amber Gold
+        header: "Folio I · Applied AI",
+        detail: "Model integration, vision pipelines, voice interfaces, and application logic",
+        color: "#d4a754",
         icon: "Cpu",
         leftPage: {
           chapterNum: "CAP. 01",
-          title: "Spatial Vision & Decision Loops",
+          title: "Computer Vision & Perception",
           folioNum: "p. 14",
           sections: [
             {
-              title: "Spatial Computer Vision & Detection",
+              title: "Vision Pipeline Integration",
               num: "1.1",
               items: [
                 {
-                  header: "YOLO (Ultralytics)",
-                  detail: "Dual-model inference pipeline: safety object detector plus dedicated text-region detector with bounding-box area ratios.",
-                  badge: "Core Mastery",
+                  header: "YOLO / Ultralytics",
+                  detail: "Integrated object and text-region detectors in Lumi's Python backend. Used detections as inputs to navigation logic.",
+                  badge: "Project Use",
                   color: "#ffd88a",
                 },
                 {
-                  header: "Computer Vision (AI Vision Systems)",
-                  detail: "Real-time edge perception with latency-tuned frame capture, bounding box geometry, and 9-cell spatial grid mapping.",
-                  badge: "Core Mastery",
+                  header: "Google Cloud Vision OCR",
+                  detail: "Cropped detected sign regions before OCR and passed recognized text into landmark matching.",
+                  badge: "Project Use",
                   color: "#ffd88a",
                 },
                 {
-                  header: "OCR & Text Recognition",
-                  detail: "Dedicated YOLO text-region detector feeding cropped sign regions to Google Cloud Vision OCR with dictionary matching.",
-                  badge: "Advanced",
-                  color: "#2ed573",
+                  header: "Detection Post-processing",
+                  detail: "Mapped bounding boxes to a nine-cell frame grid and calculated image-area ratios for heuristic warning rules.",
+                  badge: "Project Use",
+                  color: "#ffd88a",
                 },
               ],
             },
             {
-              title: "Multimodal Fusion & Spatial Graphs",
+              title: "From Perception to Decisions",
               num: "1.2",
               items: [
                 {
-                  header: "Multimodal AI Orchestration",
-                  detail: "Weighted multi-signal scoring fusing vision detections, OCR strings, and spatial coordinates into one unified state.",
-                  badge: "Core Mastery",
+                  header: "Landmark Matching",
+                  detail: "Combined OCR text, detected labels, and expected frame positions to score candidate map locations.",
+                  badge: "Project Use",
                   color: "#ffd88a",
                 },
                 {
-                  header: "Graph Algorithms & Spatial Reasoning",
-                  detail: "BFS shortest-path routing over floor-plan graphs, weighted visual self-localization scoring, and drift correction.",
-                  badge: "Advanced",
-                  color: "#2ed573",
+                  header: "AI Integration Scope",
+                  detail: "Focus on connecting existing models and APIs with application logic, user interactions, and service boundaries.",
+                  badge: "Current Scope",
+                  color: "#d8cbbe",
                 },
               ],
             },
@@ -182,48 +179,42 @@ export const portfolioData = {
         },
         rightPage: {
           chapterNum: "CAP. 02",
-          title: "Voice AI, NLP & Cloud Inference",
+          title: "LLM & Voice Interfaces",
           folioNum: "p. 15",
           sections: [
             {
-              title: "Natural Language & Speech Loops",
+              title: "Language Model Integration",
               num: "2.1",
               items: [
                 {
-                  header: "Natural Language Processing (NLP)",
-                  detail: "Thai NLP: spoken intent extraction, fuzzy entity resolution mapping utterances to map nodes, and structured JSON output.",
-                  badge: "Core Mastery",
+                  header: "LLM APIs / OpenRouter",
+                  detail: "Used an LLM to turn navigation events into Thai guidance and map spoken destinations to map-node identifiers.",
+                  badge: "Project Use",
                   color: "#ffd88a",
                 },
                 {
-                  header: "Speech Interfaces (ASR & TTS)",
-                  detail: "16 kHz mono WAV audio capture, Thai speech recognition, and priority queue speech synthesis with prosody modulation.",
-                  badge: "Advanced",
-                  color: "#2ed573",
-                },
-                {
-                  header: "Prompt & Persona Engineering",
-                  detail: "Urgency-aware LLM persona with strict JSON output schemas, intensity scoring, and rule-based fallback recovery.",
-                  badge: "Production",
-                  color: "#d8cbbe",
+                  header: "Response Parsing & Fallbacks",
+                  detail: "Implemented JSON parsing, response-field handling, and Thai fallback templates. Strict output validation remains an improvement target.",
+                  badge: "Project Use",
+                  color: "#ffd88a",
                 },
               ],
             },
             {
-              title: "Cloud Inference Pipelines",
+              title: "Voice Interaction",
               num: "2.2",
               items: [
                 {
-                  header: "LLM Integration (OpenRouter / Llama 3.3 70B)",
-                  detail: "Streaming navigation prompts to OpenRouter with low-latency completion and deterministic fallback rules.",
-                  badge: "Core Mastery",
+                  header: "SpeechRecognition & FFmpeg",
+                  detail: "Integrated Thai transcription through SpeechRecognition's Google recognizer and audio conversion through FFmpeg.",
+                  badge: "Project Use",
                   color: "#ffd88a",
                 },
                 {
-                  header: "Google Cloud Vision OCR & Speech-to-Text",
-                  detail: "Service-account auth, cropped sign OCR optimization, and cloud speech transcription pipelines.",
-                  badge: "Production",
-                  color: "#d8cbbe",
+                  header: "Text-to-Speech & Event Priority",
+                  detail: "Built queued speech, interruption rules, intensity-based rate and pitch, and haptic feedback for Lumi.",
+                  badge: "Project Use",
+                  color: "#ffd88a",
                 },
               ],
             },
@@ -233,36 +224,48 @@ export const portfolioData = {
       {
         id: "fullstack-systems",
         numeral: "FOLIO II",
-        header: "Folio II · Full-Stack",
-        detail: "Reactive Interfaces, Modern App Routers & Resilient Service Contracts",
-        color: "#2e7d32", // Emerald Green
+        header: "Folio II · Systems",
+        detail: "Programming foundations, state transitions, service boundaries, and data",
+        color: "#2e7d32",
         icon: "Layers",
         leftPage: {
           chapterNum: "CAP. 03",
-          title: "Modern Frontend & Reactive Engines",
+          title: "Languages & System Logic",
           folioNum: "p. 16",
           sections: [
             {
-              title: "Client Architecture & Frameworks",
+              title: "Programming Languages",
               num: "3.1",
               items: [
                 {
-                  header: "React 19 & React Native (Expo)",
-                  detail: "Expo SDK 54 / React Native 0.81 mobile assistant using expo-camera, expo-speech, and Reanimated gestures.",
-                  badge: "Core Mastery",
+                  header: "JavaScript",
+                  detail: "My strongest language. Used for browser game logic, DOM interactions, and web applications.",
+                  badge: "Primary",
                   color: "#ffd88a",
                 },
                 {
-                  header: "Next.js (App Router)",
-                  detail: "Server/client component boundaries, protected route groups, API route handlers, and Turbopack deployments.",
-                  badge: "Core Mastery",
-                  color: "#ffd88a",
+                  header: "TypeScript",
+                  detail: "Used for application logic, shared navigation types, and Node.js services. Continuing to strengthen independent fluency.",
+                  badge: "Working Use",
+                  color: "#d8cbbe",
                 },
                 {
-                  header: "Tailwind CSS 4 & Radix UI",
-                  detail: "Accessible headless UI components with class-variance-authority, custom design tokens, and smooth keyframes.",
-                  badge: "Advanced",
-                  color: "#2ed573",
+                  header: "Python",
+                  detail: "Used for inference endpoints, OCR integration, and audio processing. Continuing to deepen library and language knowledge.",
+                  badge: "Working Use",
+                  color: "#d8cbbe",
+                },
+              ],
+            },
+            {
+              title: "Logic & Data Structures",
+              num: "3.2",
+              items: [
+                {
+                  header: "Graphs & State Transitions",
+                  detail: "Implemented BFS routing, navigation states, event priorities, cooldowns, and rerouting over a hand-authored map.",
+                  badge: "Project Use",
+                  color: "#ffd88a",
                 },
               ],
             },
@@ -270,42 +273,42 @@ export const portfolioData = {
         },
         rightPage: {
           chapterNum: "CAP. 04",
-          title: "High-Concurrency APIs & Data Stores",
+          title: "Applications & Service Boundaries",
           folioNum: "p. 17",
           sections: [
             {
-              title: "Distributed Microservices & APIs",
+              title: "Backend Integration",
               num: "4.1",
               items: [
                 {
-                  header: "Express 5 / Hono / Node.js 20",
-                  detail: "REST microservice design, multipart uploads, OpenAPI schemas, and TypeScript execution with tsx.",
-                  badge: "Core Mastery",
+                  header: "Node.js / Express / Hono",
+                  detail: "Built HTTP endpoints for AI interactions and web applications, integrating external APIs and JSON responses.",
+                  badge: "Project Use",
                   color: "#ffd88a",
                 },
                 {
-                  header: "FastAPI & Flask",
-                  detail: "Stateless asynchronous Python inference servers served with Uvicorn for vision and audio transcription.",
-                  badge: "Advanced",
-                  color: "#2ed573",
+                  header: "FastAPI / Flask",
+                  detail: "Separated vision and speech processing into Python services with image and audio upload endpoints.",
+                  badge: "Project Use",
+                  color: "#ffd88a",
+                },
+                {
+                  header: "MongoDB & Application Data",
+                  detail: "Used document data for file records, subscriptions, player state, and game content across web projects.",
+                  badge: "Project Use",
+                  color: "#ffd88a",
                 },
               ],
             },
             {
-              title: "Data Modeling & Schemas",
+              title: "User-Facing Applications",
               num: "4.2",
               items: [
                 {
-                  header: "NoSQL (MongoDB & Mongoose)",
-                  detail: "Document-oriented schema validation, aggregation pipelines, and data access layers for authentication and wallets.",
-                  badge: "Production",
-                  color: "#d8cbbe",
-                },
-                {
-                  header: "Graph & JSON Data Structures",
-                  detail: "Custom JSON floor-plan graph contracts: node IDs, edge weights, landmark headings, and turn triggers.",
-                  badge: "Advanced",
-                  color: "#2ed573",
+                  header: "React / Next.js / React Native",
+                  detail: "Built web interfaces and an Expo mobile prototype to connect users with backend logic and AI services.",
+                  badge: "Project Use",
+                  color: "#ffd88a",
                 },
               ],
             },
@@ -315,61 +318,42 @@ export const portfolioData = {
       {
         id: "languages-tooling",
         numeral: "FOLIO III",
-        header: "Folio III · Tooling",
-        detail: "Polyglot Foundations, Cloudflare Tunnels & Container Orchestration",
-        color: "#c62828", // Crimson Red
+        header: "Folio III · Delivery",
+        detail: "Existing local deployment experience and clearly separated learning goals",
+        color: "#c62828",
         icon: "Terminal",
         leftPage: {
           chapterNum: "CAP. 05",
-          title: "Core Languages & Communication",
+          title: "Deployment & Development Tools",
           folioNum: "p. 18",
           sections: [
             {
-              title: "Primary Programming Languages",
+              title: "Tools Used in Projects",
               num: "5.1",
               items: [
                 {
-                  header: "TypeScript / JavaScript",
-                  detail: "Strict typing for service contracts, async event loops, and modern ESNext across web and Node services.",
-                  badge: "Core Mastery",
+                  header: "Docker & Docker Compose",
+                  detail: "Defined containers and local startup for Lumi's client and three backends using Dockerfiles and Compose.",
+                  badge: "Project Use",
                   color: "#ffd88a",
                 },
                 {
-                  header: "Python",
-                  detail: "Backend AI development: YOLO inference, Cloud Vision OCR, and ffmpeg audio normalization scripts.",
-                  badge: "Core Mastery",
+                  header: "Cloudflare Tunnels",
+                  detail: "Used temporary HTTPS tunnels to connect a physical phone to locally running backends during development.",
+                  badge: "Project Use",
                   color: "#ffd88a",
                 },
                 {
-                  header: "HTML5 & CSS3",
-                  detail: "Semantic accessible markup, modern layout models, and rich custom animation systems.",
-                  badge: "Advanced",
-                  color: "#2ed573",
-                },
-                {
-                  header: "Bash & PowerShell Scripting",
-                  detail: "Cross-platform automation launchers (.sh / .bat / .ps1) for multi-service orchestration.",
-                  badge: "Production",
-                  color: "#d8cbbe",
-                },
-              ],
-            },
-            {
-              title: "Spoken & Technical Communication",
-              num: "5.2",
-              isCompactGrid: true,
-              items: [
-                {
-                  header: "Thai (Native)",
-                  detail: "Native fluency in spoken and written Thai — speech synthesis prosody mapping and localized UI/UX.",
-                  badge: "Native",
+                  header: "Shell & PowerShell Scripts",
+                  detail: "Used startup and tunnel scripts to coordinate local services and frontend endpoint configuration.",
+                  badge: "Project Use",
                   color: "#ffd88a",
                 },
                 {
-                  header: "English (Professional Working)",
-                  detail: "Fluent reading of technical documentation, software specifications, and engineering collaboration.",
-                  badge: "Fluent",
-                  color: "#2ed573",
+                  header: "Git & GitHub",
+                  detail: "Use version control to maintain project source, track changes, and share implementations through public repositories.",
+                  badge: "Project Use",
+                  color: "#ffd88a",
                 },
               ],
             },
@@ -377,30 +361,36 @@ export const portfolioData = {
         },
         rightPage: {
           chapterNum: "CAP. 06",
-          title: "DevOps, Tunnels & Tooling",
+          title: "Next Learning Goals",
           folioNum: "p. 19",
           sections: [
             {
-              title: "Containerization & Networking",
+              title: "Planned, Not Yet Claimed",
               num: "6.1",
               items: [
                 {
-                  header: "Docker & Docker Compose",
-                  detail: "Containerized multi-service orchestration across Python and Node.js microservices with unified bridge networks.",
-                  badge: "Core Mastery",
-                  color: "#ffd88a",
-                },
-                {
-                  header: "Git & GitHub",
-                  detail: "Version control hygiene, structured branching, pull request reviews, and repository management.",
-                  badge: "Production",
+                  header: "Testing & AI Evaluation",
+                  detail: "Add automated navigation tests, malformed-output cases, labeled evaluation data, and reproducible latency measurements.",
+                  badge: "Planned",
                   color: "#d8cbbe",
                 },
                 {
-                  header: "Cloudflare Tunnels",
-                  detail: "Zero-trust reverse proxies exposing local backend microservices (:3000, :5000, :7000) to public HTTPS endpoints.",
-                  badge: "Advanced",
-                  color: "#2ed573",
+                  header: "Linux, Networking & CI/CD",
+                  detail: "Strengthen process, port, DNS, and HTTP debugging; add GitHub Actions for linting, tests, and container builds.",
+                  badge: "Planned",
+                  color: "#d8cbbe",
+                },
+                {
+                  header: "Secure Deployment & Observability",
+                  detail: "Practice authenticated APIs, secrets handling, health checks, structured logs, metrics, and recovery procedures.",
+                  badge: "Planned",
+                  color: "#d8cbbe",
+                },
+                {
+                  header: "ML & Cloud Foundations",
+                  detail: "Learn evaluation metrics, dataset splits, model versioning, and one cloud deployment workflow before adding larger platforms.",
+                  badge: "Planned",
+                  color: "#d8cbbe",
                 },
               ],
             },
@@ -410,405 +400,300 @@ export const portfolioData = {
     ],
   },
 
-  // Projects Collection
-  // Each project becomes a book on the Library bookshelf (Room 3).
   projects: [
+    // Evidence: https://github.com/thanoka/m-project
     {
       id: "lumi-ai-vision",
       volumeNumeral: "VOL. 01",
-      title: "Lumi - AI Vision Indoor Navigation Assistant for Blind Users",
+      title: "Lumi - AI Indoor Navigation Prototype",
       bookSpineTitle: "Lumi · AI Vision",
-      spineColor: "#2b1f3d", // Deep indigo-violet spine
-      spineAccent: "#e0c27a", // Warm gold foil title text
+      spineColor: "#2b1f3d",
+      spineAccent: "#e0c27a",
       featured: true,
-      rating: 5.0,
+      rating: null,
       keyMetrics: [
-        { label: "Architecture Mesh", value: "4 Microservices" },
-        { label: "Vision Latency", value: "<100ms Inference" },
-        { label: "Spatial Logic", value: "8-Step Frame Loop" },
-        { label: "Specification", value: "31 KB System Spec" },
+        { label: "System Structure", value: "Client + 3 Backends" },
+        { label: "Vision Pipeline", value: "2 YOLO Models + OCR" },
+        { label: "Navigation Logic", value: "BFS + State Transitions" },
+        { label: "Validation Tool", value: "Navigation Simulator" },
       ],
       services: [
-        { name: "Mobile Client", port: ":8081", stack: "Expo 54 / React Native / Reanimated", role: "Real-time camera frame loop, audio capture, local navigation state & haptics" },
-        { name: "Node AI Service", port: ":3000", stack: "Node 20 / Express 5 / TypeScript", role: "LLM persona prompt orchestration, JSON contract enforcement & intent resolution" },
-        { name: "Vision Service", port: ":7000", stack: "FastAPI / Python 3.11 / Uvicorn", role: "Dual YOLO models (safety & sign text regions), Google Cloud Vision OCR & 9-cell grid mapping" },
-        { name: "Speech STT Service", port: ":5000", stack: "Flask / Python 3.11 / FFmpeg", role: "Audio normalization to 16 kHz mono WAV and Google Speech Recognition in Thai" },
+        { name: "Mobile Client", port: ":8081", stack: "Expo / React Native / TypeScript", role: "Camera capture, navigation state, route planning, voice output, and haptics" },
+        { name: "AI Guidance Service", port: ":3000", stack: "Node.js / Express / OpenRouter", role: "Destination interpretation, Thai guidance, response parsing, and fallback templates" },
+        { name: "Vision Service", port: ":7000", stack: "Python / FastAPI / YOLO / Cloud Vision", role: "Object detection, text-region detection, OCR, and frame-grid mapping" },
+        { name: "Speech Service", port: ":5000", stack: "Python / Flask / FFmpeg / SpeechRecognition", role: "Audio conversion and Thai speech transcription" },
       ],
       highlights: [
-        { label: "Distributed Architecture", detail: "4 microservices (Expo :8081, Express 5 :3000, FastAPI :7000, Flask :5000)" },
-        { label: "Spatial Computer Vision", detail: "Dual YOLO models + 9-cell grid localization & high-confidence OCR sign crops" },
-        { label: "Urgency-Modulated Voice", detail: "Dynamic LLM persona with Thai speech synthesis modulated by hazard intensity" },
+        { label: "Perception to Action", detail: "Connected vision and OCR outputs to location matching, route planning, and guidance events." },
+        { label: "Explicit Application Logic", detail: "Kept routing and navigation state in code rather than delegating every decision to an LLM." },
+        { label: "Failure Handling", detail: "Added speech priorities and fallback paths, with a simulator for exploring navigation behavior." },
       ],
-      shortDescription:
-        "A camera-first, voice-only indoor navigation assistant that guides visually impaired users through hospitals and complex public buildings in natural Thai speech.",
-      longDescription: `Indoor GPS does not work. For a blind user, "the registration desk is 15 steps to your left, just past the big sign" is the information that actually matters — and that information only exists in what the camera sees.
+      shortDescription: "An assistive navigation prototype combining computer vision, OCR, graph-based routing, and Thai voice guidance.",
+      longDescription: `Problem
+Indoor navigation assistance needs more than object labels: it needs location context, route state, and understandable guidance.
 
+My contribution
+Designed and built a mobile client with three backend services, connecting existing vision and language models to application-specific navigation logic.
 
-Lumi (ลูมี่) is a four-service AI system I designed and built end-to-end, alone, from concept to deployment. It streams camera frames from a phone to a vision service, determines where the user is standing by matching detected signs and landmarks against a hand-authored floor-plan graph, plans a turn-aware walking route with BFS, watches for obstacles and drift on every frame, then hands a stream of structured JSON events to an LLM persona that speaks short, warm, urgency-aware Thai through the phone's text-to-speech engine.
+Implementation
+• The Expo client sends camera images to a Python vision service.
+• Two YOLO models detect objects and text regions; Google Cloud Vision extracts text from selected crops.
+• A TypeScript navigation engine matches landmarks against a hand-authored map and uses BFS for routes with the fewest graph edges.
+• Navigation states, turn triggers, warning thresholds, and rerouting are handled by application code.
+• An Express service turns structured events into Thai guidance through OpenRouter.
+• A Flask service uses SpeechRecognition's Google recognizer for Thai voice input.
+• Docker Compose and startup scripts support local development; temporary tunnels connect a physical phone.
 
+Engineering decisions
+Separate perception services from client navigation logic. Use deterministic route and state rules alongside LLM-generated language. Provide speech-priority handling, fallback templates, and a navigation simulator.
 
-Architecture — four independent services. The frontend owns all navigation logic locally; every backend is stateless:
-• Frontend (:8081) — Expo / React Native: camera capture loop, audio recording, navigation engine, TTS, haptics, accessible UI.
-• AI Service (:3000) — Node 20 + TypeScript (Express 5, tsx): turns navigation events into natural Thai sentences, plus intent filtering for spoken destinations.
-• Vision Service (:7000) — Python 3.11 (FastAPI + Uvicorn): YOLO safety detection, YOLO text-region detection, Google Cloud Vision OCR on sign crops, 9-cell grid localization.
-• STT Service (:5000) — Python 3.11 (Flask): audio to 16 kHz mono WAV via ffmpeg, then Google Speech Recognition (th-TH).
+Current limitations
+This is a prototype, not a validated mobility aid or a production hospital deployment. Bounding-box size is a warning heuristic, not a measured distance. The system depends on hand-authored maps, camera conditions, and network services. Inference runs on the backend, not on the phone.
 
-
-Core capabilities:
-• Visual self-localization — weighted scoring of YOLO labels, OCR sign text, and expected screen position against map nodes. Requires 40%+ confidence and two consecutive matching frames before committing a position.
-• Turn-aware routing — BFS shortest path over the building graph, with instructions phrased as landmark triggers ("walk forward, when the REGISTRATION sign fills your view, turn left").
-• Proximity safety alerts — a detection at 5%+ of the frame fires a warning, 15%+ fires danger, which interrupts all other speech. 5-second cooldown per object-and-grid pair.
-• Drift correction — if a landmark that should be centered appears to the left, the user is nudged back onto the line.
-• Automatic rerouting — walking off-route triggers a fresh BFS from the newly matched position.
-• Voice destination input — hold the screen, speak a destination in Thai, Google STT transcribes it, and an LLM intent filter maps free speech onto a real map node ID.
-• Emotion-modulated speech — every event carries an intensity value (0.0–1.0) mapped to TTS rate (1.0 to 1.6) and pitch (0.9 to 1.25), so danger sounds urgent and arrival sounds happy.
-• Haptics — heavy buzz on danger and arrival, medium on turns and warnings.
-• Graceful degradation — every event tag has a Thai fallback template, so the app still speaks correctly if the LLM call fails or returns malformed JSON.
-
-
-The engine runs eight ordered steps per frame — safety check, location matching, route trigger, route progress, turn-reference monitoring, sign reading, alignment correction, and guidance — moving through the states idle, locating, navigating, arrived, lost, and rerouting. Events are spoken in strict priority order: danger, warning, turn_now, approaching_turn, alignment_correction, reroute, location_update, navigation_step, route_started, destination_set, arrived.
-
-
-Engineering decisions worth noting: frames are captured at quality 0.1 with processing skipped to cut latency, OCR runs only on high-confidence text regions rather than whole frames, the loop re-arms after roughly 50 ms with live FPS and round-trip latency shown on screen, and an offline simulator lets the entire navigation engine be tested without a physical building. The whole stack starts with one Docker Compose command, or via Docker-free launch scripts, with Cloudflare tunnels exposing local backends to a real phone.`,
+Next validation
+Add reproducible accuracy and latency evaluation, automated state-transition tests, strict LLM-output validation, authenticated endpoints, and controlled accessibility testing before making real-world safety claims.`,
       technologies: [
-        "React Native",
-        "Expo SDK 54",
-        "TypeScript",
-        "Python 3.11",
-        "FastAPI",
-        "Flask",
-        "Express 5",
-        "Node.js 20",
-        "YOLO / Ultralytics",
-        "Google Cloud Vision OCR",
-        "Google Speech-to-Text",
-        "OpenRouter / Llama 3.3 70B",
-        "Docker Compose",
-        "Cloudflare Tunnel",
-        "BFS Pathfinding",
+        "TypeScript", "Python", "React Native", "Expo", "FastAPI", "Flask",
+        "Node.js", "Express", "YOLO / Ultralytics", "Google Cloud Vision OCR",
+        "SpeechRecognition", "FFmpeg", "OpenRouter", "Docker Compose",
+        "Cloudflare Tunnel", "BFS",
       ],
       githubUrl: "https://github.com/thanoka/m-project",
       documentationUrl: "https://github.com/thanoka/m-project#readme",
       images: [
-        {
-          type: "image",
-          url: "/grid_reference.jpg",
-          alt: "Vision Pipeline & 9-Cell Grid Localization",
-          caption:
-            "Dual YOLO models with 9-cell grid positioning and OCR on high-confidence sign crops.",
-        },
+        { type: "image", url: "/grid_reference.jpg", alt: "Illustration of vision detections and frame regions", caption: "Vision debugging illustration. Not an accuracy or performance benchmark." },
       ],
     },
+    // Evidence: https://github.com/thanoka/nyx.cloud
     {
       id: "nyx-cloud",
       volumeNumeral: "VOL. 02",
-      title: "Nyx Cloud - Full-Stack SaaS Platform & Dashboard",
+      title: "Nyx Cloud - File Storage & Subscription Prototype",
       bookSpineTitle: "Nyx Cloud",
       spineColor: "#1e2d3d",
       spineAccent: "#8bb8d4",
-      rating: 5.0,
+      rating: null,
       keyMetrics: [
-        { label: "Framework Core", value: "Next.js 15 App Router" },
-        { label: "Auth Framework", value: "better-auth OTP" },
-        { label: "Payment Gateway", value: "Paddle Subscriptions" },
-        { label: "API Layer Latency", value: "<1.5ms Hono OpenAPI" },
+        { label: "Application", value: "Next.js + TypeScript" },
+        { label: "Authentication", value: "better-auth OAuth" },
+        { label: "Storage Integration", value: "Pinata + MongoDB" },
+        { label: "Billing Integration", value: "Paddle" },
       ],
       services: [
-        { name: "Web Application Chrome", port: ":3000", stack: "Next.js 15 / React 19 / Turbopack", role: "Protected route-group layout, authenticated dashboard & responsive billing pages" },
-        { name: "Hono OpenAPI Microservice", port: "/api/*", stack: "Hono / OpenAPI / Swagger UI", role: "Sub-millisecond REST endpoints with interactive Swagger UI documentation" },
-        { name: "Paddle Billing Engine", port: "Webhooks", stack: "Paddle SDK & Webhooks", role: "Subscription life-cycle, tier checkout & billing event synchronization" },
-        { name: "Data Persistence & Storage", port: "MongoDB", stack: "Mongoose ODM & IPFS Pinata", role: "Document schema validation, user balances & decentralized file pinning" },
+        { name: "Web Application", port: ":3000", stack: "Next.js 15 / React 18", role: "Sign-in, dashboard routes, file views, and subscription interface" },
+        { name: "API Routes", port: "/api/v1", stack: "Hono / Next.js", role: "File and subscription-related HTTP handlers within the web application" },
+        { name: "Authentication & Billing", port: "External APIs", stack: "better-auth / Paddle", role: "OAuth sessions, checkout integration, and subscription event handling" },
+        { name: "Data & File Storage", port: "External Services", stack: "MongoDB / Mongoose / Pinata", role: "File metadata, subscription records, and IPFS-backed file integration" },
       ],
       highlights: [
-        { label: "Better-Auth & Sessions", detail: "Protected route groups with OTP entry and session-aware server components" },
-        { label: "Paddle Billing Engine", detail: "End-to-end subscription checkout and webhook billing lifecycle handling" },
-        { label: "Hono OpenAPI Layer", detail: "Sub-millisecond API routes documented with interactive Swagger UI" },
+        { label: "Service Integration", detail: "Connected authentication, file storage, subscription data, and billing APIs in a single application." },
+        { label: "Application Structure", detail: "Separated dashboard routes, server actions, data models, and Hono API handlers." },
+        { label: "Operational Learning", detail: "A useful foundation for testing webhook behavior, authorization, and failure handling." },
       ],
-      shortDescription:
-        "A production-shaped SaaS application with authentication, subscription billing, and a data-rich dashboard.",
-      longDescription: `Nyx Cloud is a full-stack SaaS platform built on the Next.js App Router, covering the entire commercial product surface: authenticated sign-in flows, a segmented dashboard with dynamic routes, subscription billing, and a documented API layer.
+      shortDescription: "A full-stack file-storage prototype with OAuth sign-in, MongoDB records, Pinata integration, and Paddle subscription workflows.",
+      longDescription: `Problem
+Bring file management, user accounts, and subscription flows into a single web application.
 
+Implementation
+• Next.js App Router and React interfaces for sign-in and dashboard screens.
+• better-auth configured with Google and GitHub OAuth providers.
+• Hono route handlers for file and Paddle integration.
+• MongoDB and Mongoose models for file and subscription data.
+• Pinata integration for IPFS-backed file handling.
+• Paddle checkout and subscription-management code.
 
-Key Highlights:
-• Route-group architecture separating (auth) and (dashboard) concerns, with dynamic dashboard segments and protected layouts.
-• Authentication via better-auth with OTP input and session-aware server components.
-• Paddle integration on both client and server SDKs for checkout, subscriptions, and billing lifecycle handling.
-• A Hono-powered API layer served alongside Next.js, documented with Swagger UI and swagger-jsdoc.
-• MongoDB and Mongoose data models, TanStack Query for client-side caching and mutation state.
-• A complete Radix UI + Tailwind CSS 4 design system with dark mode via next-themes, Recharts analytics, and Sonner toasts.
-• IPFS-backed file handling through Pinata, plus React Hook Form with resolver-based validation across every form.`,
+What this demonstrates
+Third-party API integration, application structure, data modeling, and coordination between frontend interactions and server-side operations.
+
+Current limitations
+This is a development prototype. Payment-event handling, security, and performance need further testing before production use. The repository README still needs a project-specific setup guide and architecture explanation.
+
+Next improvement
+Add subscription-event tests, replay-safe webhook handling, resource-ownership checks, and documented development setup.`,
       technologies: [
-        "Next.js 15",
-        "TypeScript",
-        "React",
-        "Hono",
-        "MongoDB",
-        "Mongoose",
-        "better-auth",
-        "Paddle",
-        "TanStack Query",
-        "Radix UI",
-        "Tailwind CSS 4",
-        "Recharts",
-        "Swagger / OpenAPI",
+        "Next.js 15", "React 18", "TypeScript", "Hono", "MongoDB",
+        "Mongoose", "better-auth", "Paddle", "Pinata", "TanStack Query",
+        "Radix UI", "Tailwind CSS",
       ],
       githubUrl: "https://github.com/thanoka/nyx.cloud",
       documentationUrl: "",
       images: [
-        {
-          type: "image",
-          url: "/Nxy-could.png",
-          alt: "Nyx Cloud Platform Overview",
-          caption: "Full-stack Next.js 15 SaaS platform landing page and authenticated workspace.",
-        },
-        {
-          type: "image",
-          url: "/nyx-cloud-dashboard.png",
-          alt: "Nyx Cloud Dashboard & Analytics",
-          caption: "Segmented dashboard with charts, tables, and theme-aware Radix components.",
-        },
-        {
-          type: "image",
-          url: "/nyx-cloud-subscribe.png",
-          alt: "Nyx Cloud Subscription & Billing Checkout",
-          caption: "better-auth sessions with OTP entry and Paddle subscription checkout.",
-        },
+        { type: "image", url: "/Nxy-could.png", alt: "Nyx Cloud interface", caption: "File-storage application interface." },
+        { type: "image", url: "/nyx-cloud-dashboard.png", alt: "Nyx Cloud dashboard", caption: "Dashboard and file-management interface." },
+        { type: "image", url: "/nyx-cloud-subscribe.png", alt: "Nyx Cloud subscription interface", caption: "Subscription interface with Paddle integration." },
       ],
     },
+    // Evidence: https://github.com/thanoka/loremaster-f2
     {
       id: "loremaster",
       volumeNumeral: "VOL. 03",
-      title: "Loremaster - Next.js 16 Interactive Story Platform",
+      title: "Loremaster - Stateful Story & Game Prototype",
       bookSpineTitle: "Loremaster",
-      spineColor: "#284431", // Muted deep forest green spine
-      spineAccent: "#c8a165", // Warm brass foil title text
-      rating: 5.0,
+      spineColor: "#284431",
+      spineAccent: "#c8a165",
+      rating: null,
       keyMetrics: [
-        { label: "React Engine", value: "React 19 + Compiler" },
-        { label: "Economy Ledger", value: "MongoDB In-App Wallet" },
-        { label: "Routing Shell", value: "Next.js 16 App Router" },
-        { label: "Styling System", value: "Tailwind 4 + CSS Modules" },
+        { label: "Application", value: "Next.js 16 + React 19" },
+        { label: "Game Data", value: "MongoDB" },
+        { label: "Core Logic", value: "Movement + Inventory" },
+        { label: "Authentication", value: "NextAuth" },
       ],
       services: [
-        { name: "Persistent App Shell", port: ":3000", stack: "Next.js 16 / React Compiler", role: "Shared navigation shell preserving game state, reading progress and wallet chrome" },
-        { name: "Story Transition Engine", port: "Client", stack: "Tailwind CSS 4 & tw-animate", role: "Keyframe transition choreography and branched visual novel dialog trees" },
-        { name: "In-App Wallet Module", port: "/wallet", stack: "MongoDB & Scoped CSS Modules", role: "Self-contained top-up balance ledger, currency exchange & checkout modal" },
-        { name: "Account Gateway Layer", port: "/api/auth", stack: "NextAuth & Express 5", role: "Player authentication, persistent save states & Swagger API layer" },
+        { name: "Application Interface", port: ":3000", stack: "Next.js / React", role: "Library, game screens, shared navigation, and account interface" },
+        { name: "Game Actions", port: "Server Actions", stack: "TypeScript / Next.js", role: "Movement rules, item requirements, state updates, and battle-related logic" },
+        { name: "Persistent Game Data", port: "MongoDB", stack: "MongoDB", role: "Game content, player location, inventory, and saved state" },
+        { name: "Account & Top-up Interface", port: "App Routes", stack: "NextAuth / React / CSS Modules", role: "Session handling and a prototype amount-selection and QR display flow" },
       ],
       highlights: [
-        { label: "React 19 & Compiler", detail: "Next.js 16 App Router with React Compiler for optimal rendering performance" },
-        { label: "In-App Wallet Module", detail: "Self-contained top-up system with MongoDB balances & CSS Modules" },
-        { label: "Story Reader Engine", detail: "Keyframe transition choreography and persistent navigation app shell" },
+        { label: "Stateful Game Logic", detail: "Movement depends on map exits, quest progression, inventory, and equipment requirements." },
+        { label: "Persistent State", detail: "Player location and game data are read and updated through server-side database operations." },
+        { label: "Interface Integration", detail: "Connected game screens, account sessions, and a shared application layout." },
       ],
-      shortDescription:
-        "An interactive narrative game platform with account sessions, an in-app wallet, and a shared-navigation app shell.",
-      longDescription: `Loremaster is an interactive story and game platform built on the Next.js 16 App Router with the React Compiler enabled — a step toward the endless visual-novel engine I have wanted to build since I started programming.
+      shortDescription: "An interactive game prototype focused on persistent player state, rule-based movement, inventory, and account-backed interfaces.",
+      longDescription: `Problem
+Represent a game world as structured data and make player actions change persistent state.
 
+Implementation
+• Next.js 16 and React 19 for application routes and game interfaces.
+• MongoDB-backed player state, locations, inventory, and game content.
+• Server-side movement logic checks exits, quest stages, keys, and equipment before updating location.
+• NextAuth session handling and shared navigation across application pages.
+• A separate top-up interface for selecting an amount and displaying a QR code.
 
-Key Highlights:
-• Nested route groups with a shared navigation shell, so game, home, and wallet screens keep a persistent chrome layer.
-• In-app wallet with a top-up flow, built as a self-contained module with CSS Modules for scoped styling.
-• NextAuth session handling with MongoDB and Mongoose persistence for player accounts and progress.
-• An Express-based service layer alongside the Next.js routes, documented with next-swagger-doc and Swagger UI React.
-• React 19 with babel-plugin-react-compiler, Tailwind CSS 4, and tw-animate-css for transition-heavy story sequences.`,
+What this demonstrates
+Business-rule design, state transitions, data-driven application behavior, and integration between interface actions and stored state.
+
+Current limitations
+The top-up flow is an interface prototype, not a completed payment-settlement system. Authorization, payment confirmation, concurrent updates, and recovery behavior need further testing. The repository README still needs project-specific documentation.
+
+Next improvement
+Test game rules independently, enforce resource ownership for every action, and document which features are complete versus experimental.`,
       technologies: [
-        "Next.js 16",
-        "React 19",
-        "TypeScript",
-        "NextAuth",
-        "MongoDB",
-        "Mongoose",
-        "Express 5",
-        "Tailwind CSS 4",
-        "CSS Modules",
-        "Swagger / OpenAPI",
+        "Next.js 16", "React 19", "TypeScript", "NextAuth",
+        "MongoDB", "Tailwind CSS", "CSS Modules",
       ],
       githubUrl: "https://github.com/thanoka/loremaster-f2",
       documentationUrl: "",
       images: [
-        {
-          type: "image",
-          url: "/lore-master-home.png",
-          alt: "Loremaster Story Platform Home",
-          caption: "Interactive story platform home shell with persistent navigation chrome.",
-        },
-        {
-          type: "image",
-          url: "/lore-master-game.png",
-          alt: "Loremaster Story Reader & Game Interface",
-          caption: "Story reader interface with dialog sequences and transition choreography.",
-        },
-        {
-          type: "image",
-          url: "/lore-master-lib.png",
-          alt: "Loremaster Library & Chapter Collection",
-          caption: "Library archive with chapter progression, character notes, and save states.",
-        },
+        { type: "image", url: "/lore-master-home.png", alt: "Loremaster home screen", caption: "Home screen and shared application navigation." },
+        { type: "image", url: "/lore-master-game.png", alt: "Loremaster game interface", caption: "Game interface connected to player and world state." },
+        { type: "image", url: "/lore-master-lib.png", alt: "Loremaster library interface", caption: "Library interface for the story and game prototype." },
       ],
     },
+    // Evidence: https://github.com/thanoka/War_Dragons
     {
       id: "war-dragons",
       volumeNumeral: "VOL. 04",
-      title: "War Dragons - Browser Strategy Game (Vanilla Stack)",
+      title: "War Dragons - JavaScript Browser Game",
       bookSpineTitle: "War Dragons",
-      spineColor: "#3d1f1f", // Deep burgundy spine
-      spineAccent: "#d9a24f", // Amber foil title text
-      rating: 5.0,
+      spineColor: "#3d1f1f",
+      spineAccent: "#d9a24f",
+      rating: null,
       keyMetrics: [
-        { label: "Dependencies", value: "0 (Zero External Libraries)" },
-        { label: "Build Tools", value: "0 (Runs directly from browser)" },
-        { label: "Combat Engine", value: "Deterministic Turn Machine" },
-        { label: "Visual FX", value: "Hand-Authored CSS Keyframes" },
+        { label: "Core Language", value: "JavaScript" },
+        { label: "Interface", value: "HTML + CSS + DOM" },
+        { label: "Game Logic", value: "Turns + Combat Rules" },
+        { label: "Local Persistence", value: "localStorage" },
       ],
       services: [
-        { name: "Turn Loop Engine", port: "Client", stack: "Pure JavaScript (ES6)", role: "Deterministic turn resolution, tactical combat equations & attack resolution" },
-        { name: "World Map & Lobby", port: "DOM", stack: "Semantic HTML5 & DOM API", role: "Campaign stage selector, unit inventory, equipment inspector & dialog system" },
-        { name: "Visual FX System", port: "CSS", stack: "Pure CSS3 Keyframe Animations", role: "Custom flash spells, damage impact animations & battle screen transitions" },
-        { name: "Progress Storage", port: "Storage", stack: "localStorage API", role: "Offline save states, unit rosters, unlocked campaign chapters & gear data" },
+        { name: "Combat Logic", port: "Browser", stack: "JavaScript", role: "Turn updates, health and mana, skill cooldowns, and randomized combat decisions" },
+        { name: "Game Screens", port: "DOM", stack: "HTML / DOM API", role: "Lobby, battle interface, equipment views, and event-driven updates" },
+        { name: "Visual Feedback", port: "CSS", stack: "CSS / JavaScript", role: "Effects, animation classes, and battle feedback" },
+        { name: "Local Data", port: "Storage", stack: "localStorage", role: "Save item and character-state data in the browser" },
       ],
       highlights: [
-        { label: "Zero-Framework Stack", detail: "Pure HTML5, CSS3, and JavaScript running directly without build tooling" },
-        { label: "Custom Turn Loops", detail: "Deterministic game state machine, attack resolution, and dialog sequencing" },
-        { label: "Hand-Crafted FX", detail: "Multi-layer CSS keyframe animation system for spells and map transitions" },
+        { label: "JavaScript Foundations", detail: "Implemented game behavior directly using JavaScript and browser APIs." },
+        { label: "Rule-Based Behavior", detail: "Coordinated turns, skills, resource checks, cooldowns, and randomized combat." },
+        { label: "Local Persistence", detail: "Stored item and character data through localStorage." },
       ],
-      shortDescription:
-        "A turn-based browser strategy game built entirely in vanilla HTML, CSS, and JavaScript — no frameworks, no build step.",
-      longDescription: `War Dragons is a browser strategy game written from scratch in plain HTML, CSS, and JavaScript. It was the project where I learned how games are actually structured: state machines, turn loops, animation timing, and the discipline of building a UI without a framework to lean on.
+      shortDescription: "A browser game demonstrating JavaScript fundamentals through combat logic, interface events, and local saved data.",
+      longDescription: `Purpose
+A foundations project for learning how to organize interactive application logic without a frontend framework.
 
+Implementation
+• HTML screens and CSS styling connected through DOM events.
+• JavaScript functions for combat, turns, resource checks, and skill cooldowns.
+• Randomized decisions in combat behavior.
+• localStorage for item and character data.
+• Animation classes and visual effects for player feedback.
 
-Key Highlights:
-• Hand-authored animation and effects system across multiple CSS files — flash effects, transitions, and dialog choreography driven purely by keyframes and class toggling.
-• Map and battle screens assembled from custom image assets with layered backgrounds.
-• Game state, turn resolution, and dialog sequencing implemented in vanilla JavaScript with no external dependencies.
-• Zero build tooling: it runs from a static file server, which forced clean separation between markup, styling, and logic.`,
-      technologies: ["JavaScript (ES6)", "HTML5", "CSS3", "CSS Animations", "DOM API"],
+What this demonstrates
+My JavaScript foundation, interest in logic-heavy systems, and ability to connect data, rules, and interfaces.
+
+Next improvement
+Separate pure game rules from DOM manipulation, add automated tests, and document the setup and gameplay. Keep this as a supporting foundations project rather than the main evidence for AI or DevOps work.`,
+      technologies: ["JavaScript", "HTML", "CSS", "DOM API", "localStorage"],
       githubUrl: "https://github.com/thanoka/War_Dragons",
       documentationUrl: "",
       images: [
-        {
-          type: "image",
-          url: "/war-dragons.png",
-          alt: "War Dragons Combat Battle Screen",
-          caption: "Turn-based tactical combat arena with custom keyframe animations and battle effects.",
-        },
-        {
-          type: "image",
-          url: "/war-dragons-lobby.png",
-          alt: "War Dragons World Map & Lobby",
-          caption: "Interactive world map and campaign stage selector rendered without frameworks.",
-        },
-        {
-          type: "image",
-          url: "/war-dragons-item.png",
-          alt: "War Dragons Equipment & Item Inventory",
-          caption: "Unit equipment and inventory management interface with custom CSS styling.",
-        },
+        { type: "image", url: "/war-dragons.png", alt: "War Dragons battle screen", caption: "Battle interface with JavaScript-driven combat and visual feedback." },
+        { type: "image", url: "/war-dragons-lobby.png", alt: "War Dragons lobby", caption: "Browser game lobby and navigation." },
+        { type: "image", url: "/war-dragons-item.png", alt: "War Dragons equipment screen", caption: "Item and equipment interface." },
       ],
     },
   ],
 
-  // Experience Board • Field Log & Research (Overhauled Experience Room)
   experienceBoard: {
-    sectionEyebrow: "The Field Board • Journey & Research",
-    sectionTitle: "Engineering Experience & Field Log",
+    sectionEyebrow: "The Field Board • Project Experience",
+    sectionTitle: "What I've Built & Where I'm Heading",
     crestNumeral: "IV",
-    sectionBadge: "Verified Milestones & Active R&D",
-    fieldLogTag: "Professional Milestones & Field Missions",
+    sectionBadge: "Personal & Academic Projects",
+    fieldLogTag: "Project Contributions",
     milestones: [
       {
         id: "exp-1",
-        period: "2025 – Present",
-        header: "Solo Architect & Developer — Lumi AI Vision",
-        organization: "Independent Senior / Capstone Project",
+        period: "Featured project",
+        header: "Developer & System Designer · Lumi",
+        organization: "Independent Project",
         location: "Bangkok, Thailand",
-        color: "#d4a754", // Amber Gold
-        badge: "Lead Architect",
-        techStack: ["React Native", "Python FastAPI", "Dual YOLO", "Google Cloud Vision OCR", "Docker Compose"],
-        projectLinkText: "Explore Shipped Volume (Vol. 01) ↗",
+        color: "#d4a754",
+        badge: "AI Prototype",
+        techStack: ["TypeScript", "Python", "React Native", "YOLO", "Docker Compose"],
+        projectLinkText: "Explore Lumi ↗",
         highlights: [
-          "Designed and shipped a four-service AI system alone — React Native frontend, TypeScript LLM service, Python FastAPI vision service, and Flask speech-to-text service — from concept through Docker Compose deployment.",
-          "Built a real-time computer vision pipeline with two YOLO models plus Google Cloud Vision OCR, running an eight-step navigation engine on every camera frame.",
-          "Implemented visual self-localization, BFS route planning, proximity safety escalation, drift correction, and automatic rerouting over a hand-authored floor-plan graph.",
-          "Engineered an accessibility-first voice interaction model: priority speech queue with interruption, emotion-to-prosody mapping, tiered haptics, and Thai fallback templates for graceful LLM failure.",
-          "Authored a 31 KB engineering specification covering architecture, API contracts, scoring weights, map data format, and troubleshooting.",
+          "Designed a client and three backend services connecting computer vision, voice input, navigation logic, and Thai guidance.",
+          "Integrated object detection, text-region detection, and OCR with map-based location matching.",
+          "Implemented graph routing, navigation states, warning priorities, and rerouting behavior.",
+          "Added a navigation simulator, local startup scripts, and Docker Compose configuration.",
         ],
       },
       {
         id: "exp-2",
-        period: "2024 – Present",
-        header: "Full-Stack Developer — Personal & University Projects",
-        organization: "DCE University Labs & Personal Projects",
+        period: "Selected projects",
+        header: "Developer · Web Applications & Game Systems",
+        organization: "Personal & Academic Projects",
         location: "Bangkok, Thailand",
-        color: "#2e7d32", // Emerald Green
-        badge: "Full-Stack Web",
-        techStack: ["Next.js 16", "React 19", "TypeScript", "Express 5", "MongoDB", "Paddle API"],
-        projectLinkText: "Explore Web Volumes (Vol. 02 & 03) ↗",
+        color: "#2e7d32",
+        badge: "Software Projects",
+        techStack: ["JavaScript", "TypeScript", "Next.js", "MongoDB", "HTTP APIs"],
+        projectLinkText: "Explore Supporting Projects ↗",
         highlights: [
-          "Built multiple full-stack Next.js applications (App Router, versions 15 and 16) with authentication, MongoDB persistence, documented API layers, and subscription billing.",
-          "Integrated third-party platform services end to end — Paddle payments, better-auth and NextAuth sessions, Pinata storage, and Google Cloud APIs.",
-          "Engineering responsive web applications with modern component architectures and semantic HTML.",
-          "Exploring local-first software paradigms and accessible user interface patterns.",
-          "Collaborating on peer code reviews and participating in hands-on university tech hackathons.",
+          "Built web application prototypes connecting user interfaces, authentication, databases, and external services.",
+          "Implemented file-storage and subscription integrations in Nyx Cloud.",
+          "Developed persistent game-state and movement rules in Loremaster.",
+          "Built browser game interactions and combat logic in JavaScript through War Dragons.",
         ],
       },
     ],
     research: {
-      header: "Active Focus & Research Telemetry",
-      detail:
-        "Currently learning & building: production ML inference optimization (model quantization and on-device YOLO), software architecture for distributed multi-service systems, LLM structured-output reliability and evaluation, and deeper accessibility engineering for voice-first interfaces.",
+      header: "Next Development Goals",
+      detail: "My next focus is making project behavior measurable and repeatable: automated tests, AI evaluation, CI/CD, Linux and networking fundamentals, secure deployment, and observability. These are development goals, not claims of existing production expertise.",
       color: "#ffd88a",
-      tags: ["Quantized Edge YOLO", "Distributed Multi-Service", "Voice-First UX", "LLM Reliability & JSON Schemas"],
-      footerNote: "Cabin Workbench • Active R&D",
+      tags: ["Automated Tests", "AI Evaluation", "CI/CD", "Secure Deployment"],
+      footerNote: "Cabin Workbench • Planned Development",
     },
     dispatch: {
-      header: "Natural Cabin Post • Dispatch Slip",
-      detail: "Open for high-impact software engineering roles, multimodal AI pipelines, and distributed systems architecture.",
+      header: "Let's Build Something Useful",
+      detail: "Seeking an internship in AI engineering, DevOps, or platform engineering. Interested in teams building useful tools, automating workflows, and improving real systems.",
       color: "#d4a754",
     },
   },
 
-  // Room Wall Metadata
   roomMetadata: [
-    {
-      index: 0,
-      id: "about",
-      name: "The Hearth",
-      duty: "About",
-      crest: "I",
-      subtitle: "Profile & Education",
-      compass: "North Wall",
-    },
-    {
-      index: 1,
-      id: "skills",
-      name: "The Study",
-      duty: "Skills",
-      crest: "II",
-      eyebrow: "The Study • Field Journal 2.0",
-      title: "Technical Compendium & Codex",
-      subtitle: "Verified Competencies & Engineering Capabilities",
-      compass: "East Wall",
-    },
-    {
-      index: 2,
-      id: "projects",
-      name: "The Library",
-      duty: "Projects",
-      crest: "III",
-      subtitle: "Bookshelf & Rainy Window",
-      compass: "South Wall",
-    },
-    {
-      index: 3,
-      id: "experience",
-      name: "The Field Board",
-      duty: "Experience",
-      crest: "IV",
-      eyebrow: "The Field Board • Journey & Research",
-      title: "Engineering Experience & Field Log",
-      subtitle: "Verified Milestones, Architecture & Active R&D",
-      compass: "West Wall",
-    },
+    { index: 0, id: "about", name: "The Hearth", duty: "About", crest: "I", subtitle: "Profile & Education", compass: "North Wall" },
+    { index: 1, id: "skills", name: "The Study", duty: "Skills", crest: "II", eyebrow: "The Study • Skills & Development", title: "AI, Systems & Engineering Foundations", subtitle: "Project Experience & Planned Learning", compass: "East Wall" },
+    { index: 2, id: "projects", name: "The Library", duty: "Projects", crest: "III", subtitle: "Selected Projects & Source Code", compass: "South Wall" },
+    { index: 3, id: "experience", name: "The Field Board", duty: "Experience", crest: "IV", eyebrow: "The Field Board • Project Experience", title: "What I've Built & Where I'm Heading", subtitle: "Contributions, Learning Goals & Contact", compass: "West Wall" },
   ],
 };
 

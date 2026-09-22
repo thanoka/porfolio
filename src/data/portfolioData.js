@@ -105,12 +105,19 @@ export const portfolioData = {
   // Institution names and GPA omitted rather than publishing unconfirmed placeholders.
   education: [
     {
+      year: "2022",
+      title: "chanpradittharam wittayakom (Gifted Class)",
+      detail: "Gifted Class program with emphasis on advanced mathematics & science",
+      gpa: "3.38",
+    },
+    {
       year: "In progress",
-      title: "Information Technology Student",
+      title: "Information Technology Student AT Sripatum University | Bangkok",
       detail: "Fourth-year student in Bangkok with a focus on full-stack development.",
-      gpa: "",
+      gpa: "In Progress",
     },
   ],
+
 
   skillsGrimoire: {
     sectionEyebrow: "The Study • Skills & Development",

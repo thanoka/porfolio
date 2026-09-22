@@ -349,6 +349,10 @@
 /* -------------------------------------------------------------
    SCROLLABLE CONTENT AREA
    ------------------------------------------------------------- */
+html {
+  scroll-padding-top: 84px;
+}
+
 .cabin-scroll-content {
   position: relative;
   z-index: 5;
@@ -359,11 +363,18 @@
 .cabin-scroll-section {
   position: relative;
   width: 100%;
-  min-height: 100vh;
+  min-height: calc(100vh - 78px);
+  scroll-margin-top: 84px;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 40px 0;
+  padding: 16px 0;
+  box-sizing: border-box;
+}
+
+#projects.cabin-scroll-section {
+  padding: 8px 0 16px;
+  scroll-margin-top: 84px;
 }
 
 /* Section dividers */

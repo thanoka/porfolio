@@ -68,7 +68,13 @@ export default function App() {
       setTimeout(() => {
         const targetEl = document.getElementById(initialHash);
         if (targetEl) {
-          targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          const headerOffset = 82;
+          const elementPosition = targetEl.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth',
+          });
         }
       }, 120);
     } else {
@@ -86,7 +92,13 @@ export default function App() {
     const id = SECTION_IDS[index];
     const el = document.getElementById(id);
     if (el) {
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      const headerOffset = 82;
+      const elementPosition = el.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth',
+      });
       // Update browser URL hash immediately on click
       window.history.replaceState(null, '', `#${id}`);
     }

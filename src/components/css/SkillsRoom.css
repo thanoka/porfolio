@@ -1,18 +1,19 @@
 /* ==========================================================================
-   Wall 2: The Study & Field Journal 2.0 (Modern Dark Grimoire)
-   Rich Dark Slate Obsidian Manuscript, Gold Foil Accents & Ribbon Tabs
-   Locked 570px Height Spread for Flawless Desktop Display
+   Wall 2: The Study & Field Journal (Grand Open Codex with 3D Depth)
+   Theme: Majestic Open Tome, Cylindrical Page Arch Lighting, Gutter Crease,
+   Stitched Spine, Layered Deckle Paper Leaves & Silk Bookmark Ribbon
    ========================================================================== */
 
 .skills-room {
   position: relative;
   width: 100%;
-  min-height: 100vh;
+  min-height: calc(100vh - 84px);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 24px 3vw;
+  padding: 14px 3.5vw 20px;
   box-sizing: border-box;
+  background: transparent;
 }
 
 .study-ambient-glow {
@@ -20,9 +21,9 @@
   inset: 0;
   pointer-events: none;
   background: radial-gradient(
-    circle at 50% 48%,
-    rgba(212, 167, 84, 0.12) 0%,
-    rgba(41, 64, 47, 0.09) 45%,
+    ellipse at 50% 52%,
+    rgba(212, 167, 84, 0.14) 0%,
+    rgba(41, 64, 47, 0.08) 45%,
     transparent 72%
   );
   z-index: 1;
@@ -32,27 +33,25 @@
   position: relative;
   z-index: 2;
   width: 100%;
-  max-width: min(94vw, 1560px);
+  max-width: 1580px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 10px;
 }
 
 /* ---------------------------------------------------------------
-   1. WALL BANNER (Study Header)
+   1. WALL BANNER (Study Header — Editorial Header)
    --------------------------------------------------------------- */
 .study-wall-banner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: rgba(22, 14, 9, 0.92);
-  border: 1.5px solid var(--wood-border);
-  padding: 10px 24px;
-  border-radius: 10px;
-  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.65);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: transparent;
+  border: none;
+  padding: 0 4px 2px;
+  border-radius: 0;
+  box-shadow: none;
   flex-shrink: 0;
 }
 
@@ -64,10 +63,10 @@
 
 .study-crest-numeral {
   font-family: var(--font-serif);
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   font-weight: 800;
   color: var(--amber-brass);
-  text-shadow: 0 0 14px rgba(212, 167, 84, 0.4);
+  text-shadow: 0 0 14px rgba(212, 167, 84, 0.35);
 }
 
 .banner-text {
@@ -78,16 +77,16 @@
 
 .study-eyebrow {
   font-family: var(--font-sans);
-  font-size: 0.74rem;
-  font-weight: 700;
+  font-size: 0.72rem;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.14em;
   color: var(--green-accent);
 }
 
 .study-main-title {
   font-family: var(--font-serif);
-  font-size: clamp(1.25rem, 1.6vw, 1.55rem);
+  font-size: clamp(1.25rem, 1.55vw, 1.6rem);
   font-weight: 700;
   color: #ffffff;
   line-height: 1.2;
@@ -98,14 +97,15 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(212, 167, 84, 0.1);
-  border: 1px solid rgba(212, 167, 84, 0.32);
+  background: rgba(212, 167, 84, 0.08);
+  border: 1px solid rgba(212, 167, 84, 0.2);
   color: #f0e6d6;
-  padding: 6px 14px;
+  padding: 5px 16px;
   border-radius: 20px;
   font-family: var(--font-sans);
   font-size: 0.78rem;
   font-weight: 600;
+  backdrop-filter: blur(8px);
 }
 
 .counter-dot {
@@ -122,22 +122,23 @@
 }
 
 /* ---------------------------------------------------------------
-   2. GRIMOIRE WRAPPER & SILK RIBBON BOOKMARK TABS
+   2. GRIMOIRE WRAPPER & SILK BOOKMARK TABS
    --------------------------------------------------------------- */
 .grimoire-wrapper {
   position: relative;
   width: 100%;
   display: flex;
   flex-direction: column;
+  perspective: 1400px;
 }
 
-/* Hanging Ribbon Bookmarks Shelf along top edge */
+/* Silk Ribbon Index Tabs along top edge */
 .grimoire-ribbons-shelf {
   display: flex;
   align-items: flex-end;
-  gap: 12px;
-  padding-left: 48px;
-  margin-bottom: -3px;
+  gap: 10px;
+  padding-left: 36px;
+  margin-bottom: -1px;
   z-index: 10;
   position: relative;
 }
@@ -159,151 +160,222 @@
 .ribbon-hanging-strip {
   display: inline-flex;
   align-items: center;
-  gap: 7px;
-  padding: 7px 16px 8px 16px;
+  gap: 8px;
+  padding: 8px 18px 9px;
   font-family: var(--font-sans);
   font-size: 0.78rem;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: 0.04em;
-  border-radius: 6px 6px 0 0;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  border-radius: 8px 8px 0 0;
+  background: linear-gradient(180deg, rgba(36, 24, 15, 0.9) 0%, rgba(20, 13, 8, 0.95) 100%);
+  border-top: 1px solid rgba(212, 167, 84, 0.25);
+  border-left: 1px solid rgba(212, 167, 84, 0.25);
+  border-right: 1px solid rgba(212, 167, 84, 0.25);
+  border-bottom: 1px solid transparent;
+  color: #c4b4a1;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   transition: all 0.25s ease;
-  position: relative;
 }
 
-/* Color themes for the 3 ribbons */
-.ribbon-gold .ribbon-hanging-strip {
-  background: linear-gradient(135deg, #3d2c14 0%, #26190a 100%);
-  border: 1px solid rgba(212, 167, 84, 0.4);
-  border-bottom: none;
-  color: #ffd88a;
-}
-.ribbon-gold.ribbon--active .ribbon-hanging-strip {
-  background: linear-gradient(135deg, #d4a754 0%, #b38226 100%);
-  color: #140c06;
-  box-shadow: 0 -2px 14px rgba(212, 167, 84, 0.4);
-}
-
-.ribbon-emerald .ribbon-hanging-strip {
-  background: linear-gradient(135deg, #1b3322 0%, #102116 100%);
-  border: 1px solid rgba(76, 175, 80, 0.4);
-  border-bottom: none;
-  color: #a5d6a7;
-}
-.ribbon-emerald.ribbon--active .ribbon-hanging-strip {
-  background: linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%);
+.grimoire-ribbon:hover .ribbon-hanging-strip {
+  background: linear-gradient(180deg, rgba(46, 32, 20, 0.95) 0%, rgba(26, 17, 10, 0.98) 100%);
   color: #ffffff;
-  box-shadow: 0 -2px 14px rgba(46, 125, 50, 0.4);
+  border-color: rgba(212, 167, 84, 0.45);
 }
 
-.ribbon-crimson .ribbon-hanging-strip {
-  background: linear-gradient(135deg, #3d1616 0%, #240a0a 100%);
-  border: 1px solid rgba(239, 83, 80, 0.4);
-  border-bottom: none;
-  color: #ef9a9a;
-}
-.ribbon-crimson.ribbon--active .ribbon-hanging-strip {
-  background: linear-gradient(135deg, #c62828 0%, #880e4f 100%);
+.grimoire-ribbon.ribbon--active .ribbon-hanging-strip {
+  background: linear-gradient(180deg, rgba(28, 19, 12, 0.98) 0%, rgba(18, 12, 8, 0.98) 100%);
+  border-top: 2.5px solid var(--tab-color, var(--amber-brass));
+  border-left: 1px solid rgba(212, 167, 84, 0.35);
+  border-right: 1px solid rgba(212, 167, 84, 0.35);
+  border-bottom: 1px solid transparent;
   color: #ffffff;
-  box-shadow: 0 -2px 14px rgba(198, 40, 40, 0.4);
+  font-weight: 700;
+  box-shadow: 
+    0 -4px 18px rgba(0, 0, 0, 0.5),
+    0 -1px 8px var(--tab-color, rgba(212, 167, 84, 0.3));
 }
 
 /* ---------------------------------------------------------------
-   3. THE GRAND OPEN DARK GRIMOIRE
-   Locked 570px Height Spread in Obsidian Leather (Zero Height Shifts)
+   3. THE GRAND OPEN CODEX (Physical 3D Hardcover Book Base)
    --------------------------------------------------------------- */
 .grand-open-grimoire {
   position: relative;
   display: grid;
   grid-template-columns: 1fr 1fr;
   width: 100%;
-  height: clamp(660px, 72vh, 760px); /* Locked responsive height spread for majestic desk presence without page shifts */
-  border-radius: 12px;
-  overflow: hidden;
-  background: linear-gradient(
-    145deg,
-    #1b130c 0%,
-    #130c08 50%,
-    #19100a 100%
-  );
-  border: 8px solid #2e180d;
+  height: clamp(630px, 70vh, 750px);
+  border-radius: 18px 18px 16px 16px;
+  background: linear-gradient(175deg, #1c120a 0%, #100a06 50%, #160d08 100%);
+  padding: 8px 12px 14px 12px;
+  box-sizing: border-box;
+  border: 1.5px solid rgba(212, 167, 84, 0.32);
   box-shadow:
-    0 24px 75px rgba(0, 0, 0, 0.9),
-    0 0 0 1.5px rgba(212, 167, 84, 0.35),
-    inset 0 0 45px rgba(0, 0, 0, 0.82);
+    0 35px 85px rgba(0, 0, 0, 0.92),
+    0 12px 35px rgba(0, 0, 0, 0.75),
+    0 0 50px rgba(212, 167, 84, 0.09),
+    inset 0 1px 2px rgba(255, 235, 205, 0.18),
+    inset 0 0 40px rgba(0, 0, 0, 0.85);
+  overflow: visible;
 }
 
-/* Gilded Corner Clasps */
+/* Gilded Corner Clasps on Hardcover corners */
 .grimoire-corner {
   position: absolute;
-  width: 24px;
-  height: 24px;
+  width: 26px;
+  height: 26px;
   z-index: 15;
   pointer-events: none;
-  border: 2px solid var(--amber-brass);
+  border-color: rgba(212, 167, 84, 0.6);
+  border-style: solid;
 }
 
 .corner--top-left {
-  top: 6px;
-  left: 6px;
-  border-right: none;
-  border-bottom: none;
-  border-radius: 4px 0 0 0;
+  top: 5px;
+  left: 5px;
+  border-width: 2px 0 0 2px;
+  border-top-left-radius: 12px;
 }
 
 .corner--top-right {
-  top: 6px;
-  right: 6px;
-  border-left: none;
-  border-bottom: none;
-  border-radius: 0 4px 0 0;
+  top: 5px;
+  right: 5px;
+  border-width: 2px 2px 0 0;
+  border-top-right-radius: 12px;
 }
 
 .corner--bottom-left {
-  bottom: 6px;
-  left: 6px;
-  border-right: none;
-  border-top: none;
-  border-radius: 0 0 0 4px;
+  bottom: 5px;
+  left: 5px;
+  border-width: 0 0 2px 2px;
+  border-bottom-left-radius: 10px;
 }
 
 .corner--bottom-right {
-  bottom: 6px;
-  right: 6px;
-  border-left: none;
-  border-top: none;
-  border-radius: 0 0 4px 0;
+  bottom: 5px;
+  right: 5px;
+  border-width: 0 2px 2px 0;
+  border-bottom-right-radius: 10px;
 }
 
-/* Leather outer margins */
+/* Leather outer margins (outer shadows where pages meet cover) */
 .book-leather-margin {
   position: absolute;
-  top: 0;
-  bottom: 0;
+  top: 8px;
+  bottom: 14px;
   width: 14px;
-  z-index: 8;
+  z-index: 6;
   pointer-events: none;
 }
 
 .margin--left {
-  left: 0;
-  background: linear-gradient(to right, rgba(20, 10, 5, 0.6) 0%, transparent 100%);
+  left: 12px;
+  background: linear-gradient(to right, rgba(10, 6, 3, 0.65) 0%, transparent 100%);
 }
 
 .margin--right {
-  right: 0;
-  background: linear-gradient(to left, rgba(20, 10, 5, 0.6) 0%, transparent 100%);
+  right: 12px;
+  background: linear-gradient(to left, rgba(10, 6, 3, 0.65) 0%, transparent 100%);
 }
 
 /* ---------------------------------------------------------------
-   4. CENTRAL CREASE SPINE & STITCHING
+   4. 3D STACKED PAPER LEAVES (Realistic Volume Thickness)
+   --------------------------------------------------------------- */
+.book-page-stack {
+  position: absolute;
+  pointer-events: none;
+}
+
+/* Left edge paper leaf layers */
+.book-page-stack.stack--left {
+  top: 12px;
+  bottom: 18px;
+  left: 6px;
+  width: 6px;
+  border-radius: 3px 0 0 3px;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(212, 167, 84, 0.28) 0px,
+    rgba(212, 167, 84, 0.28) 1px,
+    #130c07 1px,
+    #130c07 2.5px
+  );
+  box-shadow: inset -1px 0 2px rgba(0, 0, 0, 0.7);
+  z-index: 4;
+}
+
+/* Right edge paper leaf layers */
+.book-page-stack.stack--right {
+  top: 12px;
+  bottom: 18px;
+  right: 6px;
+  width: 6px;
+  border-radius: 0 3px 3px 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(212, 167, 84, 0.28) 0px,
+    rgba(212, 167, 84, 0.28) 1px,
+    #130c07 1px,
+    #130c07 2.5px
+  );
+  box-shadow: inset 1px 0 2px rgba(0, 0, 0, 0.7);
+  z-index: 4;
+}
+
+/* Bottom edge paper leaf layers (depth of 400 pages lying open) */
+.book-page-stack.stack--bottom {
+  bottom: 4px;
+  left: 14px;
+  right: 14px;
+  height: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 4;
+}
+
+.page-stack-leaves {
+  flex: 1;
+  height: 100%;
+  background: repeating-linear-gradient(
+    to bottom,
+    #2c1c11 0px,
+    #2c1c11 1px,
+    rgba(224, 203, 163, 0.6) 1px,
+    rgba(224, 203, 163, 0.6) 2px,
+    #160e08 2px,
+    #160e08 3px
+  );
+  border-radius: 0 0 3px 3px;
+  box-shadow: inset 0 -1px 3px rgba(0, 0, 0, 0.8);
+}
+
+.leaves--left {
+  border-bottom-left-radius: 6px;
+}
+
+.leaves--right {
+  border-bottom-right-radius: 6px;
+}
+
+.page-stack-center-notch {
+  width: 34px;
+  height: 100%;
+  background: #080402;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.95);
+}
+
+/* ---------------------------------------------------------------
+   5. CENTRAL SPINAL GUTTER & SILK BOOKMARK RIBBON
    --------------------------------------------------------------- */
 .grimoire-center-spine {
   position: absolute;
-  top: 0;
-  bottom: 0;
+  top: 8px;
+  bottom: 14px;
   left: 50%;
-  width: 32px;
+  width: 36px;
   transform: translateX(-50%);
   z-index: 10;
   pointer-events: none;
@@ -312,31 +384,35 @@
   justify-content: center;
 }
 
+/* The deep sunken crease valley where pages bind */
 .spine-center-crease {
   width: 100%;
   height: 100%;
   background: linear-gradient(
     to right,
-    rgba(0, 0, 0, 0.05) 0%,
-    rgba(0, 0, 0, 0.35) 25%,
-    rgba(0, 0, 0, 0.6) 50%,
-    rgba(0, 0, 0, 0.35) 75%,
-    rgba(0, 0, 0, 0.05) 100%
+    transparent 0%,
+    rgba(0, 0, 0, 0.45) 20%,
+    #050302 50%,
+    rgba(0, 0, 0, 0.45) 80%,
+    transparent 100%
   );
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.9);
 }
 
+/* Stitched thread lines on left and right of crease */
 .spine-stitch-line {
   position: absolute;
-  top: 10px;
-  bottom: 10px;
+  top: 14px;
+  bottom: 14px;
   width: 1.5px;
   background: repeating-linear-gradient(
     to bottom,
     transparent 0px,
     transparent 5px,
-    rgba(212, 167, 84, 0.3) 5px,
-    rgba(212, 167, 84, 0.3) 10px
+    rgba(212, 167, 84, 0.55) 5px,
+    rgba(212, 167, 84, 0.55) 10px
   );
+  box-shadow: 0 0 4px rgba(212, 167, 84, 0.3);
 }
 
 .spine-stitch-line--left {
@@ -347,8 +423,40 @@
   right: 4px;
 }
 
+/* Silk bookmark ribbon draping down the center gutter */
+.spine-ribbon-bookmark {
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 74%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 12;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.75));
+}
+
+.ribbon-body {
+  width: 100%;
+  flex: 1;
+  background: linear-gradient(180deg, #e5b967 0%, #b3832c 60%, #875c17 100%);
+  border-radius: 2px 2px 0 0;
+  box-shadow:
+    inset 1px 0 1px rgba(255, 240, 195, 0.4),
+    inset -1px 0 1px rgba(0, 0, 0, 0.5);
+}
+
+.ribbon-swallowtail {
+  width: 10px;
+  height: 8px;
+  background: #875c17;
+  clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
+}
+
 /* ---------------------------------------------------------------
-   5. DEEP CHARCOAL SLATE MANUSCRIPT PAGES
+   6. 3D ARCHED CODEX PAGES (Left & Right Cylindrical Illumination)
    --------------------------------------------------------------- */
 .grimoire-page {
   position: relative;
@@ -357,31 +465,67 @@
   justify-content: space-between;
   height: 100%;
   min-height: 0;
-  padding: 22px 36px 16px 36px;
+  padding: 22px 34px 16px 34px;
   box-sizing: border-box;
-  background: 
-    radial-gradient(ellipse at 30% 20%, rgba(38, 26, 17, 0.7) 0%, transparent 60%),
-    linear-gradient(180deg, rgba(22, 15, 10, 0.98) 0%, rgba(16, 11, 7, 0.99) 100%);
   overflow: hidden;
+  z-index: 5;
 }
 
+/* Left Page — Arches gracefully from outer edge down into gutter crease */
 .page--left {
-  border-right: 1px solid rgba(212, 167, 84, 0.15);
-  padding-right: 40px;
+  padding-right: 44px;
+  border-radius: 12px 2px 2px 10px;
+  background: linear-gradient(
+    to right,
+    rgba(28, 19, 13, 0.92) 0%,
+    rgba(38, 26, 18, 0.84) 40%,
+    rgba(28, 19, 13, 0.88) 75%,
+    rgba(18, 11, 7, 0.96) 91%,
+    #0c0704 100%
+  );
+  box-shadow:
+    inset 0 1px 1px rgba(255, 235, 205, 0.1),
+    inset 1px 0 0 rgba(212, 167, 84, 0.22),
+    inset 0 -1px 0 rgba(212, 167, 84, 0.14),
+    inset -28px 0 32px rgba(0, 0, 0, 0.8),
+    0 4px 14px rgba(0, 0, 0, 0.4);
+  border-top: 1px solid rgba(212, 167, 84, 0.2);
+  border-left: 1px solid rgba(212, 167, 84, 0.24);
+  border-bottom: 1px solid rgba(212, 167, 84, 0.14);
+  border-right: none;
 }
 
+/* Right Page — Arches gracefully out of gutter crease to outer right edge */
 .page--right {
-  padding-left: 40px;
+  padding-left: 44px;
+  border-radius: 2px 12px 10px 2px;
+  background: linear-gradient(
+    to right,
+    #0c0704 0%,
+    rgba(18, 11, 7, 0.96) 9%,
+    rgba(28, 19, 13, 0.88) 25%,
+    rgba(38, 26, 18, 0.84) 60%,
+    rgba(28, 19, 13, 0.92) 100%
+  );
+  box-shadow:
+    inset 0 1px 1px rgba(255, 235, 205, 0.1),
+    inset -1px 0 0 rgba(212, 167, 84, 0.22),
+    inset 0 -1px 0 rgba(212, 167, 84, 0.14),
+    inset 28px 0 32px rgba(0, 0, 0, 0.8),
+    0 4px 14px rgba(0, 0, 0, 0.4);
+  border-top: 1px solid rgba(212, 167, 84, 0.2);
+  border-right: 1px solid rgba(212, 167, 84, 0.24);
+  border-bottom: 1px solid rgba(212, 167, 84, 0.14);
+  border-left: none;
 }
 
-/* Faint astrological & technical coordinate grid watermark */
+/* Faint celestial watermark grid on paper */
 .grimoire-page::before {
   content: '';
   position: absolute;
   inset: 0;
-  background-image: 
-    radial-gradient(rgba(212, 167, 84, 0.04) 1px, transparent 1px);
-  background-size: 28px 28px;
+  background-image: radial-gradient(rgba(212, 167, 84, 0.045) 1px, transparent 1px);
+  background-size: 26px 26px;
   pointer-events: none;
   z-index: 1;
 }
@@ -396,7 +540,7 @@
   align-items: center;
   justify-content: space-between;
   padding-bottom: 10px;
-  border-bottom: 1px solid rgba(212, 167, 84, 0.2);
+  border-bottom: 1px solid rgba(212, 167, 84, 0.15);
   margin-bottom: 12px;
   flex-shrink: 0;
 }
@@ -410,11 +554,11 @@
 .page-chapter-badge {
   font-family: var(--font-sans);
   font-size: 0.72rem;
-  font-weight: 800;
-  letter-spacing: 0.14em;
+  font-weight: 700;
+  letter-spacing: 0.12em;
   color: var(--amber-brass);
-  background: rgba(212, 167, 84, 0.12);
-  border: 1px solid rgba(212, 167, 84, 0.28);
+  background: rgba(212, 167, 84, 0.1);
+  border: 1px solid rgba(212, 167, 84, 0.25);
   padding: 3px 8px;
   border-radius: 4px;
 }
@@ -495,7 +639,7 @@
   height: 1px;
   background: linear-gradient(
     to right,
-    rgba(212, 167, 84, 0.3) 0%,
+    rgba(212, 167, 84, 0.25) 0%,
     transparent 100%
   );
 }
@@ -520,19 +664,19 @@
   display: flex;
   flex-direction: column;
   gap: 5px;
-  padding: 10px 16px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(212, 167, 84, 0.16);
-  border-radius: 9px;
+  padding: 11px 16px;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(212, 167, 84, 0.14);
+  border-radius: 10px;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
 }
 
 .codex-skill-card:hover {
-  background: rgba(212, 167, 84, 0.08);
-  border-color: rgba(212, 167, 84, 0.45);
+  background: rgba(212, 167, 84, 0.09);
+  border-color: rgba(212, 167, 84, 0.38);
   transform: translateY(-2px);
-  box-shadow: 0 4px 16px rgba(212, 167, 84, 0.18);
+  box-shadow: 0 6px 20px rgba(212, 167, 84, 0.16);
 }
 
 .codex-card-top {
@@ -581,10 +725,9 @@
 }
 
 .seal-mastery {
-  background: rgba(212, 167, 84, 0.18);
-  border: 1px solid rgba(212, 167, 84, 0.45);
+  background: rgba(212, 167, 84, 0.15);
+  border: 1px solid rgba(212, 167, 84, 0.3);
   color: #ffd88a;
-  box-shadow: 0 0 10px rgba(212, 167, 84, 0.2);
 }
 
 .seal-mastery .seal-dot {
@@ -593,10 +736,9 @@
 }
 
 .seal-advanced {
-  background: rgba(46, 125, 50, 0.22);
-  border: 1px solid rgba(76, 175, 80, 0.4);
+  background: rgba(46, 125, 50, 0.2);
+  border: 1px solid rgba(76, 175, 80, 0.35);
   color: #a5d6a7;
-  box-shadow: 0 0 10px rgba(46, 125, 50, 0.2);
 }
 
 .seal-advanced .seal-dot {
@@ -606,7 +748,7 @@
 
 .seal-proven {
   background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(212, 167, 84, 0.24);
+  border: 1px solid rgba(212, 167, 84, 0.2);
   color: #d8cbbe;
 }
 
@@ -624,7 +766,7 @@
   align-items: center;
   justify-content: space-between;
   padding-top: 10px;
-  border-top: 1px solid rgba(212, 167, 84, 0.18);
+  border-top: 1px solid rgba(212, 167, 84, 0.15);
   margin-top: 8px;
   flex-shrink: 0;
 }
@@ -641,14 +783,14 @@
   align-items: center;
   gap: 6px;
   background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(212, 167, 84, 0.3);
+  border: 1px solid rgba(212, 167, 84, 0.24);
   color: #e2d7c8;
   font-family: var(--font-sans);
   font-size: 0.76rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  padding: 5px 12px;
-  border-radius: 6px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  padding: 5px 14px;
+  border-radius: 20px;
   cursor: pointer;
   transition: all 0.25s ease;
 }
@@ -674,9 +816,15 @@
    --------------------------------------------------------------- */
 @media (max-width: 1200px) {
   .skills-room {
-    padding: 16px 20px;
+    padding: 14px 20px;
   }
   .grimoire-page {
-    padding: 14px 22px 10px 22px;
+    padding: 16px 22px 12px 22px;
+  }
+  .page--left {
+    padding-right: 32px;
+  }
+  .page--right {
+    padding-left: 32px;
   }
 }

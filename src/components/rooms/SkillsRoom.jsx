@@ -125,21 +125,6 @@ export default function SkillsRoom() {
               const isActive = idx === activeFolioIndex;
               const tabColor = folio.color || '#d4a754';
 
-              const ribbonStyle = isActive
-                ? {
-                    background: `linear-gradient(135deg, ${tabColor} 0%, rgba(20, 12, 7, 0.95) 100%)`,
-                    border: `1.5px solid ${tabColor}`,
-                    borderBottom: 'none',
-                    color: '#ffffff',
-                    boxShadow: `0 -2px 16px ${tabColor}55`,
-                  }
-                : {
-                    background: 'linear-gradient(135deg, rgba(30, 20, 13, 0.85) 0%, rgba(18, 11, 7, 0.9) 100%)',
-                    border: `1px solid ${tabColor}55`,
-                    borderBottom: 'none',
-                    color: tabColor,
-                  };
-
               return (
                 <button
                   key={folio.id || idx}
@@ -149,11 +134,11 @@ export default function SkillsRoom() {
                   aria-selected={isActive}
                   role="tab"
                   title={`Turn to ${folio.detail || folio.header}`}
+                  style={{ '--tab-color': tabColor }}
                 >
-                  <span className="ribbon-hanging-strip" style={ribbonStyle}>
+                  <span className="ribbon-hanging-strip">
                     <IconComponent size={13} className="ribbon-icon" />
                     <span className="ribbon-text">{folio.header}</span>
-                    <span className="ribbon-fold" aria-hidden="true" />
                   </span>
                 </button>
               );
@@ -181,7 +166,20 @@ export default function SkillsRoom() {
               <div className="spine-stitch-line spine-stitch-line--left" />
               <div className="spine-center-crease" />
               <div className="spine-stitch-line spine-stitch-line--right" />
+              <div className="spine-ribbon-bookmark">
+                <span className="ribbon-body" />
+                <span className="ribbon-swallowtail" />
+              </div>
             </div>
+
+            {/* 3D Stacked Paper Leaves (Book Thickness) */}
+            <div className="book-page-stack stack--bottom" aria-hidden="true">
+              <div className="page-stack-leaves leaves--left" />
+              <div className="page-stack-center-notch" />
+              <div className="page-stack-leaves leaves--right" />
+            </div>
+            <div className="book-page-stack stack--left" aria-hidden="true" />
+            <div className="book-page-stack stack--right" aria-hidden="true" />
 
             {/* =========================================================
                 LEFT PAGE — Deep Charcoal Slate Parchment

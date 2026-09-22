@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import {
   Star,
   Sparkles,
   ArrowUpRight,
   ExternalLink,
   BookOpen,
+  Pin,
   Cpu,
   Layers,
   Zap,
@@ -33,7 +34,9 @@ function Book3D({ project, index, isHero = false, isActive = false, onClick }) {
       onClick={onClick}
       role="button"
       tabIndex={0}
-      aria-label={`${project.bookSpineTitle || project.title}, Volume ${index + 1} - Click to look inside`}
+      aria-label={`${project.bookSpineTitle || project.title}, Volume ${index + 1} - ${
+        isHero ? 'Currently Pinned Volume' : 'Click to Pin to Showcase'
+      }`}
       onKeyDown={(e) => {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
@@ -90,10 +93,14 @@ function Book3D({ project, index, isHero = false, isActive = false, onClick }) {
               )}
               <div className="book-cover-art-vignette" />
 
-              {/* Hover look inside overlay */}
+              {/* Hover pin / dossier overlay */}
               <div className="book-cover-inspect-overlay">
-                <BookOpen size={20} className="inspect-icon" />
-                <span>LOOK INSIDE</span>
+                <Pin size={18} className="inspect-icon" />
+                <span>
+                  {isHero
+                    ? portfolioData.bookshelfConfig?.pinnedBadgeText || 'PINNED'
+                    : portfolioData.bookshelfConfig?.coverOverlayText || 'PIN'}
+                </span>
               </div>
             </div>
 
@@ -152,14 +159,23 @@ function RatingStars({ rating = 5.0 }) {
 }
 
 export default function ProjectsRoom({ onModalStateChange }) {
-  const { projects } = portfolioData;
+  const { projects, bookshelfConfig } = portfolioData;
+  const showcaseRef = useRef(null);
+  const focusTimeoutRef = useRef(null);
   const [selectedProject, setSelectedProject] = useState(null);
+  const [isPinFocused, setIsPinFocused] = useState(false);
   const [featuredIndex, setFeaturedIndex] = useState(() => {
     const featIdx = projects.findIndex((p) => p.featured);
     return featIdx >= 0 ? featIdx : 0;
   });
 
   const featuredProject = projects[featuredIndex] || projects[0];
+
+  useEffect(() => {
+    return () => {
+      if (focusTimeoutRef.current) clearTimeout(focusTimeoutRef.current);
+    };
+  }, []);
 
   const handleOpenProject = (project) => {
     setSelectedProject(project);
@@ -173,6 +189,13 @@ export default function ProjectsRoom({ onModalStateChange }) {
 
   const handleSelectFeatured = (index) => {
     setFeaturedIndex(index);
+
+    // Pulse golden amber glow to visually indicate the container is pinned
+    setIsPinFocused(true);
+    if (focusTimeoutRef.current) clearTimeout(focusTimeoutRef.current);
+    focusTimeoutRef.current = setTimeout(() => {
+      setIsPinFocused(false);
+    }, 1400);
   };
 
   return (
@@ -182,22 +205,25 @@ export default function ProjectsRoom({ onModalStateChange }) {
       role="region"
       aria-label="The Library — Project Archives & Software Volumes"
     >
-      <div className="library-container">
+      <div className="library-container" data-scroll-animate="fade-up" data-scroll-no-reverse="true">
         {/* =========================================================
             1. SECTION HEADER BAR
             ========================================================= */}
-        <div className="library-wall-header" data-scroll-animate="fade-down">
+        <div className="library-wall-header">
           <div className="header-left">
-            <span className="library-crest-numeral">III</span>
+            <span className="library-crest-numeral">{bookshelfConfig?.crestNumeral || 'III'}</span>
             <div className="library-titles">
-              <span className="library-eyebrow">The Library • Project Archives</span>
-              <h2 className="library-main-title">Full Stack Works &amp; Software Volumes</h2>
+              <span className="library-eyebrow">{bookshelfConfig?.eyebrow || 'The Library • Project Archives'}</span>
+              <h2 className="library-main-title">{bookshelfConfig?.mainTitle || 'Full Stack Works & Software Volumes'}</h2>
             </div>
           </div>
           <div className="header-right">
             <span className="shelf-info-badge">
               <Info size={14} className="info-icon" />
-              <span>Click any volume to highlight above • Click Look Inside to inspect</span>
+              <span>
+                {bookshelfConfig?.infoBadgeText ||
+                  'Click any volume or Pin to feature above • Inspect architecture & stack'}
+              </span>
             </span>
           </div>
         </div>
@@ -206,7 +232,10 @@ export default function ProjectsRoom({ onModalStateChange }) {
             2. UPPER DECK: FEATURED MASTERWORK & AUTHOR COMPANIONS
             (Modeled after Google Books Upper Shelf)
             ========================================================= */}
-        <div className="library-showcase-panel" data-scroll-animate="fade-up" data-scroll-delay="1">
+        <div
+          ref={showcaseRef}
+          className={`library-showcase-panel ${isPinFocused ? 'is-pinned-focused' : ''}`}
+        >
           <div className="library-deck-content">
             {/* Left Column: Heading, Synopsis & Quick Jump */}
             <div className="deck-intro-col">
@@ -225,25 +254,7 @@ export default function ProjectsRoom({ onModalStateChange }) {
                 Select any tome on the shelf below to inspect its architecture, engineering decisions, and live stack.
               </p>
 
-              {/* Interactive Volume Switcher Chips */}
-              <div className="deck-switcher-row">
-                <span className="switcher-label">Quick Select:</span>
-                <div className="switcher-chips-wrap">
-                  {projects.map((proj, idx) => (
-                    <button
-                      key={proj.id}
-                      type="button"
-                      className={`switcher-chip ${
-                        idx === featuredIndex ? 'switcher-chip--active' : ''
-                      }`}
-                      onClick={() => handleSelectFeatured(idx)}
-                    >
-                      <span className="chip-vol-num">0{idx + 1}</span>
-                      <span>{proj.bookSpineTitle || proj.title.split(' ')[0]}</span>
-                    </button>
-                  ))}
-                </div>
-              </div>
+
 
               {/* Active Book Showcase Box */}
               <div className="deck-featured-meta">
@@ -275,7 +286,7 @@ export default function ProjectsRoom({ onModalStateChange }) {
                     onClick={() => handleOpenProject(featuredProject)}
                   >
                     <BookOpen size={15} />
-                    <span>Look Inside Volume</span>
+                    <span>{bookshelfConfig?.openDossierButtonText || 'Inspect Project Dossier'}</span>
                     <ArrowUpRight size={13} className="deck-btn-arrow" />
                   </button>
 
@@ -288,7 +299,7 @@ export default function ProjectsRoom({ onModalStateChange }) {
                       aria-label="View on GitHub"
                     >
                       <GithubIcon size={15} />
-                      <span>Source</span>
+                      <span>{bookshelfConfig?.sourceButtonText || 'Source'}</span>
                       <ExternalLink size={12} />
                     </a>
                   )}
@@ -307,15 +318,15 @@ export default function ProjectsRoom({ onModalStateChange }) {
                   isActive={true}
                   onClick={() => handleOpenProject(featuredProject)}
                 />
-                {/* Floating "Click to Look Inside" Pill underneath */}
+                {/* Floating "Click Cover to Open Dossier" Pill underneath */}
                 <button
                   type="button"
                   className="pedestal-look-inside-cue"
                   onClick={() => handleOpenProject(featuredProject)}
-                  title="Click to open book and read full details"
+                  title="Click to open full project dossier"
                 >
                   <BookOpen size={13} />
-                  <span>Click Cover to Look Inside</span>
+                  <span>{bookshelfConfig?.pedestalCueText || 'Click Cover to Open Dossier'}</span>
                 </button>
               </div>
             </div>
@@ -416,22 +427,29 @@ export default function ProjectsRoom({ onModalStateChange }) {
             3. LOWER DECK: RECENT BESTSELLERS / SOFTWARE VOLUMES SHELF
             (Exact layout inspired by the reference image bottom row)
             ========================================================= */}
-        <div className="library-shelf-panel" data-scroll-animate="fade-up" data-scroll-delay="2">
-          {/* Helper bar explaining the click interaction */}
+        <div className="library-shelf-panel">
+          {/* Shelf guidance bar with integrated section badge */}
           <div className="shelf-guidance-bar">
-            <span className="guidance-icon">💡</span>
-            <span className="guidance-text">
-              <strong>Interactive Bookshelf:</strong> Click any book to highlight its volume above, or click <strong>Look Inside</strong> to open the full project details.
-            </span>
+            <div className="shelf-guidance-left">
+              <span className="shelf-section-tag">
+                {bookshelfConfig?.verticalSpineText || 'PROJECT VOLUMES'}
+              </span>
+              <span className="shelf-guidance-divider" aria-hidden="true">•</span>
+              <span className="guidance-text">
+                <span className="guidance-icon">💡</span>
+                {bookshelfConfig?.guidanceText ||
+                  'Click any book or Pin to showcase its volume above and inspect live telemetry.'}
+              </span>
+            </div>
+            <div className="shelf-guidance-right">
+              <span className="shelf-counter-text">
+                {projects.length} Volumes • Select or Pin
+              </span>
+            </div>
           </div>
 
           <div className="shelf-books-wrapper">
-            {/* Vertical rotated section title on left edge */}
-            <div className="shelf-vertical-header" aria-hidden="true">
-              <span className="shelf-vertical-text">PROJECT VOLUMES</span>
-            </div>
-
-            {/* Row of Upright 3D Books with Meta Beside Each */}
+            {/* Row of Upright 3D Books with Meta Beside Each (Scrolls right when books overflow) */}
             <div className="shelf-books-row">
               {projects.map((project, idx) => {
                 const isCurrentActive = idx === featuredIndex;
@@ -449,15 +467,19 @@ export default function ProjectsRoom({ onModalStateChange }) {
                         isCurrentActive ? 'shelf-card-cue--active' : ''
                       }`}
                       onClick={() => handleSelectFeatured(idx)}
-                      title={isCurrentActive ? 'Currently Showcased' : 'Click to showcase above'}
+                      title={
+                        isCurrentActive
+                          ? 'Currently Showcased & Pinned'
+                          : 'Click to pin to showcase above'
+                      }
                     >
                       {isCurrentActive ? (
                         <>
                           <span className="cue-dot" />
-                          <span>SHOWCASED</span>
+                          <span>{bookshelfConfig?.pinnedBadgeText || 'PINNED'}</span>
                         </>
                       ) : (
-                        <span>CLICK TO PREVIEW ↗</span>
+                        <span>{bookshelfConfig?.clickToPinText || 'CLICK TO PIN ↗'}</span>
                       )}
                     </div>
 
@@ -478,11 +500,11 @@ export default function ProjectsRoom({ onModalStateChange }) {
                         {/* Dynamic Star Rating */}
                         <RatingStars rating={project.rating || 5.0} />
 
-                        {/* Title (Clicking highlights above) */}
+                        {/* Title (Clicking highlights above and focuses container) */}
                         <h3
                           className="shelf-book-title"
                           onClick={() => handleSelectFeatured(idx)}
-                          title="Click to showcase above"
+                          title="Click to pin and showcase above"
                         >
                           {project.bookSpineTitle || project.title}
                         </h3>
@@ -495,12 +517,26 @@ export default function ProjectsRoom({ onModalStateChange }) {
                         <div className="shelf-book-actions-row">
                           <button
                             type="button"
-                            className="shelf-pill-btn shelf-pill-btn--primary"
-                            onClick={() => handleOpenProject(project)}
-                            aria-label={`Look inside ${project.title}`}
+                            className={`shelf-pill-btn shelf-pill-btn--primary ${
+                              isCurrentActive ? 'shelf-pill-btn--pinned' : ''
+                            }`}
+                            onClick={() => handleSelectFeatured(idx)}
+                            aria-label={`Pin ${project.title} to showcase deck`}
+                            title={
+                              isCurrentActive
+                                ? 'Currently Pinned to Showcase'
+                                : 'Pin to showcase deck above'
+                            }
                           >
-                            <BookOpen size={12} />
-                            <span>Look Inside</span>
+                            <Pin
+                              size={12}
+                              className={isCurrentActive ? 'pin-icon-active' : ''}
+                            />
+                            <span>
+                              {isCurrentActive
+                                ? bookshelfConfig?.pinnedButtonText || 'Pinned'
+                                : bookshelfConfig?.pinButtonText || 'Pin'}
+                            </span>
                           </button>
 
                           {project.githubUrl && (

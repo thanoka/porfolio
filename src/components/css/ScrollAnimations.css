@@ -12,15 +12,23 @@
     transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-[data-scroll-animate].is-visible {
+[data-scroll-animate].is-visible,
+[data-scroll-animate][data-scroll-state="visible"] {
   opacity: 1;
+}
+
+[data-scroll-no-reverse].is-visible,
+[data-scroll-no-reverse][data-scroll-state="visible"] {
+  opacity: 1 !important;
+  transform: translate3d(0, 0, 0) !important;
 }
 
 /* --- Fade Up (default) --- */
 [data-scroll-animate="fade-up"] {
   transform: translate3d(0, 50px, 0);
 }
-[data-scroll-animate="fade-up"].is-visible {
+[data-scroll-animate="fade-up"].is-visible,
+[data-scroll-animate="fade-up"][data-scroll-state="visible"] {
   transform: translate3d(0, 0, 0);
 }
 
@@ -28,7 +36,8 @@
 [data-scroll-animate="fade-down"] {
   transform: translate3d(0, -40px, 0);
 }
-[data-scroll-animate="fade-down"].is-visible {
+[data-scroll-animate="fade-down"].is-visible,
+[data-scroll-animate="fade-down"][data-scroll-state="visible"] {
   transform: translate3d(0, 0, 0);
 }
 

@@ -71,6 +71,33 @@ export const portfolioData = {
     ],
   },
 
+  // The Library • Bookshelf & Showcase Deck Configuration
+  bookshelfConfig: {
+    crestNumeral: "III",
+    eyebrow: "The Library • Project Archives",
+    mainTitle: "Full Stack Works & Software Volumes",
+    infoBadgeText: "Click any volume or Pin to feature above • Inspect architecture & stack",
+    featuredBadge: "Featured Masterwork",
+    headline: "Curated Software Masterworks",
+    subline: "Select any tome on the shelf below to inspect its architecture, engineering decisions, and live stack.",
+    quickSelectLabel: "Quick Select:",
+    showcasedLabel: "Currently Showcased:",
+    openDossierButtonText: "Inspect Project Dossier",
+    sourceButtonText: "Source",
+    pedestalCueText: "Click Cover to Open Dossier",
+    engineeringFeatsEyebrow: "Engineering Feats",
+    systemArchitectureEyebrow: "System Architecture",
+    documentationButtonText: "Read Volume Documentation",
+    guidanceText: "Click any book or Pin to showcase its volume above and inspect live telemetry.",
+    verticalSpineText: "PROJECT VOLUMES",
+    pinButtonText: "Pin",
+    pinnedButtonText: "Pinned",
+    pinnedBadgeText: "PINNED",
+    clickToPinText: "CLICK TO PIN ↗",
+    coverOverlayText: "PIN",
+    coverOverlayHeroText: "OPEN DOSSIER",
+  },
+
   // Education Timeline
   education: [
     {

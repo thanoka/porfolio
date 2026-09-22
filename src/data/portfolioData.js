@@ -35,7 +35,7 @@ export const portfolioData = {
   },
 
   social: {
-    email: "normallifethan@gmail.com",
+    email: "Thannava.aua@gmail.com",
     github: "https://github.com/thanoka",
   },
 

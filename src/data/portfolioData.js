@@ -103,6 +103,11 @@ export const portfolioData = {
   },
 
   // Institution names and GPA omitted rather than publishing unconfirmed placeholders.
+  languages: [
+    { code: "TH", name: "Thai", level: "Native", detail: "Native language" },
+    { code: "EN", name: "English", level: "C1", detail: "Advanced proficiency · CEFR C1" },
+  ],
+
   education: [
     {
       year: "2022",
@@ -647,6 +652,19 @@ Separate pure game rules from DOM manipulation, add automated tests, and documen
     sectionBadge: "Personal & Academic Projects",
     fieldLogTag: "Project Contributions",
     milestones: [
+      {
+        id: "teaching-assistant",
+        period: "2 years",
+        header: "Teaching Assistant · Full-Stack Development",
+        organization: "Sripatum University",
+        location: "Bangkok, Thailand",
+        badge: "Teaching Experience",
+        techStack: ["Full-Stack Development", "Teaching"],
+        highlights: [
+          "Taught full-stack development to first- and second-year students at my university.",
+          "Supported full-stack classes as a teaching assistant for two years.",
+        ],
+      },
       {
         id: "exp-1",
         period: "Featured project",

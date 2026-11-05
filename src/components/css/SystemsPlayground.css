@@ -1,0 +1,74 @@
+.systems-playground {
+  --signal-ink: #efefef;
+  --signal-muted: #a2a2a2;
+  --signal-line: #353535;
+  min-width: 0;
+  min-height: 520px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 26px 16px;
+  color: var(--signal-ink);
+  background: #141414;
+  border: none;
+  position: relative;
+  overflow: hidden;
+}
+.playground-header { display: flex; justify-content: space-between; align-items: center; gap: 14px; }
+.playground-header > .mono { display: flex; align-items: center; gap: 9px; font-size: 8px; letter-spacing: 1px; }
+.playground-status { display: flex; align-items: center; gap: 6px; color: var(--signal-muted); font-size: 7px; letter-spacing: .7px; }
+.playground-status i { width: 4px; height: 4px; background: currentColor; }
+.is-running .playground-status { color: #fff; }
+.playground-intro { margin-top: 20px; }
+.playground-intro > .mono { font-size: 7px; letter-spacing: 1.2px; color: var(--signal-muted); }
+.playground-intro h2 { font-size: clamp(22px, 2.2vw, 32px); line-height: 1.2; font-weight: 500; letter-spacing: -.8px; margin-top: 10px; }
+.playground-presets { display: flex; gap: 6px; margin-top: 16px; }
+.playground-presets button { flex: 1; padding: 9px 6px; border: 1px solid var(--signal-line); background: transparent; color: var(--signal-muted); font-size: 10px; display: flex; align-items: center; justify-content: center; gap: 7px; transition: color .2s, border-color .2s, background .2s; }
+.playground-presets button .mono { font-size: 7px; letter-spacing: 0; }
+.playground-presets button:hover { color: #fff; border-color: #777; }
+.playground-presets button[aria-pressed='true'] { color: #141414; border-color: #efefef; background: #efefef; }
+.signal-board { width: 100%; height: 190px; position: relative; margin-block: 8px; }
+.signal-wires { display: block; width: 100%; height: 100%; overflow: visible; }
+.signal-grid { color: #555; opacity: .27; }
+.signal-wire, .signal-flow { fill: none; stroke-width: 1; }
+.signal-wire { stroke: #4a4a4a; }
+.signal-flow { stroke: #dedede; opacity: 0; transition: opacity .25s; }
+.signal-flow.is-passed { opacity: .85; }
+.signal-flow.is-tracing { stroke-width: 2; stroke-dasharray: 5 10; animation: signal-trace .65s linear infinite; }
+.board-coordinate { fill: #777; font-family: var(--font-mono); font-size: 6px; letter-spacing: 1px; }
+.signal-node { position: absolute; transform: translate(-50%, -50%); display: grid; place-items: center; width: 58px; height: 58px; padding: 0; border: 1px solid #4b4b4b; color: #a0a0a0; background: #1b1b1b; transition: background .2s, border-color .2s, color .2s; }
+.signal-node:hover { border-color: #ddd; color: #fff; }
+.node-number { position: absolute; top: 4px; left: 5px; font: 6px var(--font-mono); }
+.node-icon { display: grid; place-items: center; }
+.node-name { position: absolute; top: calc(100% + 8px); left: 50%; transform: translateX(-50%); font-size: 9px; letter-spacing: .4px; white-space: nowrap; color: #aaa; background: #141414; padding: 0 4px; }
+.signal-node.is-passed { border-color: #8d8d8d; color: #ddd; }
+.signal-node.is-current { color: #111; border-color: #efefef; background: #efefef; box-shadow: 0 0 0 5px #ffffff08, 0 0 28px #ffffff0c; }
+.signal-node.is-current .node-name { color: #fff; }
+.playground-explanation { min-height: 74px; padding-block: 13px 15px; border-top: 1px solid var(--signal-line); }
+.playground-explanation > .mono { font-size: 7px; letter-spacing: 1px; color: #c1c1c1; }
+.playground-explanation p { color: var(--signal-muted); font-size: 11px; line-height: 1.7; margin-top: 7px; max-width: 400px; }
+.playground-footer { display: flex; align-items: center; justify-content: space-between; gap: 14px; border-top: 1px solid var(--signal-line); padding-top: 15px; margin-top: auto; }
+.playground-footer > div { display: grid; gap: 4px; }
+.playground-footer > div .mono { font-size: 6px; letter-spacing: 1px; color: #878787; }
+.playground-footer > div > span:last-child { font-size: 9px; color: #bbb; }
+.trace-button { background: #efefef; color: #141414; border: 1px solid #efefef; padding: 11px 13px; display: flex; gap: 12px; align-items: center; font-size: 10px; white-space: nowrap; }
+.trace-button:hover { background: #ccc; }
+.trace-button:disabled { color: #b2b2b2; background: #292929; border-color: #555; cursor: progress; }
+.playground-project-link { display: flex; justify-content: flex-end; align-items: center; gap: 9px; color: #aaa; font-size: 8px; margin-top: 13px; }
+.playground-project-link:hover { color: #fff; }
+@keyframes signal-trace { to { stroke-dashoffset: -30; } }
+@media (min-width: 1600px) { .systems-playground { min-height: 650px; } .signal-board { height: 250px; margin-block: auto; } }
+@media (min-width: 601px) and (max-width: 1100px) { .systems-playground { padding: 20px 18px 17px; min-height: 520px; } .playground-intro h2 { font-size: 25px; } .playground-presets button { font-size: 9px; } .signal-board { margin-block: auto; } .playground-header > .mono { font-size: 6px; gap: 5px; } .playground-status { font-size: 6px; } .playground-explanation { min-height: 89px; } }
+@media (min-width: 601px) and (max-width: 800px) { .systems-playground { padding: 17px 13px; } .playground-intro h2 { font-size: 22px; } .playground-presets { gap: 4px; } .playground-presets button { font-size: 8px; padding: 8px 3px; } .playground-presets button .mono { display: none; } .signal-node { width: 40px; height: 40px; } .node-icon svg { width: 17px; } .node-name { font-size: 8px; } .playground-footer > div > span:last-child { font-size: 8px; } .trace-button { padding: 9px; gap: 7px; font-size: 9px; } }
+@media (max-width: 600px) { .systems-playground { min-height: 0; padding: 22px 20px 18px; } .playground-intro h2 { font-size: 27px; } .playground-intro { margin-top: 25px; } .signal-board { margin-block: 10px; } }
+@media (max-width: 380px) { .systems-playground { padding-inline: 14px; } .playground-header > .mono { font-size: 6px; } .playground-status { font-size: 6px; } .playground-presets button { font-size: 9px; } .playground-presets button .mono { display: none; } .signal-node { width: 42px; height: 42px; } .node-icon svg { width: 18px; } .node-name { font-size: 8px; } .playground-intro h2 { font-size: 25px; } }
+@media (prefers-reduced-motion: reduce) { .signal-flow.is-tracing { animation: none; stroke-dasharray: none; } }
+@media (min-width: 801px) and (max-height: 800px) {
+  .systems-playground { min-height: 0; padding-block: 18px 14px; }
+  .playground-intro { margin-top: 16px; }
+  .playground-intro h2 { font-size: 26px; }
+  .playground-presets { margin-top: 12px; }
+  .signal-board { height: 180px; margin-block: 8px 14px; }
+  .playground-explanation { min-height: 0; padding-block: 10px; }
+  .playground-footer { padding-top: 10px; }
+  .playground-project-link { margin-top: 10px; }
+}

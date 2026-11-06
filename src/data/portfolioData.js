@@ -9,7 +9,7 @@
 export const portfolioData = {
   profile: {
     name: "Thannava Auamyam",
-    role: "Aspiring AI & Systems Engineer",
+    role: "Aspiring Full-Stack Developer & AI Engineer",
     focus: "AI Applications • Systems • Automation",
     location: "Bangkok, Thailand",
     tagline: "Turning complex logic into useful AI-powered tools.",
@@ -42,7 +42,7 @@ export const portfolioData = {
   navbarConfig: {
     brandInitials: "TA",
     brandTitle: "Thannava",
-    brandRole: "Aspiring AI & Systems Engineer",
+    brandRole: "Aspiring Full-Stack Developer & AI Engineer",
     brandSubtitle: "Rainforest Cabin Portfolio",
     statusBeacon: {
       header: "Seeking an Internship",

@@ -78,7 +78,7 @@ export default function App() {
   }, [theme]);
 
   useEffect(() => {
-    document.title = `${profile.name} — AI & Systems Portfolio`;
+    document.title = `${profile.name} — Full-Stack & AI Portfolio`;
     const observer = new IntersectionObserver((entries) => entries.forEach((entry) => { if (entry.isIntersecting) setActiveSection(entry.target.id); }), { rootMargin: '-15% 0px -55% 0px' });
     sections.forEach((id) => { const section = document.getElementById(id); if (section) observer.observe(section); });
     const revealObserver = new IntersectionObserver((entries) => entries.forEach((entry) => { if (entry.isIntersecting) { entry.target.classList.add('revealed'); revealObserver.unobserve(entry.target); } }), { threshold: 0.08 });
@@ -108,7 +108,7 @@ export default function App() {
             <div className="hero-copy">
               <div className="availability"><span className="status-dot" /> OPEN TO INTERNSHIPS</div>
               <h1 className="hero-mission">Always<br />learning.<br /><em>Drawn to<br />challenges.</em></h1>
-              <div className="hero-intro"><span className="intro-rule" /><div><strong className="hero-name">{profile.name}</strong><p>Aspiring AI & systems engineer.<br className="desktop-break" /> Curious by nature. I love taking on new challenges and learning through building.</p></div></div>
+              <div className="hero-intro"><span className="intro-rule" /><div><strong className="hero-name">{profile.name}</strong><p>{profile.role}.<br className="desktop-break" /> Curious by nature. I love taking on new challenges and learning through building.</p></div></div>
               <div className="hero-actions"><a className="button button-dark" href="#projects">Explore my work <ArrowDown size={17} /></a><a className="github-link" href={social.github} target="_blank" rel="noreferrer"><GithubIcon size={18} /> GitHub <ArrowUpRight size={14} /></a></div>
             </div>
             <SystemsPlayground />
